@@ -1,0 +1,447 @@
+1	Antiguedades
+1	Arquitectonico y jardin
+1	Antiguedades de Asia
+1	Libros y manuscritos
+1	Artes decorativas
+1	Etnografico
+1	Muebles
+1	Hogar y chimeneas
+1	Linos y textiles (antes de 1930)
+1	Mapas, atlas y globos terraqueos
+1	Maritimo
+1	Mercantil, comercio y fabricas
+1	Instrumentos musicales (antes de 1930)
+1	epocas y estilos
+1	Primitivos
+1	Restauracion y cuidado
+1	Alfombras y tapetes
+1	Ciencia y medicina (antes de 1930)
+1	Costura (antes de 1930)
+1	Plateado
+1	Replicas de 
+1	otros
+2	Directo del artista
+2	Arte de anticuarios y revendedores
+2	Lotes al por mayor
+3	Articulos para bebe
+3	Seguridad y salud del bebe
+3	Banio y aseo
+3	Asientos de seguridad para autos
+3	Paniales
+3	Alimentacion
+3	Recuerdos y anuncios de nacimiento
+3	Ropa de cama para ninios
+3	Decoracion de habitaciones de bebe
+3	Muebles para bebe
+3	Dejar los paniales
+3	Coches para bebe
+3	Accesorios para coches
+3	Juguetes para bebe
+3	otros
+4	Accesorios
+4	Antigüedades y piezas de coleccion
+4	Libro en audio
+4	Catalogos
+4	Ninios y adultos jovenes
+4	Libros de cocina
+4	Ficcion y literatura
+4	Publicaciones anteriores de revistas
+4	No ficcion
+4	Libros de textos, educacion
+4	otros
+5	Agricultura y silvicultura
+5	Construccion
+5	Equipo electrico y de prueba
+5	Combustible y energia
+5	Cuidado de salud y laboratorio
+5	Equipo pesado
+5	Accesorios de equipo pesado
+5	Piezas y accesorios de equipo pesado
+5	Equipo ligero y herramientas
+5	Manufactura y metalurgia
+5	Suministro industrial y MRo
+5	oficina
+5	Empaque y envio
+5	Artes graficas y de impresion
+5	Restaurante y catering
+5	Sitios en internet y negocios en venta
+5	otros
+6	Binoculares y telescopios
+6	Drones con camaras
+6	Camara de video
+6	Camaras digitales
+6	Accesorios de 6
+6	Marcos de fotos digitales
+6	Fotografia de pelicula
+6	Flashes y accesorios
+6	Lentes y filtros
+6	Iluminacion y estudio
+6	Manuales y guias
+6	Piezas y herramientas de repuesto
+6	Tripodes y soportes
+6	Edicion y produccion de video
+6	Fotografias y peliculas vintage
+6	Lotes al por mayor
+6	otros
+7	Celulares y smartphones
+7	Relojes inteligentes
+7	Accesorios para telefonos celulares
+7	Telefonos con display
+7	Tarjetas SIM y tarjetas telefonicas
+7	Piezas y herramientas de repuesto
+7	otros
+8	Ropa de infantes y bebe
+8	Vestuario, zapatos y accesorios de ninios
+8	Disfraces, representacion, teatro
+8	Ropa etnica y cultural
+8	Trajes de baile
+8	Accesorios para hombre
+8	Ropa para hombre
+8	Zapatos para hombres
+8	Uniformes y ropa de trabajo
+8	Vestuario, zapatos y accesorios unisex
+8	Boda y ocasion formal
+8	Accesorios para mujer
+8	Ropa para mujer
+8	Carteras y bolsos de mujer
+8	Calzado de mujer
+8	Vintage
+8	Lotes grandes y pequenios al por mayor
+9	En lingotes
+9	Monedas: EE. UU.
+9	Monedas: Canada
+9	Monedas: antiguas
+9	Monedas: Edad Media
+9	Monedas: del mundo
+9	objetos numismaticos
+9	Billetes: EE. UU.
+9	Billetes del mundo
+9	Publicaciones y suministros
+9	Acciones y bonos, escripofilia
+9	Divisa virtual
+9	otros
+10	Publicidad
+10	Animales
+10	Dibujos animados y personajes
+10	Salas de juegos, rocolas y pinball
+10	Autografos
+10	Bancos, registros y ventas
+10	Articulos de bar
+10	Cuentas
+10	Botellas y aisladores
+10	Breweriana, cerveza
+10	Casino
+10	Relojes
+10	Comics
+10	Culturas y etnias
+10	Adornos de coleccion
+10	Disneyana
+10	Fantasia, miticos y magia
+10	Memorabilia historica
+10	Festivo y de temporada
+10	Cocina y hogar
+10	Cuchillos, espadas y cuchillas
+10	Lamparas, luces
+10	Ropa blanca y telas (1930 - presente)
+10	objetos de metal
+10	Militaria
+10	Papel
+10	Boligrafos e instrumentos para escribir
+10	Pez, llaveros, vasos promocionales
+10	Imagenes fotograficas
+10	Prendedores, cabezones, loncheras
+10	Postales
+10	Radio, fonografo, television, telefono
+10	Religion y espiritualidad
+10	Rocas, fosiles y minerales
+10	Ciencia ficcion y horror
+10	Ciencia y medicina (1930 - presente)
+10	Costura (1930 - presente)
+10	Recuerdos y memorabilia de 34s
+10	Productos relacionados con el tabaco
+10	Herramientas y cerraduras
+10	Tarjetas de coleccion
+10	Transporte
+10	Tocador, perfume y productos de afeitar
+10	Vintage, retro, de mediados de siglo
+11	iPads, tablets y lectores electronicos
+11	Accesorios para iPad/Tableta/eBook
+11	Tablet & eBook Reader Parts
+11	Laptops y netbooks
+11	Computadoras y todo en uno
+11	Accs. para laptops y comp. de escritorio
+11	Cables y conectores
+11	Partes y componentes de computadora
+11	Unidades de disco, almacenamiento y discos en blanco
+11	Redes y servidores empresariales
+11	Red y conectividad domestica
+11	Teclados, mouses y punteros
+11	Monitores, proyectores y accesorios
+11	Proteccion, distribucion de alimentacion
+11	Impresoras, escaneres y suministros
+11	Software
+11	Manuales y recursos
+11	Informatica vintage
+11	otros
+12	Audio portatil y audifonos
+12	Televisor, video y audio para el hogar
+12	Sistemas electronicos del vehiculo y GPS
+12	Sistemas de automatizacion (domotica)
+12	Vigilancia residencial
+12	Telefonos para el hogar
+12	Baterias y energias multiusos
+12	Comunicacion por radio
+12	Artefactos y otros sistemas electronicos
+12	Sistemas electronicos vintage
+13	Materiales para arte
+13	Cuentas y fabricacion de joyas
+13	Vidrio y mosaicos
+13	Piezas de artesania y acabadas
+13	Artes y artesanías para el hogar
+13	artesanías infantiles
+13	Materiales multiusos para artesania
+13	artesanías con agujas e hilos
+13	Colec. de recortes y artesanías de papel
+13	Costura y tela
+13	Timbres y gofrados
+13	otras artesanías
+14	Materiales para hacer osos
+14	osos
+14	Muniecas
+14	Miniaturas para casas de munieca
+14	Muniecas de papel
+15	DVD y Blu-ray
+15	Pelicula fotografica
+15	Discos laser
+15	UMD
+15	Cintas VHS
+15	otros formatos
+15	Almacenamiento y accesorios para videos
+16	Vehículos y camionetas
+16	Motocicletas
+16	otros Vehículos y remolques
+16	Botes
+16	Vehículos de aventura, recreativos
+16	Partes y accesorios
+17	Autografos-original
+17	Autografos-reimpresos
+17	Memorabilia de peliculas
+17	Memorabilia de Música
+17	Memorabilia de television
+17	Memorabilia de teatro
+17	Memorabilia de juegos de video
+17	otros
+18	Tarjetas de regalo
+18	Tarjetas de regalo de eBay
+18	Certificados de regalo
+18	Cupones
+18	Productos digitales
+19	Cuerpo y banio
+19	Suplementos alimenticios, nutricion
+19	Fragancias
+19	Cuidado del cabello y peinado
+19	Cuidado de la salud
+19	Maquillaje
+19	Masaje
+19	Medicina, movilidad y discapacidad
+19	Cuidado de las unias, manicure y pedicure
+19	Remedios naturales y homeopaticos
+19	Higiene bucal
+19	Medicamentos de venta libre
+19	Equipo de spa y salon
+19	Afeitado y depilacion
+19	Cuidado de la piel
+19	Proteccion solar y bronceador
+19	Tatuajes y arte corporal
+19	Cuidado de la vista
+19	Control de peso
+19	Lotes al por mayor
+19	otros
+20	Banio
+20	Ropa de cama
+20	Comida y bebidas
+20	Flores naturales y suministros
+20	Muebles
+20	Tarjetas y suministros para fiestas
+20	Decoracion festiva y de temporada
+20	Decoracion para el hogar
+20	Articulos para mejoras del hogar
+20	Materiales de limpieza para el hogar
+20	Ninios y adolescentes
+20	Cocina, comedor y bar
+20	Lamparas, luces y ventiladores de techo
+20	Electrodomesticos grandes
+20	Alfombras y tapetes
+20	Herramientas
+20	Suministros para soldadura
+20	Decoracion y herrajes para ventanas
+20	Patio, jardin y espacios abiertos
+20	Lotes al por mayor
+20	otros
+21	Joyas infantiles
+21	Compromiso y boda
+21	etnicos, regionales y tribales
+21	Joyas de moda
+21	Joyeria fina
+21	Joyas artesanales, hechas a mano
+21	Joyeros y organizadores de joyas
+21	Disenio y reparacion de joyas
+21	Cuentas sueltas
+21	Diamantes y gemas sueltos
+21	Joyas para hombres
+21	Joyas vintage y antiguas
+21	Relojes
+21	otros
+22	Casetes
+22	CD
+22	Discos
+22	otros formatos
+22	Almacenamiento y accesorios para videos
+22	Lotes al por mayor
+23	Acordeones y concertinas
+23	Laton
+23	Equipo
+23	Guitarra
+23	Armonica
+23	Libros, CD y videos de instrucciones
+23	Karaoke
+23	Percusion
+23	Pianos, organos y teclados
+23	Equipo de audio profesional
+23	Partituras y cancioneros
+23	Iluminacion y efectos de escenario
+23	Cuerdas
+23	Instrumentos de viento-madera
+23	Lotes al por mayor
+23	otros
+24	Aves de corral
+24	Aves
+24	Gatos
+24	Perros
+24	Peces y acuarios
+24	Caballos
+24	Reptiles
+24	Animales pequenios
+24	Lapidas y urnas
+24	otros
+25	Vidrio
+25	Ceramica y porcelana
+26	Comerciales
+26	Terreno
+26	Casas prefabricadas
+26	Residenciales
+26	Tiempos compartidos a la venta
+26	otros bienes raíces
+27	Servicios artisticos
+27	Ropa y joyeria a la medida
+27	Servicios de subastas de eBay
+27	Disenio grafico y de logotipos
+27	Servicios para mejoras del hogar
+27	Servicios basados en articulos
+27	Edicion y duplicado de medios
+27	Impresion y personalizacion
+27	Restauracion y reparacion
+27	Servicios Web e informaticos
+27	otros servicios
+28	Boxeo, artes marciales y artes marciales mixtas (MMA)
+28	Ciclismo
+28	Pesca
+28	Fitness, running y yoga
+28	Golf
+28	Caceria
+28	Juegos en interiores
+28	Deportes al aire libre
+28	Deportes de equipo
+28	Tenis y deportes con raqueta
+28	Deportes acuaticos
+28	Deportes de invierno
+28	otros
+28	Lotes al por mayor
+29	Autografos (original)
+29	Autografos (reimpresos)
+29	Tarjetas
+29	Ropa para aficionados y recuerdos
+29	Memorabilia de juegos usada
+29	Autenticada por el fabricante
+29	Memorabilia de deportes antigua
+29	Lotes al por mayor
+30	Estados Unidos
+30	Canada
+30	Gran Bretania
+30	africa
+30	Asia
+30	Australia y oceania
+30	Colonias britanicas y territorios
+30	Caribe
+30	Europa
+30	Latinoamerica
+30	oriente Medio
+30	Mundiales
+30	Estampillas tropicales
+30	Filatelia especializada
+30	Publicaciones y suministros
+30	otros
+31	Boletos para deportes
+31	Boletos para conciertos
+31	Boletos para el teatro
+31	Pases para parques tematicos y clubes
+31	Pases de estacionamiento
+31	Experiencias especiales
+31	otros
+32	Figuras de accion
+32	Afelpados con pelotas de semillas
+32	Juguetes de construccion
+32	Juguetes clasicos
+32	Vehículos de presofusion y de juguete
+32	Educativos
+32	Electronicos, baterias y a cuerda
+32	Juguetes de comida rapida y cereales
+32	Juegos
+32	Canicas
+32	Modelos de ferrocarriles y trenes
+32	Modelos y juegos
+32	Juguetes y estructuras para exterior
+32	Juguetes preescolares y juegos de roles
+32	Rompecabezas
+32	Control por radio y mando
+32	Robots, monstruos y juguetes del espacio
+32	Automoviles con ranuras
+32	Animales de peluche
+32	Soldados de juguete
+32	Juegos de cartas intercambiables
+32	Juguetes de personajes, TV y peliculas
+32	Juguetes antiguos
+33	Linea aerea
+33	Camping y casas rodantes
+33	Alquiler de automoviles
+33	Cruceros
+33	Alojamiento
+33	Equipaje
+33	Accesorios para equipaje
+33	Mapas
+33	Ferrocarril
+33	Accesorios de viaje
+33	Paquetes de vacaciones
+33	otros
+34	Videojuegos
+34	Consolas de videojuego
+34	Accesorios de videojuegos
+34	Tarjetas de juego prepagadas
+34	Piezas y herramientas de repuesto
+34	Guias de estrategia y trampas
+34	Productos de videojuegos
+34	otros
+35	Solo para adultos
+35	Desarrollo profesional y educacion
+35	ofertas especiales de eBay
+35	Herramientas de usuario de eBay
+35	Funeral y cementerio
+35	Genealogia
+35	Productos de informacion
+35	Metafisica
+35	Desarrollo personal
+35	Seguridad personal
+35	Productos y suministros religiosos
+35	Programa de puntos e incentivos
+35	Articulos extranios
+35	otros

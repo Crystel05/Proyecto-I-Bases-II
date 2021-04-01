@@ -300,18 +300,21 @@
     </table>
     <table id="64" parent="2" name="TELEFONO">
       <ObjectId>73120</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-19.08:42:29</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-20.08:52:01</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="65" parent="2" name="TIPOTELEFONO">
       <ObjectId>73115</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-19.08:36:53</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-22.14:46:14</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="66" parent="2" name="USUARIO">
       <ObjectId>73316</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-20.08:48:26</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-20.08:48:26</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
