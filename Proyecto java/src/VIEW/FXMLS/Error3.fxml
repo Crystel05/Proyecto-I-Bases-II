@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="PregPar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="170.0" prefWidth="499.0" style="-fx-background-color: MISTYROSE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControllerPrincipal">
+   <children>
+      <Label layoutX="126.0" layoutY="30.0" text="ESPACIOS VACÍOS" textFill="#721e1e">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="65.0" text="Complete todos los espacios para continuar" textFill="#902d11">
+         <font>
+            <Font name="Book Antiqua" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="197.0" layoutY="110.0" mnemonicParsing="false" onAction="#cerrar2" text="ACEPTAR">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <SepiaTone>
+               <input>
+                  <Lighting diffuseConstant="1.66">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#169dbc" />
+                     </light>
+                  </Lighting>
+               </input>
+            </SepiaTone>
+         </effect>
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+      </Button>
+   </children>
+   <effect>
+      <InnerShadow choke="0.14" color="#bf3c30" height="87.47" radius="47.6075" width="104.96" />
+   </effect>
+</Pane>
