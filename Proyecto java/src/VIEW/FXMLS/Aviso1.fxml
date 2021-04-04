@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="PregPar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="170.0" prefWidth="499.0" style="-fx-background-color: LIGHTCYAN;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControllerPrincipal">
+   <effect>
+      <InnerShadow choke="0.14" color="#152c90" height="69.98" radius="43.235" width="104.96" />
+   </effect>
+   <children>
+      <Label layoutX="18.0" layoutY="25.0" text="TELÉFONO AGREGADO CON ÉXITO" textFill="#1313a4">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="59.0" text="Se agregó el teléfono correctamente" textFill="#1c2fbc">
+         <font>
+            <Font name="Book Antiqua" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="197.0" layoutY="97.0" mnemonicParsing="false" onAction="#cerrar2" text="ACEPTAR">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <SepiaTone level="0.34">
+               <input>
+                  <Lighting diffuseConstant="1.66">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#169dbc" />
+                     </light>
+                  </Lighting>
+               </input>
+            </SepiaTone>
+         </effect>
+      </Button>
+   </children>
+</Pane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="148.0" prefWidth="505.0" style="-fx-background-color: MISTYROSE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControllerPrincipal">
+   <children>
+      <Label layoutX="150.0" layoutY="14.0" text="ADVERTENCIA" textFill="#9a4242">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="111.0" layoutY="54.0" text="No seleccionó una base de datos" textFill="#c31717">
+         <font>
+            <Font name="Book Antiqua" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="213.0" layoutY="93.0" mnemonicParsing="false" onAction="#cerrar2" text="ACEPTAR">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <SepiaTone level="0.6">
+               <input>
+                  <Lighting diffuseConstant="1.66">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#b56c6c" />
+                     </light>
+                  </Lighting>
+               </input>
+            </SepiaTone>
+         </effect></Button>
+   </children>
+   <effect>
+      <InnerShadow choke="0.29" color="#d33939" height="58.32" radius="31.770000000000003" width="70.76" />
+   </effect>
+</AnchorPane>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="404.0" style="-fx-background-color: LIGHTCYAN;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControllerVenPrin">
+   <children>
+      <Label layoutX="67.0" layoutY="38.0" text="Escoger Base de Datos" textFill="#255bd0">
+         <font>
+            <Font name="Bodoni MT Black" size="25.0" />
+         </font>
+         <effect>
+            <DropShadow color="#32a18b" />
+         </effect></Label>
+      <RadioButton fx:id="BoracleDB" layoutX="79.0" layoutY="110.0" mnemonicParsing="false" onAction="#escogerUnBotonO" text="ORACLE" textFill="#2a45bc">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow color="#27869e" />
+         </effect></RadioButton>
+      <RadioButton fx:id="BpostBD" layoutX="210.0" layoutY="110.0" mnemonicParsing="false" onAction="#escogerUnBotonP" text="POSTGRESQL" textFill="#2a45bc">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow color="#27869e" />
+         </effect></RadioButton>
+      <Button fx:id="confirmar" layoutX="137.0" layoutY="163.0" mnemonicParsing="false" onAction="#confirmar" text="CONFIRMAR">
+         <font>
+            <Font name="Book Antiqua" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <SepiaTone level="0.34">
+               <input>
+                  <Lighting diffuseConstant="1.66">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#2dacbf" />
+                     </light>
+                  </Lighting>
+               </input>
+            </SepiaTone>
+         </effect></Button>
+      <ImageView fitHeight="31.0" fitWidth="46.0" layoutX="353.0" layoutY="14.0" onMouseClicked="#cerrar" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/cerrar.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <InnerShadow choke="0.09" color="#3f7acd" height="92.52" radius="50.425" width="111.18" />
+   </effect>
+</Pane>
