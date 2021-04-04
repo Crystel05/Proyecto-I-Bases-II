@@ -1,5 +1,6 @@
 package sample;
 
+import oracle.jdbc.*;
 import java.sql.*;
 
 
@@ -12,10 +13,16 @@ public class OracleConexion {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 Connection conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","ADMIN","ADMIN");
                 System.out.println("conexion exitosa");
-                Statement statement = conexion.createStatement();
-                ResultSet resultado = statement.executeQuery("SELECT * FROM tipotelefono");
-                while(resultado.next())
-                    System.out.println(resultado.getString(2));
+                CallableStatement statement = conexion.prepareCall("CALL VERIFICARADMIN(?,?)");
+                statement.setString(1,"Batman");
+                statement.registerOutParameter(2, OracleTypes.CURSOR);
+
+                statement.execute();
+                ResultSet resultado = ((OracleCallableStatement)statement).getCursor(2);
+                while(resultado.next()) {
+                    System.out.println(resultado.getString(1));
+                    //System.out.println(resultado.getInt(3));
+                }
                 conexion.close();
 
             } catch (SQLException throwables) {

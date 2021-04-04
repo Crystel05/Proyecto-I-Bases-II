@@ -14,14 +14,15 @@ public class pruebas {
             System.out.println("Conexión exitosa pvtos");
 
             String sqlLine = "CALL pruebaprro (?,?,?)";
-            PreparedStatement statement = connection.prepareStatement(sqlLine);
+            CallableStatement statement = connection.prepareCall(sqlLine);
             statement.setInt(1,10);
             statement.setInt(2,9);
             statement.setInt(3,0);
+            //statement.registerOutParameter(4,x);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-              System.out.println(resultSet.getString(1));
+              System.out.println(resultSet.getInt(1));
             }
 
 //            CallableStatement callableStatement = connection.prepareCall("SELECT nombre FROM ?");
