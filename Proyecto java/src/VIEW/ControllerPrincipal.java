@@ -1,5 +1,6 @@
 package VIEW;
 
+import CONTROLLER.ControllerGUI;
 import MODEL.Telefono;
 import MODEL.Tipo;
 import javafx.collections.FXCollections;
@@ -16,8 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.security.Guard;
 import java.util.ArrayList;
 
 public class ControllerPrincipal {
@@ -76,7 +77,7 @@ public class ControllerPrincipal {
     @FXML private javafx.scene.control.TextField nombreTF;
     @FXML private javafx.scene.control.TextField apellTF;
     @FXML private javafx.scene.control.TextArea direcTF;
-    @FXML private ComboBox<Tipo> tipoTelC;
+    @FXML private ComboBox<String> tipoTelC;
 
     //->>>Atributos Modificar usuario
     @FXML private Pane selecionar1P;
@@ -97,7 +98,7 @@ public class ControllerPrincipal {
     @FXML private ComboBox<Tipo> tipoEd;
     @FXML private TextField numeroETF;
     @FXML private Pane agregarNTel;
-    @FXML private ComboBox<Tipo> tipoAgregar;
+    @FXML private ComboBox<String> tipoAgregar;
     @FXML private TextField numeroAgregar;
 
     //->>>Subastas Activas
@@ -116,6 +117,8 @@ public class ControllerPrincipal {
     //Atributos extras
 
     private ArrayList<Telefono> telefonos = new ArrayList<>();
+    private ControllerGUI GUI = ControllerGUI.getInstance();
+    private boolean esAdmin;
 
     //Métodos FX
 
@@ -138,16 +141,21 @@ public class ControllerPrincipal {
     @FXML
     public void escogerUnBotonU(ActionEvent event) {
         BParticipante.setSelected(false);
+        esAdmin = true;
     }
 
     @FXML
     public void escogerUnBotonPa(ActionEvent event) {
         BAdministrador.setSelected(false);
+        esAdmin = false;
     }
 
     @FXML
     public void InicioSesion(ActionEvent event) throws IOException {
         if ((confirmarUsuario(contrasenna.getText(), alias.getText())) && (BAdministrador.isSelected() || BParticipante.isSelected())){
+            GUI.setAlias(alias.getText());
+            GUI.setContrasena(contrasenna.getText());
+
             panelTareas.setVisible(true);
             panelInicioS.setVisible(false);
             flecha1.setVisible(true);
@@ -189,7 +197,7 @@ public class ControllerPrincipal {
         }
 
         else{
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLS/Error3.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLS/Error4.fxml"));
             Stage ventana = new Stage();
             ventana.initStyle(StageStyle.TRANSPARENT);
             ventana.setScene(new Scene(root));
@@ -197,7 +205,7 @@ public class ControllerPrincipal {
             ventana.show();
         }
 
-    }
+    } //**
 
     @FXML
     public void atrasInicioS(MouseEvent event) throws IOException {
@@ -228,12 +236,13 @@ public class ControllerPrincipal {
 
     @FXML
     public void registrarUsuario(ActionEvent event){
-        ObservableList<Tipo> tipos = FXCollections.observableArrayList(Tipo.values());
+
+        ObservableList<String> tipos = FXCollections.observableArrayList(GUI.cargarTipos());
         tipoTelC.setItems(tipos);
 
         BAdmR.setSelected(false);
         BparticipanteR.setSelected(false);
-        tipoTelC.setValue(Tipo.Ninguno);
+        tipoTelC.setValue("Ninguno");
 
         registrarUP.setVisible(true);
         flecha1.setVisible(true);
@@ -279,7 +288,7 @@ public class ControllerPrincipal {
         numeros.setValue("");
         tipoEd.setValue(Tipo.Ninguno);
         numeroETF.clear();
-        tipoAgregar.setValue(Tipo.Ninguno);
+        tipoAgregar.setValue("Ninguno");
         numeroAgregar.clear();
 
 
@@ -420,7 +429,8 @@ public class ControllerPrincipal {
 
     @FXML
     public void setItemsTipos(MouseEvent event){
-        ObservableList<Tipo> tipos = FXCollections.observableArrayList(Tipo.values());
+
+        ObservableList<String> tipos = FXCollections.observableArrayList(GUI.cargarTipos());
         tipoTelC.setItems(tipos);
     }
 
@@ -429,11 +439,11 @@ public class ControllerPrincipal {
         String nombreFxml;
         if(!tipoTelC.getSelectionModel().isEmpty() && !NumTelTF.getText().isEmpty()) {
             int tel = Integer.parseInt(NumTelTF.getText());
-            Tipo tipo = tipoTelC.getSelectionModel().getSelectedItem();
+            String tipo = tipoTelC.getSelectionModel().getSelectedItem();
             telefonos.add(new Telefono(tel, tipo));
             NumTelTF.clear();
             nombreFxml = "FXMLS/Aviso1.fxml";
-            tipoTelC.setValue(Tipo.Ninguno);
+            tipoTelC.setValue("Ninguno");
         }
         else{
             nombreFxml = "FXMLS/Error3.fxml";
@@ -449,22 +459,35 @@ public class ControllerPrincipal {
     @FXML
     public void agregarUsuario(ActionEvent event) throws IOException {
         String nombreFxml;
-        //if cedula no repetida, alias no repetido BD
+        boolean esAdmin;
         if((BAdmR.isSelected() || BparticipanteR.isSelected()) && !aliasTF.getText().isEmpty() && !paswPF.getText().isEmpty() && !cedTF.getText().isEmpty() && !nombreTF.getText().isEmpty()
                 && !apellTF.getText().isEmpty() && !direcTF.getText().isEmpty() && !NumTelTF.getText().isEmpty() && !tipoTelC.getSelectionModel().isEmpty()){
-            aliasTF.clear();
-            paswPF.clear();
-            cedTF.clear();
-            nombreTF.clear();
-            apellTF.clear();
-            direcTF.clear();
-            NumTelTF.clear();
-            BAdmR.setSelected(false);
-            BparticipanteR.setSelected(false);
-            tipoTelC.setValue(Tipo.Ninguno);
-            nombreFxml = "FXMLS/Aviso2.fxml";
-            //agregar a la base de datos
-            //usar la lista
+            if(BAdmR.isSelected())
+                esAdmin = true;
+            else
+                esAdmin = false;
+            if(GUI.registrarUsuario(esAdmin, aliasTF.getText(), paswPF.getText(), cedTF.getText(), nombreTF.getText(), apellTF.getText(),direcTF.getText()) == 1) {
+
+                telefonos.add(new Telefono(Integer.parseInt(NumTelTF.getText()), tipoTelC.getSelectionModel().getSelectedItem()));
+                for(Telefono telefono: telefonos){
+                    GUI.agregarTelefono(aliasTF.getText(), paswPF.getText(), telefono.getNumero(), telefono.getTipo());
+                }
+                aliasTF.clear();
+                paswPF.clear();
+                cedTF.clear();
+                nombreTF.clear();
+                apellTF.clear();
+                direcTF.clear();
+                NumTelTF.clear();
+                BAdmR.setSelected(false);
+                BparticipanteR.setSelected(false);
+                tipoTelC.setValue("Niguno");
+                nombreFxml = "FXMLS/Aviso2.fxml";
+
+            }
+            else{
+                nombreFxml = "FXMLS/Error5.fxml";
+            }
         }
         else{
             nombreFxml = "FXMLS/Error3.fxml";
@@ -518,10 +541,10 @@ public class ControllerPrincipal {
 
     @FXML
     public void agregarNuevo(ActionEvent event){
-        ObservableList<Tipo> items = FXCollections.observableArrayList(Tipo.values());
+        ObservableList<String> items = FXCollections.observableArrayList(GUI.cargarTipos());
         tipoAgregar.setItems(items);
         editarExR.setSelected(false);
-        tipoAgregar.setValue(Tipo.Ninguno);
+        tipoAgregar.setValue("Ninguno");
         numeroAgregar.clear();
         if(editarExR.isSelected() || agregarR.isSelected()) {
             editarTelEx.setVisible(false);
@@ -577,11 +600,11 @@ public class ControllerPrincipal {
         String nombreFxml;
         if(!numeroAgregar.getText().isEmpty()) { //!tipoAgregar.getSelectionModel().isEmpty() &&
             int tel = Integer.parseInt(numeroAgregar.getText());
-            Tipo tipo = tipoAgregar.getSelectionModel().getSelectedItem();
+            String tipo = tipoAgregar.getSelectionModel().getSelectedItem();
             telefonos.add(new Telefono(tel, tipo));
             numeroAgregar.clear();
             nombreFxml = "FXMLS/Aviso1.fxml";
-            tipoAgregar.setValue(Tipo.Ninguno);
+            tipoAgregar.setValue("Ninguno");
         }
         else{
             nombreFxml = "FXMLS/Error3.fxml";
@@ -608,7 +631,8 @@ public class ControllerPrincipal {
     //Otros métodos
 
     public boolean confirmarUsuario(String contrasena, String alias){
-        if(!contrasena.isEmpty() && !alias.isEmpty()){
+        int codigo = GUI.verificarInicioSesion(esAdmin, alias, contrasena);
+        if(!contrasena.isEmpty() && !alias.isEmpty() && codigo == 1){
             return true;
         }
         return false;

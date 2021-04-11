@@ -10,8 +10,8 @@ public class pruebas {
 
         try{
            //Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/pruebas", "postgres", "Admin");
-            System.out.println("Conexión exitosa pvtos");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/proyectoI", "postgres", "gatoscools");
+            System.out.println("Conexión exitosa");
 
             String sqlLine = "CALL pruebaprro (?,?,?)";
             CallableStatement statement = connection.prepareCall(sqlLine);
@@ -22,7 +22,7 @@ public class pruebas {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
-              System.out.println(resultSet.getInt(1));
+              System.out.println(resultSet.getString(1));
             }
 
 //            CallableStatement callableStatement = connection.prepareCall("SELECT nombre FROM ?");

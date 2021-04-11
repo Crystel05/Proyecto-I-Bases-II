@@ -1,5 +1,6 @@
 package VIEW;
 
+import CONTROLLER.ControllerGUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,8 @@ public class ControllerVenPrin {
 
     public ControllerVenPrin() {}
 
+    private ControllerGUI controllerGUI = ControllerGUI.getInstance();
+
 
     //Atributos FX
     @FXML private RadioButton BoracleDB;
@@ -28,11 +31,14 @@ public class ControllerVenPrin {
     @FXML
     public void escogerUnBotonO(ActionEvent event) {
         BpostBD.setSelected(false);
+        controllerGUI.setBaseDatoUsada(false);
     }
 
     @FXML
     public void escogerUnBotonP(ActionEvent event) {
         BoracleDB.setSelected(false);
+        controllerGUI.setBaseDatoUsada(true);
+
     }
 
     @FXML
