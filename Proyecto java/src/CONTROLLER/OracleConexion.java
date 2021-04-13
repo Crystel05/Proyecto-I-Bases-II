@@ -2,6 +2,8 @@ package CONTROLLER;
 
 import oracle.jdbc.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class OracleConexion {
@@ -41,8 +43,13 @@ public class OracleConexion {
 
     public static void main(String[] args) {
 
+        Date date = new Date();
+        //long mills = date.getTime();
+        //long lon = (Date)formatter.format(date);
+        //System.out.println(formatter.parse(date));
         ControllerSubasta con = new ControllerSubasta();
-        con.getSubastasCat("Arte");
+        con.realizarSubasta("prueba", "este es un item de prueba", "img.jpg", "Antiguedades", 30.0f, date,"mi ksita o c mama", "Hulk");
+
 //        try {
 //
 //            try {
