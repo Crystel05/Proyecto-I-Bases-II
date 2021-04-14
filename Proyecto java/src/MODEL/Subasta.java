@@ -10,8 +10,9 @@ public class Subasta {
     private Date fechaInicio;
     private Date fachaFinal;
     private Item item;
+    private Comentario comentario;
 
-    public Subasta(String vendedor, String envio, float precioIni, float mejorMonto, Date fechaInicio, Date fachaFinal, Item item) {
+    public Subasta(String vendedor, String envio, float precioIni, float mejorMonto, Date fechaInicio, Date fachaFinal, Item item, Comentario comentario) {
         this.vendedor = vendedor;
         this.envio = envio;
         this.precioIni = precioIni;
@@ -19,6 +20,7 @@ public class Subasta {
         this.fechaInicio = fechaInicio;
         this.fachaFinal = fachaFinal;
         this.item = item;
+        this.comentario = comentario;
     }
 
     public Subasta() {
@@ -78,5 +80,13 @@ public class Subasta {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
     }
 }

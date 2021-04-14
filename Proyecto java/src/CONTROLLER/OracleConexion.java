@@ -43,13 +43,8 @@ public class OracleConexion {
 
     public static void main(String[] args) {
 
-        Date date = new Date();
-        //long mills = date.getTime();
-        //long lon = (Date)formatter.format(date);
-        //System.out.println(formatter.parse(date));
         ControllerSubasta con = new ControllerSubasta();
-        con.realizarSubasta("prueba", "este es un item de prueba", "img.jpg", "Antiguedades", 30.0f, date,"mi ksita o c mama", "Hulk");
-
+        con.modificarTelefono("Batman", "otro", 22562222);
 //        try {
 //
 //            try {

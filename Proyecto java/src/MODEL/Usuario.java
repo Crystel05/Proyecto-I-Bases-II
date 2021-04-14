@@ -21,6 +21,7 @@ public class Usuario {
         this.direccion = direccion;
         this.telefonos = telefonos;
     }
+    public Usuario(){};
 
     public String getAlias() {
         return alias;
