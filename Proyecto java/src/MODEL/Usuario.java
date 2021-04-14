@@ -7,8 +7,7 @@ public class Usuario {
     private String alias;
     private String contrasenna;
     private String docIdent;
-    private String nombre;
-    private String apellidos;
+    private String nombreApellidos;
     private String direccion;
     private ArrayList<Telefono> telefonos;
 
@@ -16,10 +15,14 @@ public class Usuario {
         this.alias = alias;
         this.contrasenna = contrasenna;
         this.docIdent = docIdent;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.nombreApellidos = nombre;
         this.direccion = direccion;
         this.telefonos = telefonos;
+    }
+
+    public Usuario(String docIdent, String nombreApellidos) {
+        this.docIdent = docIdent;
+        this.nombreApellidos = nombreApellidos;
     }
 
     public String getAlias() {
@@ -46,21 +49,14 @@ public class Usuario {
         this.docIdent = docIdent;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreApellidos() {
+        return nombreApellidos;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreApellidos(String nombreApellidos) {
+        this.nombreApellidos = nombreApellidos;
     }
 
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
 
     public String getDireccion() {
         return direccion;

@@ -1,8 +1,7 @@
 package VIEW;
 
 import CONTROLLER.ControllerGUI;
-import MODEL.Telefono;
-import MODEL.Tipo;
+import MODEL.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,14 +11,20 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.Guard;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ControllerPrincipal {
 
@@ -53,6 +58,7 @@ public class ControllerPrincipal {
     @FXML private ImageView flecha4;
     @FXML private ImageView flecha5;
     @FXML private ImageView flecha6;
+    @FXML private ImageView flecha7;
 
     //->>Atributos Admin
 
@@ -65,6 +71,7 @@ public class ControllerPrincipal {
     @FXML private Pane subasvendedorP;
     @FXML private Pane comprasCompP;
     @FXML private Label titAdm;
+    @FXML private Button blanco;
 
     //->>>Atributos registrarUsuario
 
@@ -106,19 +113,47 @@ public class ControllerPrincipal {
     @FXML private ComboBox<String> categoriasCB;
     @FXML private ComboBox<String> subCategoriasCB;
 
+    //->>> Historial pujas x subasta
+    @FXML private ComboBox<String> subastasHistPCB;
+    @FXML private TableView<Puja> TpujasXsubasta;
+    @FXML private TableColumn<Puja, Date> Cfecha;
+    @FXML private TableColumn<Puja, Float> CcantPuja;
+
+    //->>> Historial compras x comprador
+    @FXML private ComboBox<String> usuariosCompra;
+    @FXML private TableView<tablaComprasXcomprador> TcomprasXcomprador;
+    @FXML private TableColumn<tablaComprasXcomprador,String> CitemComprador;
+    @FXML private TableColumn<tablaComprasXcomprador,Float> CprecioBC;
+    @FXML private TableColumn<tablaComprasXcomprador,Float> CprecioFinalC;
+    @FXML private TableColumn<tablaComprasXcomprador,Date> CfechaCo;
+    @FXML private Label nombreUsuarioCom;
+
     //->>Atributos Participante
 
     @FXML private Label titPart;
     @FXML private Button iniciarSubastaB;
     @FXML private Button pujarIB;
+    @FXML private Button susSubastasB;
     @FXML private Pane iniciarSubastaPanel;
     @FXML private Pane pujarPanel;
+    @FXML private Pane susSubastasPanel;
+    @FXML private Label montoIP;
+    @FXML private Label fechaFIP;
+    @FXML private ImageView fotoIP;
+    @FXML private TextArea detallesIP;
+    @FXML private TextField montoPujar;
+
+    //->>>Pujar por ítem
+
+    @FXML private ComboBox<String> subastasPujarCB;
+
 
     //Atributos extras
 
     private ArrayList<Telefono> telefonos = new ArrayList<>();
     private ControllerGUI GUI = ControllerGUI.getInstance();
     private boolean esAdmin;
+    ArrayList<String> ceds = new ArrayList<>();
 
     //Métodos FX
 
@@ -164,12 +199,14 @@ public class ControllerPrincipal {
             flecha4.setVisible(false);
             flecha5.setVisible(false);
             flecha6.setVisible(false);
+            flecha7.setVisible(false);
             modificarUP.setVisible(false);
             subastasActivasP.setVisible(false);
             pujasSubastaP.setVisible(false);
             subasvendedorP.setVisible(false);
             comprasCompP.setVisible(false);
             pujarPanel.setVisible(false);
+            susSubastasPanel.setVisible(false);
 
             if(BAdministrador.isSelected()){
 
@@ -181,6 +218,8 @@ public class ControllerPrincipal {
                 titPart.setVisible(false);
                 registrarUP.setVisible(true);
                 iniciarSubastaPanel.setVisible(false);
+                susSubastasB.setVisible(false);
+                blanco.setVisible(true);
             }
 
             else if(BParticipante.isSelected()){
@@ -193,6 +232,8 @@ public class ControllerPrincipal {
                 registrarB.setVisible(false);
                 modificarB.setVisible(false);
                 iniciarSubastaPanel.setVisible(true);
+                susSubastasB.setVisible(true);
+                blanco.setVisible(false);
             }
         }
 
@@ -232,6 +273,130 @@ public class ControllerPrincipal {
         BParticipante.setSelected(false);
     }
 
+    @FXML
+    public void subastasActivas(ActionEvent event){
+
+        registrarUP.setVisible(false);
+        flecha1.setVisible(false);
+
+        modificarUP.setVisible(false);
+        flecha2.setVisible(false);
+
+        subastasActivasP.setVisible(true);
+        flecha4.setVisible(true);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+
+        iniciarSubastaPanel.setVisible(false);
+        pujarPanel.setVisible(false);
+        flecha3.setVisible(false);
+
+    }
+
+    @FXML
+    public void pujasPorSubasta(ActionEvent event){
+
+        ObservableList<String> nombres = FXCollections.observableArrayList(GUI.nombreSubastas());
+        subastasHistPCB.setItems(nombres);
+
+        subastasHistPCB.setValue("No seleccionado");
+        ObservableList<Puja> nada = FXCollections.observableArrayList();
+        TpujasXsubasta.setItems(nada);
+
+        registrarUP.setVisible(false);
+        flecha1.setVisible(false);
+
+        modificarUP.setVisible(false);
+        flecha2.setVisible(false);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(true);
+        flecha5.setVisible(true);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+
+        iniciarSubastaPanel.setVisible(false);
+        pujarPanel.setVisible(false);
+        flecha3.setVisible(false);
+    }
+
+    @FXML
+    public void subastasPorVendedor(ActionEvent event){
+
+        registrarUP.setVisible(false);
+        flecha1.setVisible(false);
+
+        modificarUP.setVisible(false);
+        flecha2.setVisible(false);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(true);
+        flecha6.setVisible(true);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+
+        iniciarSubastaPanel.setVisible(false);
+        pujarPanel.setVisible(false);
+        flecha3.setVisible(false);
+
+    }
+
+    @FXML
+    public void comprasPorComprador(ActionEvent event){
+
+        usuariosCompra.setValue("No seleccionado");
+        ObservableList<tablaComprasXcomprador> nada = FXCollections.observableArrayList();
+        TcomprasXcomprador.setItems(nada);
+
+
+        for (Usuario user: GUI.usuariosMostrar()){
+            ceds.add(user.getDocIdent());
+        }
+        ObservableList<String> cedulas = FXCollections.observableArrayList(ceds);
+        usuariosCompra.setItems(cedulas);
+
+        registrarUP.setVisible(false);
+        flecha1.setVisible(false);
+
+        modificarUP.setVisible(false);
+        flecha2.setVisible(false);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(true);
+        flecha7.setVisible(true);
+
+        iniciarSubastaPanel.setVisible(false);
+        pujarPanel.setVisible(false);
+        flecha3.setVisible(false);
+    }
+
     //Métodos administrador
 
     @FXML
@@ -251,19 +416,17 @@ public class ControllerPrincipal {
         flecha2.setVisible(false);
 
         subastasActivasP.setVisible(false);
-        flecha3.setVisible(false);
-
-        pujasSubastaP.setVisible(false);
         flecha4.setVisible(false);
 
-        subasvendedorP.setVisible(false);
+        pujasSubastaP.setVisible(false);
         flecha5.setVisible(false);
 
-        comprasCompP.setVisible(false);
+        subasvendedorP.setVisible(false);
         flecha6.setVisible(false);
 
-        iniciarSubastaPanel.setVisible(false);
-        pujarPanel.setVisible(false);
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+
 
     }
 
@@ -299,120 +462,16 @@ public class ControllerPrincipal {
         flecha2.setVisible(true);
 
         subastasActivasP.setVisible(false);
-        flecha3.setVisible(false);
-
-        pujasSubastaP.setVisible(false);
         flecha4.setVisible(false);
 
-        subasvendedorP.setVisible(false);
-        flecha5.setVisible(false);
-
-        comprasCompP.setVisible(false);
-        flecha6.setVisible(false);
-
-        iniciarSubastaPanel.setVisible(false);
-        pujarPanel.setVisible(false);
-
-    }
-
-    @FXML
-    public void subastasActivas(ActionEvent event){
-
-        registrarUP.setVisible(false);
-        flecha1.setVisible(false);
-
-        modificarUP.setVisible(false);
-        flecha2.setVisible(false);
-
-        subastasActivasP.setVisible(true);
-        flecha3.setVisible(true);
-
         pujasSubastaP.setVisible(false);
-        flecha4.setVisible(false);
-
-        subasvendedorP.setVisible(false);
         flecha5.setVisible(false);
 
-        comprasCompP.setVisible(false);
-        flecha6.setVisible(false);
-
-        iniciarSubastaPanel.setVisible(false);
-        pujarPanel.setVisible(false);
-
-    }
-
-    @FXML
-    public void pujasPorSubasta(ActionEvent event){
-
-        registrarUP.setVisible(false);
-        flecha1.setVisible(false);
-
-        modificarUP.setVisible(false);
-        flecha2.setVisible(false);
-
-        subastasActivasP.setVisible(false);
-        flecha3.setVisible(false);
-
-        pujasSubastaP.setVisible(true);
-        flecha4.setVisible(true);
-
         subasvendedorP.setVisible(false);
-        flecha5.setVisible(false);
-
-        comprasCompP.setVisible(false);
         flecha6.setVisible(false);
 
-    }
-
-    @FXML
-    public void subastasPorVendedor(ActionEvent event){
-
-        registrarUP.setVisible(false);
-        flecha1.setVisible(false);
-
-        modificarUP.setVisible(false);
-        flecha2.setVisible(false);
-
-        subastasActivasP.setVisible(false);
-        flecha3.setVisible(false);
-
-        pujasSubastaP.setVisible(false);
-        flecha4.setVisible(false);
-
-        subasvendedorP.setVisible(true);
-        flecha5.setVisible(true);
-
         comprasCompP.setVisible(false);
-        flecha6.setVisible(false);
-
-        iniciarSubastaPanel.setVisible(false);
-        pujarPanel.setVisible(false);
-
-    }
-
-    @FXML
-    public void comprasPorComprador(ActionEvent event){
-
-        registrarUP.setVisible(false);
-        flecha1.setVisible(false);
-
-        modificarUP.setVisible(false);
-        flecha2.setVisible(false);
-
-        subastasActivasP.setVisible(false);
-        flecha3.setVisible(false);
-
-        pujasSubastaP.setVisible(false);
-        flecha4.setVisible(false);
-
-        subasvendedorP.setVisible(false);
-        flecha5.setVisible(false);
-
-        comprasCompP.setVisible(true);
-        flecha6.setVisible(true);
-
-        iniciarSubastaPanel.setVisible(false);
-        pujarPanel.setVisible(false);
+        flecha7.setVisible(false);
     }
 
     //Registrar Usuario
@@ -627,6 +686,141 @@ public class ControllerPrincipal {
     }
 
     //Métodos participante
+    @FXML
+    public void pujar(ActionEvent event){
+        ObservableList<String> nombres = FXCollections.observableArrayList(GUI.nombreSubastas());
+        subastasPujarCB.setItems(nombres);
+
+        subastasPujarCB.setValue("No seleccionado");
+        fechaFIP.setText("");
+        montoIP.setText("");
+        fotoIP.setImage(null);
+        montoPujar.clear();
+        detallesIP.clear();
+
+        iniciarSubastaPanel.setVisible(false);
+        flecha1.setVisible(false);
+
+        pujarPanel.setVisible(true);
+        flecha2.setVisible(true);
+
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+    }
+
+    @FXML
+    public void iniciarSubasta(ActionEvent event){
+        iniciarSubastaPanel.setVisible(true);
+        flecha1.setVisible(true);
+
+        pujarPanel.setVisible(false);
+        flecha2.setVisible(false);
+
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+    }
+
+    //Métodos pujar
+
+    @FXML
+    public void ponerDetallesItem(MouseEvent event) throws FileNotFoundException {
+        if(!subastasPujarCB.getSelectionModel().isEmpty() && !subastasPujarCB.getValue().equals("No seleccionado")){
+            String itemSelec = subastasPujarCB.getValue();
+            Subasta subastaUsar = null;
+            for(Subasta subasta: GUI.getSubastasActivas()){
+                Item i = subasta.getItem();
+                if(i.getNombre().equals(itemSelec)){
+                    subastaUsar = subasta;
+                }
+            }
+            detallesIP.setText(subastaUsar.getItem().getDetalles());
+            FileInputStream fileInputStream = new FileInputStream(subastaUsar.getItem().getPathFoto());
+            fotoIP.setImage(new Image(fileInputStream));
+            fechaFIP.setText(subastaUsar.getFachaFinal().toString());
+            montoIP.setText(String.valueOf(subastaUsar.getMejorMonto()));
+        }
+    }
+
+    @FXML
+    public void realizarOferta(ActionEvent event) throws IOException {
+        String nombreFxml = "";
+        if(!subastasPujarCB.getSelectionModel().isEmpty() && !montoPujar.getText().isEmpty()) {
+            int codigo = GUI.pujar(Float.parseFloat(montoPujar.getText()), subastasPujarCB.getValue());
+            if(codigo == 1){
+                nombreFxml = "FXMLS/Aviso5.fxml";
+            }
+            else if(codigo == 2){
+                nombreFxml = "FXMLS/Error6.fxml";
+            }
+            else if(codigo == 3){
+                nombreFxml = "FXMLS/Error7.fxml";
+            }
+        }
+        else{
+            nombreFxml = "FXMLS/Error3.fxml";
+        }
+        Parent root = FXMLLoader.load(getClass().getResource(nombreFxml));
+        Stage ventana = new Stage();
+        ventana.initStyle(StageStyle.TRANSPARENT);
+        ventana.setScene(new Scene(root));
+        ventana.setResizable(false);
+        ventana.show();
+
+    }
+
+    //Métodos historial pujas x subasta
+    @FXML
+    public void verSubastas(MouseEvent event){
+        if(!subastasHistPCB.getSelectionModel().isEmpty()) {
+            ObservableList<Puja> pujas = FXCollections.observableArrayList(GUI.pujasXsubasta(subastasHistPCB.getValue()));
+            CcantPuja.setCellValueFactory(new PropertyValueFactory<>("monto"));
+            Cfecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+            TpujasXsubasta.setItems(pujas);
+        }
+    }
+
+    //Métodos historial compra x comprador
+    @FXML
+    public void llenarTablaYnombre(MouseEvent event) {
+        if (!usuariosCompra.getSelectionModel().isEmpty()) {
+            Usuario usuario;
+            usuario = GUI.usuariosMostrar().get(ceds.indexOf(usuariosCompra.getValue()));
+            nombreUsuarioCom.setText(usuario.getNombreApellidos());
+
+            CitemComprador.setCellValueFactory(new PropertyValueFactory<>("nombreItem"));
+            CprecioBC.setCellValueFactory(new PropertyValueFactory<>("precioInicial"));
+            CprecioFinalC.setCellValueFactory(new PropertyValueFactory<>("precioFinal"));
+            CfechaCo.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+
+            ObservableList<tablaComprasXcomprador> itemsGanados = FXCollections.observableArrayList(GUI.llenarTablaComprasComprador(usuariosCompra.getValue()));
+            TcomprasXcomprador.setItems(itemsGanados);
+
+        }
+    }
 
     //Otros métodos
 

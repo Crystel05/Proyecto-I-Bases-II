@@ -1,5 +1,10 @@
 package CONTROLLER;
 
+import MODEL.Puja;
+import MODEL.Subasta;
+import MODEL.Usuario;
+import MODEL.tablaComprasXcomprador;
+
 import java.util.ArrayList;
 
 public class ControllerGUI {
@@ -20,6 +25,7 @@ public class ControllerGUI {
     private boolean baseDatoUsada;
     private String alias;
     private String contrasena;
+    private ArrayList<Subasta> subastasActivas;
 
 
     public boolean isBaseDatoUsada() {
@@ -44,6 +50,17 @@ public class ControllerGUI {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public ArrayList<Subasta> getSubastasActivas() {
+        return subastasActivas;
+    }
+
+    public void setSubastasActivas() {
+        if(baseDatoUsada)
+            this.subastasActivas = controllerAdmin.mostrarSubastasActivas();
+        //else
+            //oracle lista
     }
 
     public int verificarInicioSesion(boolean esAdmin, String alias, String contra){
@@ -90,5 +107,73 @@ public class ControllerGUI {
             //llamar al método de oracle
         }
         return codigo;
+    }
+
+    public ArrayList<String> nombreSubastas(){
+        setSubastasActivas();
+        ArrayList<String> nombres = new ArrayList<>();
+
+        for(Subasta subasta: subastasActivas){
+            nombres.add(subasta.getItem().getNombre());
+        }
+
+        return nombres;
+    }
+
+    public int pujar(float monto, String itemN){
+        int codigo = 0;
+        if(baseDatoUsada){
+            codigo = controllerAdmin.pujar(alias, contrasena, monto, itemN);
+        }
+        else {
+            //oracle
+        }
+        return codigo;
+    }
+
+    public ArrayList<String> nombresSubastas(){
+        ArrayList<String> nombres;
+        if (baseDatoUsada){
+            nombres = controllerAdmin.nombreSubastas();
+        }
+        else {
+            //oracle
+            nombres = new ArrayList<>();
+        }
+        return nombres;
+    }
+
+    public ArrayList<Puja> pujasXsubasta(String nombreItem){
+        ArrayList<Puja> pujas;
+        if(baseDatoUsada){
+            pujas = controllerAdmin.pujasXsubasta(nombreItem);
+        }
+        else{
+            //oracle
+            pujas = new ArrayList<>();
+        }
+        return pujas;
+    }
+
+    public ArrayList<Usuario> usuariosMostrar(){
+        ArrayList<Usuario> cedulas;
+        if(baseDatoUsada){
+            cedulas = controllerAdmin.mostrarUsuarios();
+        }
+        else{
+            cedulas = new ArrayList<>();
+        }
+        return cedulas;
+    }
+
+    public ArrayList<tablaComprasXcomprador> llenarTablaComprasComprador(String indent){
+        ArrayList<tablaComprasXcomprador> compras;
+        if(baseDatoUsada){
+            compras = controllerAdmin.comprasXcomprador(indent);
+        }
+        else{
+            compras = new ArrayList<>();
+        }
+        return compras;
     }
 }

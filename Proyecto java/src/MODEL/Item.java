@@ -8,6 +8,7 @@ public class Item {
     private String detalles;
     private String pathFoto;
 
+
     public Item(String categoria, String subcategoria, String nombre, String detalles, String pathFoto) {
         this.categoria = categoria;
         this.subcategoria = subcategoria;
