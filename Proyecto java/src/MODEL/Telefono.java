@@ -3,9 +3,9 @@ package MODEL;
 public class Telefono {
 
     private int numero;
-    private Tipo tipo;
+    private String tipo;
 
-    public Telefono(int numero, Tipo tipo) {
+    public Telefono(int numero, String tipo) {
         this.numero = numero;
         this.tipo = tipo;
     }
@@ -14,7 +14,7 @@ public class Telefono {
         return numero;
     }
 
-    public Tipo getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
@@ -22,7 +22,7 @@ public class Telefono {
         this.numero = numero;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }

@@ -1,7 +1,7 @@
 1	Antiguedades
 1	Arquitectonico y jardin
 1	Antiguedades de Asia
-1	Libros y manuscritos
+1	Libros y manuscritos**
 1	Artes decorativas
 1	Etnografico
 1	Muebles
@@ -12,7 +12,7 @@
 1	Mercantil, comercio y fabricas
 1	Instrumentos musicales (antes de 1930)
 1	epocas y estilos
-1	Primitivos
+1	Primitivos**
 1	Restauracion y cuidado
 1	Alfombras y tapetes
 1	Ciencia y medicina (antes de 1930)
@@ -20,18 +20,18 @@
 1	Plateado
 1	Replicas de 
 1	otros
-2	Directo del artista
-2	Arte de anticuarios y revendedores
+2	Directo del artista**
+2	Arte de anticuarios y revendedores**
 2	Lotes al por mayor
 3	Articulos para bebe
 3	Seguridad y salud del bebe
 3	Banio y aseo
 3	Asientos de seguridad para autos
 3	Paniales
-3	Alimentacion
+3	Alimentacion**
 3	Recuerdos y anuncios de nacimiento
 3	Ropa de cama para ninios
-3	Decoracion de habitaciones de bebe
+3	Decoracion de habitaciones de bebe**
 3	Muebles para bebe
 3	Dejar los paniales
 3	Coches para bebe
@@ -39,19 +39,19 @@
 3	Juguetes para bebe
 3	otros
 4	Accesorios
-4	Antigüedades y piezas de coleccion
+4	Antigüedades y piezas de coleccion**
 4	Libro en audio
 4	Catalogos
 4	Ninios y adultos jovenes
 4	Libros de cocina
-4	Ficcion y literatura
+4	Ficcion y literatura**
 4	Publicaciones anteriores de revistas
 4	No ficcion
 4	Libros de textos, educacion
 4	otros
 5	Agricultura y silvicultura
-5	Construccion
-5	Equipo electrico y de prueba
+5	Construccion**
+5	Equipo electrico y de prueba**
 5	Combustible y energia
 5	Cuidado de salud y laboratorio
 5	Equipo pesado
@@ -71,7 +71,7 @@
 6	Camara de video
 6	Camaras digitales
 6	Accesorios de 6
-6	Marcos de fotos digitales
+6	Marcos de fotos digitales**
 6	Fotografia de pelicula
 6	Flashes y accesorios
 6	Lentes y filtros
@@ -80,19 +80,19 @@
 6	Piezas y herramientas de repuesto
 6	Tripodes y soportes
 6	Edicion y produccion de video
-6	Fotografias y peliculas vintage
+6	Fotografias y peliculas vintage**
 6	Lotes al por mayor
 6	otros
 7	Celulares y smartphones
-7	Relojes inteligentes
-7	Accesorios para telefonos celulares
+7	Relojes inteligentes**
+7	Accesorios para telefonos celulares**
 7	Telefonos con display
 7	Tarjetas SIM y tarjetas telefonicas
 7	Piezas y herramientas de repuesto
 7	otros
 8	Ropa de infantes y bebe
 8	Vestuario, zapatos y accesorios de ninios
-8	Disfraces, representacion, teatro
+8	Disfraces, representacion, teatro**
 8	Ropa etnica y cultural
 8	Trajes de baile
 8	Accesorios para hombre
@@ -103,7 +103,7 @@
 8	Boda y ocasion formal
 8	Accesorios para mujer
 8	Ropa para mujer
-8	Carteras y bolsos de mujer
+8	Carteras y bolsos de mujer**
 8	Calzado de mujer
 8	Vintage
 8	Lotes grandes y pequenios al por mayor
@@ -111,18 +111,18 @@
 9	Monedas: EE. UU.
 9	Monedas: Canada
 9	Monedas: antiguas
-9	Monedas: Edad Media
+9	Monedas: Edad Media**
 9	Monedas: del mundo
 9	objetos numismaticos
 9	Billetes: EE. UU.
-9	Billetes del mundo
+9	Billetes del mundo**
 9	Publicaciones y suministros
 9	Acciones y bonos, escripofilia
 9	Divisa virtual
 9	otros
 10	Publicidad
 10	Animales
-10	Dibujos animados y personajes
+10	Dibujos animados y personajes**
 10	Salas de juegos, rocolas y pinball
 10	Autografos
 10	Bancos, registros y ventas
@@ -136,7 +136,7 @@
 10	Culturas y etnias
 10	Adornos de coleccion
 10	Disneyana
-10	Fantasia, miticos y magia
+10	Fantasia, miticos y magia**
 10	Memorabilia historica
 10	Festivo y de temporada
 10	Cocina y hogar
@@ -175,73 +175,73 @@
 11	Unidades de disco, almacenamiento y discos en blanco
 11	Redes y servidores empresariales
 11	Red y conectividad domestica
-11	Teclados, mouses y punteros
+11	Teclados, mouses y punteros**
 11	Monitores, proyectores y accesorios
 11	Proteccion, distribucion de alimentacion
 11	Impresoras, escaneres y suministros
-11	Software
+11	Software**
 11	Manuales y recursos
 11	Informatica vintage
 11	otros
 12	Audio portatil y audifonos
 12	Televisor, video y audio para el hogar
 12	Sistemas electronicos del vehiculo y GPS
-12	Sistemas de automatizacion (domotica)
+12	Sistemas de automatizacion (domotica)**
 12	Vigilancia residencial
 12	Telefonos para el hogar
 12	Baterias y energias multiusos
 12	Comunicacion por radio
-12	Artefactos y otros sistemas electronicos
+12	Artefactos y otros sistemas electronicos**
 12	Sistemas electronicos vintage
 13	Materiales para arte
 13	Cuentas y fabricacion de joyas
-13	Vidrio y mosaicos
+13	Vidrio y mosaicos**
 13	Piezas de artesania y acabadas
 13	Artes y artesanías para el hogar
 13	artesanías infantiles
 13	Materiales multiusos para artesania
 13	artesanías con agujas e hilos
 13	Colec. de recortes y artesanías de papel
-13	Costura y tela
+13	Costura y tela**
 13	Timbres y gofrados
 13	otras artesanías
 14	Materiales para hacer osos
-14	osos
+14	osos**
 14	Muniecas
 14	Miniaturas para casas de munieca
-14	Muniecas de papel
-15	DVD y Blu-ray
+14	Muniecas de papel**
+15	DVD y Blu-ray**
 15	Pelicula fotografica
 15	Discos laser
 15	UMD
 15	Cintas VHS
 15	otros formatos
-15	Almacenamiento y accesorios para videos
+15	Almacenamiento y accesorios para videos**
 16	Vehículos y camionetas
 16	Motocicletas
 16	otros Vehículos y remolques
-16	Botes
+16	Botes**
 16	Vehículos de aventura, recreativos
-16	Partes y accesorios
+16	Partes y accesorios**
 17	Autografos-original
 17	Autografos-reimpresos
-17	Memorabilia de peliculas
-17	Memorabilia de Música
+17	Memorabilia de peliculas**
+17	Memorabilia de Música**
 17	Memorabilia de television
 17	Memorabilia de teatro
 17	Memorabilia de juegos de video
 17	otros
 18	Tarjetas de regalo
 18	Tarjetas de regalo de eBay
-18	Certificados de regalo
-18	Cupones
+18	Certificados de regalo**
+18	Cupones**
 18	Productos digitales
 19	Cuerpo y banio
 19	Suplementos alimenticios, nutricion
-19	Fragancias
+19	Fragancias**
 19	Cuidado del cabello y peinado
 19	Cuidado de la salud
-19	Maquillaje
+19	Maquillaje**
 19	Masaje
 19	Medicina, movilidad y discapacidad
 19	Cuidado de las unias, manicure y pedicure
@@ -261,7 +261,7 @@
 20	Ropa de cama
 20	Comida y bebidas
 20	Flores naturales y suministros
-20	Muebles
+20	Muebles**
 20	Tarjetas y suministros para fiestas
 20	Decoracion festiva y de temporada
 20	Decoracion para el hogar
@@ -271,7 +271,7 @@
 20	Cocina, comedor y bar
 20	Lamparas, luces y ventiladores de techo
 20	Electrodomesticos grandes
-20	Alfombras y tapetes
+20	Alfombras y tapetes**
 20	Herramientas
 20	Suministros para soldadura
 20	Decoracion y herrajes para ventanas
@@ -289,24 +289,24 @@
 21	Cuentas sueltas
 21	Diamantes y gemas sueltos
 21	Joyas para hombres
-21	Joyas vintage y antiguas
-21	Relojes
+21	Joyas vintage y antiguas**
+21	Relojes**
 21	otros
-22	Casetes
+22	Casetes**
 22	CD
-22	Discos
+22	Discos**
 22	otros formatos
 22	Almacenamiento y accesorios para videos
 22	Lotes al por mayor
 23	Acordeones y concertinas
 23	Laton
 23	Equipo
-23	Guitarra
+23	Guitarra**
 23	Armonica
 23	Libros, CD y videos de instrucciones
 23	Karaoke
 23	Percusion
-23	Pianos, organos y teclados
+23	Pianos, organos y teclados**
 23	Equipo de audio profesional
 23	Partituras y cancioneros
 23	Iluminacion y efectos de escenario
@@ -316,10 +316,10 @@
 23	otros
 24	Aves de corral
 24	Aves
-24	Gatos
+24	Gatos**
 24	Perros
 24	Peces y acuarios
-24	Caballos
+24	Caballos**
 24	Reptiles
 24	Animales pequenios
 24	Lapidas y urnas
@@ -327,9 +327,9 @@
 25	Vidrio
 25	Ceramica y porcelana
 26	Comerciales
-26	Terreno
+26	Terreno**
 26	Casas prefabricadas
-26	Residenciales
+26	Residenciales**
 26	Tiempos compartidos a la venta
 26	otros bienes raíces
 27	Servicios artisticos
