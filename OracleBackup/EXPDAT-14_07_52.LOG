@@ -1,0 +1,54 @@
+Iniciando "ADMIN"."EXP_SD_374-14_05_02":  
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/TABLE_DATA
+.  estimado "ADMIN"."SUBCATEGORIA"                      18.46 KB
+.  estimado "ADMIN"."ITEM"                              10.32 KB
+.  estimado "ADMIN"."SUBASTA"                           8.711 KB
+.  estimado "ADMIN"."USUARIO"                           8.076 KB
+.  estimado "ADMIN"."COMENTARIO"                        7.343 KB
+.  estimado "ADMIN"."TABLACOMPONENTES"                  6.781 KB
+.  estimado "ADMIN"."TELEFONO"                          6.549 KB
+.  estimado "ADMIN"."PUJA"                              6.230 KB
+.  estimado "ADMIN"."CATEGORIA"                         6.185 KB
+.  estimado "ADMIN"."TABLAPARTES"                       5.984 KB
+.  estimado "ADMIN"."PARTICIPANTE"                      5.949 KB
+.  estimado "ADMIN"."ADMINISTRADOR"                     5.908 KB
+.  estimado "ADMIN"."COMPRADOR"                         5.474 KB
+.  estimado "ADMIN"."VENDEDOR"                          5.474 KB
+.  estimado "ADMIN"."TIPOTELEFONO"                      5.462 KB
+.  estimado "ADMIN"."HISTORIALCOMPRADOR"                4.683 KB
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Procesando el tipo de objeto SCHEMA_EXPORT/STATISTICS/MARKER
+Procesando el tipo de objeto SCHEMA_EXPORT/DEFAULT_ROLE
+Procesando el tipo de objeto SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
+Procesando el tipo de objeto SCHEMA_EXPORT/TYPE/TYPE_SPEC
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/TABLE
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/COMMENT
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/IDENTITY_COLUMN
+Procesando el tipo de objeto SCHEMA_EXPORT/PROCEDURE/PROCEDURE
+Procesando el tipo de objeto SCHEMA_EXPORT/PROCEDURE/ALTER_PROCEDURE
+Procesando el tipo de objeto SCHEMA_EXPORT/TYPE/TYPE_BODY
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/INDEX/INDEX
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Procesando el tipo de objeto SCHEMA_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+. . "ADMIN"."SUBCATEGORIA"                      10.78 KB     447 filas exportadas
+. . "ADMIN"."ITEM"                              6.992 KB      32 filas exportadas
+. . "ADMIN"."SUBASTA"                           5.656 KB       5 filas exportadas
+. . "ADMIN"."USUARIO"                           5.992 KB      15 filas exportadas
+. . "ADMIN"."COMENTARIO"                        5.296 KB       1 filas exportadas
+. . "ADMIN"."TABLACOMPONENTES"                  5.953 KB       3 filas exportadas
+. . "ADMIN"."TELEFONO"                          5.265 KB      25 filas exportadas
+. . "ADMIN"."PUJA"                              5.062 KB       4 filas exportadas
+. . "ADMIN"."CATEGORIA"                         5.390 KB      35 filas exportadas
+. . "ADMIN"."TABLAPARTES"                       6.140 KB       5 filas exportadas
+. . "ADMIN"."PARTICIPANTE"                      5.031 KB       9 filas exportadas
+. . "ADMIN"."ADMINISTRADOR"                     5.007 KB       6 filas exportadas
+. . "ADMIN"."COMPRADOR"                         4.898 KB       7 filas exportadas
+. . "ADMIN"."VENDEDOR"                          4.875 KB       7 filas exportadas
+. . "ADMIN"."TIPOTELEFONO"                      4.859 KB       4 filas exportadas
+. . "ADMIN"."HISTORIALCOMPRADOR"                    0 KB       0 filas exportadas
+La tabla maestra "ADMIN"."EXP_SD_374-14_05_02" se ha cargado/descargado correctamente
+******************************************************************************
+El juego de archivos de volcado para ADMIN.EXP_SD_374-14_05_02 es:
+  E:\ARCHIVOSTEC\QUINTOSEMESTRE\BASES\PROYECTO-I-BASES-II\ORACLEBACKUP\EXPDAT01-14_07_53.DMP
+El trabajo "ADMIN"."EXP_SD_374-14_05_02" ha terminado correctamente en Mié Abr 14 14:08:27 2021 elapsed 0 00:00:35

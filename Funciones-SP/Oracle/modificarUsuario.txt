@@ -1,0 +1,14 @@
+create or replace NONEDITIONABLE PROCEDURE modificarUsu(aliass IN VARCHAR2, nom IN varchar2, alinuevo IN VARCHAR2, contra IN VARCHAR2, dociden IN VARCHAR2, direcc IN VARCHAR2, resultado OUT INTEGER)
+IS
+
+BEGIN
+
+    UPDATE USUARIO
+    SET ALIAS = alinuevo,
+    NOMBREAPELLIDOS = nom,
+    DOCIDENTIDAD = dociden,
+    DIRECCION = direcc,
+    CONTRASENNA = contra
+    WHERE alias = aliass;
+
+END ;

@@ -1,0 +1,28 @@
+create or replace NONEDITIONABLE procedure subastasUsuario(docIdent in varchar2, cursor out SYS_REFCURSOR)
+IS
+  
+UsuarioId INTEGER;
+
+BEGIN 
+
+SELECT vendedor.ID INTO UsuarioId
+FROM subasta
+INNER JOIN vendedor ON subasta.vendedorID= vendedor.ID
+INNER JOIN participante ON vendedor.participanteId= participante.ID
+INNER JOIN usuario ON participante.usuarioId = usuario.ID
+WHERE usuario.docidentidad = docIdent;
+
+OPEN CURSOR FOR SELECT
+comentario.comentario,
+comentario.puntaje,
+item.nombre, 
+subasta.precioInicial,
+subasta.montoactual
+FROM subasta
+INNER JOIN comentario ON comentario.subastaID = subasta.ID
+INNER JOIN item ON subasta.itemID = item.ID
+WHERE subasta.activo = 0 
+AND subasta. VendedorID = UsuarioId
+AND comentario.esvendedor = 0; 
+
+END;
