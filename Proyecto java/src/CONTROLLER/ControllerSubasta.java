@@ -1,12 +1,11 @@
 package CONTROLLER;
-import MODEL.Comentario;
-import MODEL.Usuario;
+import MODEL.*;
 import oracle.jdbc.*;
+
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
-import MODEL.Item;
-import MODEL.Subasta;
 
 public class ControllerSubasta {
 
@@ -46,6 +45,7 @@ public class ControllerSubasta {
             statement.execute();
             ResultSet resultado = ((OracleCallableStatement)statement).getCursor(1);
             while(resultado.next()) {
+                System.out.println(resultado.getString(1));
                 categorias.add(resultado.getString(1));
             }
         } catch (Exception ex) {
@@ -54,7 +54,6 @@ public class ControllerSubasta {
         }
         return categorias;
     }
-
 
     public ArrayList<String> getSubCategorias(String categoria) {
         ArrayList<String> subcategorias = new ArrayList<>();
@@ -65,6 +64,7 @@ public class ControllerSubasta {
             statement.execute();
             ResultSet resultado = ((OracleCallableStatement)statement).getCursor(2);
             while(resultado.next()) {
+                System.out.println(resultado.getString(1));
                 subcategorias.add(resultado.getString(1));
             }
         } catch (Exception ex) {
@@ -125,7 +125,7 @@ public class ControllerSubasta {
         return subastas;
     }
 
-    public void realizarSubasta(String nombreItem,  String detallesItem, String imagen, String subcat, float montoIni, Date fechaFinal, String detalles, String alias, String contra) {
+    public boolean realizarSubasta(String nombreItem,  String detallesItem, String imagen, String subcat, float montoIni, Date fechaFinal, String detalles, String alias, String contra) {
 
         try {
             long date = fechaFinal.getTime();
@@ -140,12 +140,15 @@ public class ControllerSubasta {
             statement.setString(8,alias);
             statement.setString(9,contra);
             statement.registerOutParameter(10, OracleTypes.INTEGER);
-            statement.execute();
+            ResultSet resultado = (statement.executeQuery());
+            int respuesta = statement.getInt(10);
+            if (respuesta == 0)
+                return true;
         } catch (Exception ex) {
             System.out.println("Hubo un error!");
             ex.printStackTrace();
         }
-
+        return false;
     }
 
     public ArrayList<Subasta> getSubastasPorUsu(String docIdentidad) {
@@ -168,7 +171,6 @@ public class ControllerSubasta {
                 subasta.setItem(item);
                 subasta.setComentario(comentario);
                 subastas.add(subasta);
-
 //                System.out.println(resultado.getString(1));
 //                System.out.println(resultado.getInt(2));
 //                System.out.println(resultado.getString(3));
@@ -193,7 +195,7 @@ public class ControllerSubasta {
             while (resultado.next()) {
 
                 telefonos.add(resultado.getInt(1));
-                System.out.println(resultado.getInt(1));
+                //System.out.println(resultado.getInt(1));
             }
 
         } catch (Exception ex) {
@@ -213,7 +215,7 @@ public class ControllerSubasta {
             while (resultado.next()) {
 
                 telefonos.add(resultado.getString(1));
-                System.out.println(resultado.getString(1));
+                //System.out.println(resultado.getString(1));
             }
 
         } catch (Exception ex) {
@@ -223,59 +225,64 @@ public class ControllerSubasta {
         return telefonos;
     }
 
-    public ArrayList<String> obtenerAlias() {
-        ArrayList<String> alias = new ArrayList<String>();
+    public ArrayList<String> obtenerIdentificacion(boolean esAdmin) {
+        ArrayList<String> identidad = new ArrayList<String>();
+        int esAdministrador = 0;
+        if (esAdmin)
+            esAdministrador = 1;
         try {
-            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MOSTRARALIAS(?)");
-            statement.registerOutParameter(1, OracleTypes.CURSOR);
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MOSTRARIDENTIDAD(?,?)");
+            statement.setInt(1, esAdministrador);
+            statement.registerOutParameter(2, OracleTypes.CURSOR);
             statement.execute();
-            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(1);
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(2);
             while (resultado.next()) {
-
-                alias.add(resultado.getString(1));
-                System.out.println(resultado.getString(1));
+                identidad.add(resultado.getString(1));
+                //System.out.println(resultado.getString(1));
             }
 
         } catch (Exception ex) {
             System.out.println("Hubo un error!");
             ex.printStackTrace();
         }
-        return alias;
+        return identidad;
     }
 
-    public void modificarUsuario(String aliasOri,  String nombre, String aliasNuevo, String contra, String docIden, String direccion) {
+    public boolean modificarUsuario(String docIdenOri,  String nombre, String alias, String contra, String docIden, String direccion) {
         try {
             CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MODIFICARUSU(?,?,?,?,?,?,?)");
-            statement.setString(1,aliasOri);
+            statement.setString(1,alias);
             statement.setString(2,nombre);
-            statement.setString(3,aliasNuevo);
-            statement.setString(4,contra);
-            statement.setString(5,docIden);
+            statement.setString(3,contra);
+            statement.setString(4,docIden);
+            statement.setString(5,docIdenOri);
             statement.setString(6,direccion);
             statement.registerOutParameter(7, OracleTypes.INTEGER);
-            statement.execute();
-
+            ResultSet resultado = (statement.executeQuery());
+            int respuesta = statement.getInt(7);
+            if (respuesta == 0)
+                return true;
         } catch (Exception ex) {
             System.out.println("Hubo un error!");
             ex.printStackTrace();
         }
-
+        return false;
     }
 
-    public void modificarTelefono(String alias, String tipo, int numero) {
+    public void modificarTelefono(String alias, String tipo, int numero, int viejonumero) {
         try {
-            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MODIFICARTELEFONO(?,?,?,?)");
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MODIFICARTELEFONO(?,?,?,?,?)");
             statement.setString(1,alias);
-            statement.setInt(2,numero);
-            statement.setString(3,tipo);
-            statement.registerOutParameter(4, OracleTypes.INTEGER);
+            statement.setInt(2,viejonumero);
+            statement.setInt(3,numero);
+            statement.setString(4,tipo);
+            statement.registerOutParameter(5, OracleTypes.INTEGER);
             statement.execute();
 
         } catch (Exception ex) {
             System.out.println("Hubo un error!");
             ex.printStackTrace();
         }
-
     }
 
     public void agregarTelefono(String alias, String tipo, int numero) {
@@ -292,6 +299,171 @@ public class ControllerSubasta {
             ex.printStackTrace();
         }
 
+    }
+
+    public Usuario mostrarInfoUsuario(String docIden) {
+        Usuario usuario = new Usuario();
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MOSTRARINFOUSU(?,?)");
+            statement.setString(1, docIden);
+            statement.registerOutParameter(2, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(2);
+            while (resultado.next()) {
+                System.out.println(resultado.getString(1));
+                System.out.println(resultado.getString(2));
+                System.out.println(resultado.getString(3));
+                System.out.println(resultado.getString(4));
+                System.out.println(resultado.getString(5));
+                usuario.setContrasenna(resultado.getString(1));
+                usuario.setNombreApellidos(resultado.getString(2));
+                usuario.setDocIdent(resultado.getString(3));
+                usuario.setDireccion(resultado.getString(4));
+                usuario.setAlias(resultado.getString(5));
+            }
+        } catch (Exception ex) {
+            System.out.println("Hubo un error!");
+            ex.printStackTrace();
+        }
+        return usuario;
+    }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public boolean registrarUsusuario(boolean esAdmin, String alias, String contrasena, String cedula, String nombre, String apellidos, String direccion){
+        int entradaBool=0;
+        if (esAdmin)
+            entradaBool=1;
+        try {
+
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL registrarusuario(?,?,?,?,?,?,?,?)");
+
+            statement.setInt(1, entradaBool);
+            statement.setString(2, alias);
+            statement.setString(3, contrasena);
+            statement.setString(4, cedula);
+            statement.setString(5, nombre);
+            statement.setString(6, apellidos);
+            statement.setString(7, direccion);
+            statement.registerOutParameter(8,OracleTypes.INTEGER);
+            statement.execute();
+            int respuesta = statement.getInt(8);
+            if (respuesta == 0)
+                return true;
+        }
+        catch (Exception e){
+            System.out.println("ERROR!");
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean iniciarSesion(boolean esAdmin, String alias, String contrasena){
+        int entrada = 0;
+        if (esAdmin)
+            entrada = 1;
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL VERIFICARINICIOSESION(?,?,?)");
+            statement.setInt(1, entrada);
+            statement.setString(2, alias);
+            statement.registerOutParameter(3, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(3);
+            while (resultado.next()) {
+                System.out.println(resultado.getString(1));
+
+                if(resultado.getString(1).equals(contrasena))
+                    return true;
+            }
+        } catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+            return false;
+        }
+        return false;
+    }
+
+    public ArrayList<Puja> pujasXsubasta(String nombreItem){
+        ArrayList<Puja> pujas = new ArrayList<>();
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL PUJASXSUBASTA(?,?)");
+            statement.setString(1, nombreItem);
+            statement.registerOutParameter(2, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(2);
+            while (resultado.next()) {
+                System.out.println(resultado.getBigDecimal(1));
+                System.out.println(resultado.getTimestamp(2));
+                Puja puja = new Puja(resultado.getBigDecimal(1), resultado.getTimestamp(2));
+                pujas.add(puja);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+        }
+        return pujas;
+    }
+
+    public ArrayList<Usuario> mostrarUsuarios(){
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL MOSTRARUSUARIOS(?)");
+            statement.registerOutParameter(1, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(1);
+            while (resultado.next()) {
+                System.out.println(resultado.getString(1));
+                System.out.println(resultado.getString(2));
+                Usuario usuario = new Usuario(resultado.getString(1), resultado.getString(2));
+                usuarios.add(usuario);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+        }
+        return usuarios;
+    }
+
+    public ArrayList<tablaComprasXcomprador> comprasXcomprador(String ident){
+        ArrayList<tablaComprasXcomprador> compras = new ArrayList<>();
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL COMPRASXCOMPRADOR(?,?)");
+            statement.setString(1, ident);
+            statement.registerOutParameter(2, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(2);
+            while (resultado.next()) {
+                tablaComprasXcomprador item = new tablaComprasXcomprador(resultado.getString(1),
+                        resultado.getBigDecimal(2), resultado.getBigDecimal(3), resultado.getTimestamp(4));
+                compras.add(item);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+        }
+        return compras;
+    }
+
+    public int pujar(String alias, String pasw, float monto, String itemNombre){
+
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL PUJAR(?,?,?,?,?)");
+            statement.setString(1, alias);
+            statement.setString(2, pasw);
+            statement.setFloat(3,monto);
+            statement.setString(4, itemNombre);
+            statement.registerOutParameter(5, OracleTypes.INTEGER);
+            statement.execute();
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
     }
 
 }
