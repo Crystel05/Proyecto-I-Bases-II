@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -109,12 +110,21 @@ public class ControllerPrincipal {
     @FXML private TableColumn<Subasta, String> itemSA;
     @FXML private TableColumn<Subasta, Float> mejorPujaSA;
     @FXML private TableColumn<Subasta,Date> fechaFinSa;
+    @FXML private Pane detallesSusAcPanel;
+    @FXML private Pane tablasSusActsPanel;
+
+    @FXML private Label nombreSuAc;
+    @FXML private TextArea descSuA;
+    @FXML private ImageView fotoSuAct;
+    @FXML private Label nombrePSA;
+    @FXML private Label montoSA;
 
     //->>> Historial pujas x subasta
     @FXML private ComboBox<String> subastasHistPCB;
     @FXML private TableView<Puja> TpujasXsubasta;
     @FXML private TableColumn<Puja, Date> Cfecha;
     @FXML private TableColumn<Puja, Float> CcantPuja;
+
 
     //->>> Historial compras x comprador
     @FXML private ComboBox<String> usuariosCompra;
@@ -124,9 +134,20 @@ public class ControllerPrincipal {
     @FXML private TableColumn<tablaComprasXcomprador,Float> CprecioFinalC;
     @FXML private TableColumn<tablaComprasXcomprador,Date> CfechaCo;
     @FXML private Label nombreUsuarioCom;
+    @FXML private Label puntajeSXV;
 
     //->>> Historial subastas x vendedor
     @FXML private ComboBox<String> vendedores;
+    @FXML private TableView<Subasta> tablaSubsXven;
+    @FXML private TableColumn<Subasta, String> colItemSXV;
+    @FXML private TableColumn<Subasta, Date> colfechaSXV;
+    @FXML private TableColumn<Subasta, Float> colprecioISXV;
+    @FXML private TableColumn<Subasta, Float> colprecioFSXV;
+    @FXML private Pane tablaSubsVenPanel;
+    @FXML private Pane comentarioSXVPanel;
+    @FXML private Label NombreGanadorSXV;
+    @FXML private TextArea comenSXV;
+
 
     //->>Atributos Participante
 
@@ -153,6 +174,7 @@ public class ControllerPrincipal {
     @FXML private TextField horaFinIS;
     @FXML private TextArea entregaIS;
     @FXML private TextField montoMinimo;
+    @FXML private ImageView check;
 
     //->>>Pujar por ítem
 
@@ -292,11 +314,13 @@ public class ControllerPrincipal {
     @FXML
     public void subastasActivas(ActionEvent event){
 
+        tablasSusActsPanel.setVisible(true);
+        detallesSusAcPanel.setVisible(false);
+
         categoriasCB.setValue("No seleccionado");
 
         ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
         ObservableList<Subasta> subastasA = FXCollections.observableArrayList(GUI.subastasTablaSin());
-        System.out.println(subastasA.size());
 
         categoriasCB.setItems(categorias);
         subCategoriasCB.setValue("No seleccionado");
@@ -313,6 +337,9 @@ public class ControllerPrincipal {
 
         modificarUP.setVisible(false);
         flecha2.setVisible(false);
+
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
 
         subastasActivasP.setVisible(true);
         flecha4.setVisible(true);
@@ -348,6 +375,9 @@ public class ControllerPrincipal {
         modificarUP.setVisible(false);
         flecha2.setVisible(false);
 
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
+
         subastasActivasP.setVisible(false);
         flecha4.setVisible(false);
 
@@ -366,12 +396,16 @@ public class ControllerPrincipal {
     }
 
     @FXML
-    public void subastasPorVendedor(ActionEvent event){
+    public void subastasPorVendedor(ActionEvent event) {
 
         ArrayList<String> ceds = new ArrayList<>();
-        for(Usuario u: GUI.usuariosMostrar()){
+        for (Usuario u : GUI.usuariosMostrar()) {
             ceds.add(u.getDocIdent());
         }
+
+        tablaSubsVenPanel.setVisible(true);
+        comentarioSXVPanel.setVisible(false);
+
         ObservableList<String> vend = FXCollections.observableArrayList(ceds);
         vendedores.setItems(vend);
 
@@ -380,6 +414,9 @@ public class ControllerPrincipal {
 
         modificarUP.setVisible(false);
         flecha2.setVisible(false);
+
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
 
         subastasActivasP.setVisible(false);
         flecha4.setVisible(false);
@@ -418,6 +455,9 @@ public class ControllerPrincipal {
 
         modificarUP.setVisible(false);
         flecha2.setVisible(false);
+
+        susSubastasPanel.setVisible(false);
+        flecha3.setVisible(false);
 
         subastasActivasP.setVisible(false);
         flecha4.setVisible(false);
@@ -477,7 +517,7 @@ public class ControllerPrincipal {
         adminModR.setSelected(false);
         partModR.setSelected(false);
         usuariosCB.setValue("No seleccionado");
-
+        usuariosCB.getItems().clear();
         aliasEd.clear();
         contE.clear();
         docIE.clear();
@@ -492,7 +532,7 @@ public class ControllerPrincipal {
         numeroETF.clear();
         tipoAgregar.setValue("Ninguno");
         numeroAgregar.clear();
-
+        nombreEditar.setText("");
 
         registrarUP.setVisible(false);
         flecha1.setVisible(false);
@@ -603,22 +643,27 @@ public class ControllerPrincipal {
     @FXML
     public void escoUnoAm(ActionEvent event){
         usuariosE = GUI.mostrarUsuariosEditar(true);
+        cedsE = new ArrayList<>();
         for(Usuario u: usuariosE){
             cedsE.add(u.getDocIdent());
         }
-
+        usuariosCB.getItems().clear();
         ObservableList<String> cedulas = FXCollections.observableArrayList(cedsE);
         usuariosCB.setItems(cedulas);
         partModR.setSelected(false);
+
+
     }
 
     @FXML
     public void escoUnoPm(ActionEvent event){
         usuariosE = GUI.mostrarUsuariosEditar(false);
+        cedsE = new ArrayList<>();
         for(Usuario u: usuariosE){
             cedsE.add(u.getDocIdent());
         }
 
+        usuariosCB.getItems().clear();
         ObservableList<String> cedulas = FXCollections.observableArrayList(cedsE);
         usuariosCB.setItems(cedulas);
 
@@ -778,23 +823,56 @@ public class ControllerPrincipal {
     //Subastas activas
 
     @FXML
+    public void atrasSusActD(MouseEvent event){
+        tablasSusActsPanel.setVisible(true);
+        detallesSusAcPanel.setVisible(false);
+    }
+
+    @FXML
     public void mostrarSubCategorias(MouseEvent event){
+        ObservableList<String> cats = FXCollections.observableArrayList(GUI.categorias());
+        categoriasCB.setItems(cats);
         if(!categoriasCB.getSelectionModel().isEmpty()){
+            System.out.println(categoriasCB.getValue());
+            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasCategoria(categoriasCB.getValue()));
+            tablaSubastasAc.setItems(subastas);
 
             ObservableList<String> subCats = FXCollections.observableArrayList(GUI.subCategorias(categoriasCB.getValue()));
             subCategoriasCB.setItems(subCats);
+        }
+    }
 
-            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasCategoria(categoriasCB.getValue()));
+    @FXML
+    public void llenarTablaSubastasActivas(ActionEvent event){
+        if(!subCategoriasCB.getSelectionModel().isEmpty()) {
+            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasFinal(categoriasCB.getValue(), subCategoriasCB.getValue()));
             tablaSubastasAc.setItems(subastas);
         }
     }
 
     @FXML
-    public void llenarTablaSubastasActivas(MouseEvent event){
-        if(!subCategoriasCB.getSelectionModel().isEmpty()) {
-            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasFinal(subCategoriasCB.getValue()));
-            tablaSubastasAc.setItems(subastas);
+    public void verDetallesSubastaActiva(MouseEvent e) throws FileNotFoundException {
+
+
+        if(e.getClickCount() >= 2) {
+            Subasta sub = tablaSubastasAc.getSelectionModel().getSelectedItem();
+            int subastaId = sub.getID();
+
+            System.out.println(subastaId);
+            Subasta subasta = GUI.detallesSubas(subastaId);
+
+            detallesSusAcPanel.setVisible(true);
+            tablasSusActsPanel.setVisible(false);
+
+            nombreSuAc.setText(sub.getNomIt());
+            descSuA.setText(subasta.getItem().getDetalles());
+            FileInputStream fileInputStream = new FileInputStream(subasta.getItem().getPathFoto());
+            fotoSuAct.setImage(new Image(fileInputStream));
+            nombrePSA.setText(subasta.getComprador());
+
         }
+
+
     }
 
     //Métodos participante
@@ -843,6 +921,7 @@ public class ControllerPrincipal {
         horaFinIS.clear();
         entregaIS.clear();
         montoMinimo.setText("0");
+        check.setVisible(false);
 
         ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
         categoriaIS.setItems(categorias);
@@ -869,19 +948,52 @@ public class ControllerPrincipal {
         flecha7.setVisible(false);
     }
 
+    @FXML
+    public void susSubastas(ActionEvent event){
+        iniciarSubastaPanel.setVisible(false);
+        flecha1.setVisible(false);
+
+        pujarPanel.setVisible(false);
+        flecha2.setVisible(false);
+
+        susSubastasPanel.setVisible(true);
+        flecha3.setVisible(true);
+
+        subastasActivasP.setVisible(false);
+        flecha4.setVisible(false);
+
+        pujasSubastaP.setVisible(false);
+        flecha5.setVisible(false);
+
+        subasvendedorP.setVisible(false);
+        flecha6.setVisible(false);
+
+        comprasCompP.setVisible(false);
+        flecha7.setVisible(false);
+    }
+
     //Métodos iniciar subasta
 
     @FXML
     public void buscarImagen(ActionEvent event){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Buscar Imagen");
 
-        Node source = (Node) event.getSource();
-        Stage stageActual = (Stage) source.getScene().getWindow();
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Buscar Imagen");
 
-        File imgFile = fileChooser.showOpenDialog(stageActual);
-        String[] pathAbsoluto = imgFile.getPath().split("java");
-        path = pathAbsoluto[1];
+            Node source = (Node) event.getSource();
+            Stage stageActual = (Stage) source.getScene().getWindow();
+
+            File imgFile = fileChooser.showOpenDialog(stageActual);
+            String[] pathAbsoluto = imgFile.getPath().split("src");
+            path = ("src" + pathAbsoluto[1]).replace("\\", "/");
+            check.setVisible(true);
+        }
+        catch (Exception e){
+            System.out.println();
+        }
+
+
     }
 
     @FXML
@@ -922,14 +1034,18 @@ public class ControllerPrincipal {
     public void cargarCategorias(MouseEvent event){
         ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
         categoriaIS.setItems(categorias);
+
+
+    }
+
+    @FXML
+    public void cargarSubCategorias(MouseEvent event){
         if(!categoriaIS.getSelectionModel().isEmpty()){
             ObservableList<String> subs = FXCollections.observableArrayList(GUI.subCategorias(categoriaIS.getValue()));
             System.out.println(subs);
             subCateIS.setItems(subs);
         }
-
     }
-
 
     //Métodos pujar
 
@@ -1006,6 +1122,35 @@ public class ControllerPrincipal {
             ObservableList<tablaComprasXcomprador> itemsGanados = FXCollections.observableArrayList(GUI.llenarTablaComprasComprador(usuariosCompra.getValue()));
             TcomprasXcomprador.setItems(itemsGanados);
 
+        }
+    }
+
+    // subastas x vendedor
+
+    @FXML
+    public void tablaSusVend(MouseEvent event){
+        colItemSXV.setCellValueFactory(new PropertyValueFactory<>("nomIt"));
+        colfechaSXV.setCellValueFactory(new PropertyValueFactory<>("fachaFinal"));
+        colprecioFSXV.setCellValueFactory(new PropertyValueFactory<>("mejorMonto"));
+        colprecioISXV.setCellValueFactory(new PropertyValueFactory<>("precioIni"));
+
+
+        if(!vendedores.getSelectionModel().isEmpty()) {
+            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasXvendedor(vendedores.getValue()));
+            tablaSubsXven.setItems(subastas);
+        }
+    }
+
+    @FXML
+    public void verComentario(MouseEvent event){
+        if(!tablaSubsXven.getSelectionModel().isEmpty() && event.getClickCount() >=2) {
+
+            comentarioSXVPanel.setVisible(true);
+            tablaSubsVenPanel.setVisible(false);
+            Subasta subasta = tablaSubsXven.getSelectionModel().getSelectedItem();
+            NombreGanadorSXV.setText(subasta.getComprador());
+            comenSXV.setText(subasta.getComentario().getComentario());
+            puntajeSXV.setText(String.valueOf(subasta.getComentario().getPuntaje()));
         }
     }
 

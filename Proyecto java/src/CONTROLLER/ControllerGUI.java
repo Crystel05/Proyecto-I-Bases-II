@@ -265,7 +265,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasTotal();
+            subastas = controllerAdminPost.mostrarSubastasActivas();
         } else {
             subastas = new ArrayList<>();
         }
@@ -285,16 +285,28 @@ public class ControllerGUI {
         return subastas;
     }
 
-    public ArrayList<Subasta> subastasFinal (String subCategoria) {
+    public ArrayList<Subasta> subastasFinal (String categoria, String subCategoria) {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasFinal(subCategoria);
+            subastas = controllerAdminPost.subastasActivasFinal(categoria, subCategoria);
         } else {
             subastas = new ArrayList<>();
         }
 
         return subastas;
+    }
+
+    public Subasta detallesSubas (int subastaID) {
+        Subasta subasta;
+
+        if (baseDatoUsada) {
+            subasta = controllerAdminPost.detallesSubasta(subastaID);
+        } else {
+            subasta = new Subasta();
+        }
+
+        return subasta;
     }
 
     public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
@@ -311,5 +323,15 @@ public class ControllerGUI {
         return cod;
     }
 
+    public ArrayList<Subasta> subastasXvendedor (String docIdent) {
+        ArrayList<Subasta> subastas;
 
+        if (baseDatoUsada) {
+            subastas = controllerAdminPost.subastasXvendedor(docIdent);
+        } else {
+            subastas = new ArrayList<>();
+        }
+
+        return subastas;
+    }
 }
