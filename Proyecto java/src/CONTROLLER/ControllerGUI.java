@@ -3,7 +3,11 @@ package CONTROLLER;
 import MODEL.Puja;
 import MODEL.Subasta;
 import MODEL.Usuario;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ControllerGUI {
@@ -14,6 +18,7 @@ public class ControllerGUI {
     private final ControllerBDPostgre controllerBDPostgre = new ControllerBDPostgre();
     private final ControllerInicioSesionPostgre inicioSesion = new ControllerInicioSesionPostgre();
     private final ControllerBDOracle oracle = new ControllerBDOracle();
+    private final ControllerInicioSesionOracle oracleInicio = new ControllerInicioSesionOracle();
 
     public static ControllerGUI getInstance(){
         if (controllerGUI == null){
@@ -60,31 +65,40 @@ public class ControllerGUI {
         if(baseDatoUsada)
             this.subastasActivas = controllerBDPostgre.mostrarSubastasActivas();
         //else
-            //oracle lista
+        //oracle lista
     }
 
+    //-----------------------------------------------------------------
+    //Inicio de sesión
+
     public int verificarInicioSesion(boolean esAdmin, String alias, String contra){
-        int codigo = 0;
+        int codigo;
         System.out.println(baseDatoUsada);
         if(baseDatoUsada) {
             codigo = inicioSesion.iniciarSesion(esAdmin, alias, contra);
         }
         else {
-            //llamar funcionOracle
+
+            if(oracleInicio.iniciarSesion(esAdmin, alias, contra))
+                codigo = 1;
+            else
+                codigo = 0;
         }
         return codigo;
-    }
+    } //listo
+
+    //Reguistrar Usuario
 
     public ArrayList<String> cargarTipos(){
         ArrayList<String> tipos = null;
         if(baseDatoUsada)
             tipos = controllerBDPostgre.tipos();
         else {
-            //oracle llamado de tipos
+            tipos = oracle.obtenerTipoTelefonos();
         }
         return tipos;
 
-    }
+    } //listo
 
     public int agregarTelefono(String alias, String contrasena, int numero, String tipo){
         int codigo = 0;
@@ -92,22 +106,84 @@ public class ControllerGUI {
             codigo = controllerBDPostgre.agregarTelefono(alias, contrasena, numero, tipo);
         }
         else{
-            //codigo oracle
+            oracle.agregarTelefono(alias, tipo, numero);
         }
         return codigo;
     }
 
     public int registrarUsuario(boolean esAdmin, String alias, String contrasena, String cedula, String nombre, String apellidos, String direccion){
-        int codigo = 0;
+        int codigo;
 
         if (baseDatoUsada){
             codigo = controllerBDPostgre.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion);
         }
         else{
-            //llamar al método de oracle
+            if(oracle.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion))
+                codigo = 1;
+            else
+                codigo = 0;
         }
         return codigo;
+    } //listo
+
+    //Modificar Usuario
+
+    public ArrayList<Usuario> mostrarUsuariosEditar(boolean esAdmin){
+        ArrayList<Usuario> usuarios;
+
+        if(baseDatoUsada){
+            usuarios = controllerBDPostgre.mostrarUsuariosEditar(esAdmin);
+        }
+        else {
+            usuarios = oracle.;
+        }
+        return usuarios;
     }
+
+    public Usuario mostrarInfoEd(String ced){
+        Usuario usuario;
+        if (baseDatoUsada){
+            usuario = controllerBDPostgre.mostrarInfo(ced);
+        }
+        else{
+            usuario = oracle.mostrarInfoUsuario(ced);
+        }
+        return usuario;
+    }
+
+    public ArrayList<Integer> mostrarTelsUs(String ced){
+        ArrayList<Integer> num;
+        if(baseDatoUsada){
+            num = controllerBDPostgre.mostrarTelsU(ced);
+        }
+        else {
+            num = new ArrayList<>();
+        }
+        return num;
+    }
+
+    public Integer modificarTel(int telV, int telN, String tipo){
+        int cod;
+        if(baseDatoUsada){
+            cod = controllerBDPostgre.modificarTel(telV, telN, tipo);
+        }
+        else {
+            cod = 0;
+        }
+        return cod;
+    }
+
+    public Integer modificarUsuario(String cedulaVieja, String nombre, String aliasNuevo, String contra, String ced, String dir){
+        int cod = 0;
+        if(baseDatoUsada){
+            cod = controllerBDPostgre.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
+        }
+        else {
+            cod = 0;
+        }
+        return cod;
+    }
+//----------------
 
     public ArrayList<String> nombreSubastas(){
         setSubastasActivas();
@@ -177,61 +253,6 @@ public class ControllerGUI {
         return compras;
     }
 
-    public ArrayList<Usuario> mostrarUsuariosEditar(boolean esAdmin){
-        ArrayList<Usuario> usuarios;
-
-        if(baseDatoUsada){
-            usuarios = controllerBDPostgre.mostrarUsuariosEditar(esAdmin);
-        }
-        else {
-            usuarios = new ArrayList<>();
-        }
-        return usuarios;
-    }
-
-    public Usuario mostrarInfoEd(String ced){
-        Usuario usuario;
-        if (baseDatoUsada){
-            usuario = controllerBDPostgre.mostrarInfo(ced);
-        }
-        else{
-            usuario = new Usuario();
-        }
-        return usuario;
-    }
-
-    public ArrayList<Integer> mostrarTelsUs(String ced){
-        ArrayList<Integer> num;
-        if(baseDatoUsada){
-            num = controllerBDPostgre.mostrarTelsU(ced);
-        }
-        else {
-            num = new ArrayList<>();
-        }
-        return num;
-    }
-
-    public Integer modificarTel(int telV, int telN, String tipo){
-        int cod;
-        if(baseDatoUsada){
-            cod = controllerBDPostgre.modificarTel(telV, telN, tipo);
-        }
-        else {
-            cod = 0;
-        }
-        return cod;
-    }
-
-    public Integer modificarUsuario(String cedulaVieja, String nombre, String aliasNuevo, String contra, String ced, String dir){
-        int cod = 0;
-        if(baseDatoUsada){
-            cod = controllerBDPostgre.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
-        }
-        else {
-            cod = 0;
-        }
-        return cod;
-    }
 
     public ArrayList<String> categorias () {
         ArrayList<String> cats;

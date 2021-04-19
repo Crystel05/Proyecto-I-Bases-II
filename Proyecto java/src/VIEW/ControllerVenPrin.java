@@ -19,7 +19,7 @@ public class ControllerVenPrin {
 
     public ControllerVenPrin() {}
 
-    private ControllerGUI controllerGUI = ControllerGUI.getInstance();
+    private final ControllerGUI controllerGUI = ControllerGUI.getInstance();
 
 
     //Atributos FX
@@ -43,7 +43,7 @@ public class ControllerVenPrin {
 
     @FXML
     public void confirmar(ActionEvent event) throws IOException {
-        //Hacer el cambio de base de datos en uso
+
         if(BoracleDB.isSelected() || BpostBD.isSelected()) {
             Node source = (Node) event.getSource();
             Stage stageActual = (Stage) source.getScene().getWindow();
