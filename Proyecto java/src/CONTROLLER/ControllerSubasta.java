@@ -164,11 +164,18 @@ public class ControllerSubasta {
                 Comentario comentario = new Comentario();
                 Subasta subasta = new Subasta();
                 Item item = new Item();
+                Usuario usuario = new Usuario();
                 comentario.setComentario(resultado.getString(1));
                 comentario.setPuntaje(resultado.getInt(2));
                 item.setNombre(resultado.getString(3));
-                subasta.setPrecioIni(resultado.getFloat(4));
-                subasta.setMejorMonto(resultado.getFloat(5));
+                subasta.setFachaFinal(resultado.getDate(4));
+                subasta.setPrecioIni(resultado.getFloat(5));
+                subasta.setMejorMonto(resultado.getFloat(6));
+                usuario.setNombreApellidos(resultado.getString(7));
+                item.setDetalles(resultado.getString(8));
+                subasta.setEnvio(resultado.getString(9));
+                item.setPathFoto(resultado.getString(10));
+
                 subasta.setItem(item);
                 subasta.setComentario(comentario);
                 subastas.add(subasta);
@@ -467,19 +474,44 @@ public class ControllerSubasta {
         return 1;
     }
 
-    public int probarCalendario(){
-
+    public String cedulaUsuario(String alias, String contra){
+        String ced = "";
         try {
-            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL REVISARFINSUBASTAS(?)");
-            statement.registerOutParameter(1, OracleTypes.INTEGER);
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL DEVOLVERCEDULA(?,?,?)");
+            statement.setString(1, alias);
+            statement.setString(2,contra);
+            statement.registerOutParameter(3, OracleTypes.CURSOR);
             statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(3);
+            while (resultado.next()) {
+                ced = resultado.getString(1);
+            }
         }
         catch (Exception e){
             System.out.println("Error de conexión");
-            e.printStackTrace();
-            return 0;
+            System.out.println(e);
+            ced = "Error";
         }
-        return 1;
+        return ced;
     }
 
+    public String nombreVendedor(String cedula){
+        String nom = "";
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL NOMBREVENDEDOR(?,?)");
+            statement.setString(1, cedula);
+            statement.registerOutParameter(2, OracleTypes.CURSOR);
+            statement.execute();
+            ResultSet resultado = ((OracleCallableStatement) statement).getCursor(2);
+            while (resultado.next()) {
+                nom = resultado.getString(1);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+            nom = "Error";
+        }
+        return nom;
+    }
 }

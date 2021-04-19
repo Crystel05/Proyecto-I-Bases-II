@@ -44,7 +44,7 @@ public class OracleConexion {
     public static void main(String[] args) {
 
         ControllerSubasta con = new ControllerSubasta();
-        con.probarCalendario();
+        System.out.println(con.nombreVendedor("xlz5050"));
         //con.pujar("Deku","12345",15000, "kit de risas");
         //con.getSubCategorias("Juguetes y pasatiempos");
     }
