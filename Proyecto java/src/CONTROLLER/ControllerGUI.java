@@ -3,21 +3,17 @@ package CONTROLLER;
 import MODEL.Puja;
 import MODEL.Subasta;
 import MODEL.Usuario;
-import MODEL.tablaComprasXcomprador;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ControllerGUI {
 
     public ControllerGUI() {}
     private static ControllerGUI controllerGUI;
 
-    private ControllerAdminPost controllerAdminPost = new ControllerAdminPost();
-    private ControllerInicioSesion inicioSesion = new ControllerInicioSesion();
+    private final ControllerBDPostgre controllerBDPostgre = new ControllerBDPostgre();
+    private final ControllerInicioSesionPostgre inicioSesion = new ControllerInicioSesionPostgre();
+    private final ControllerBDOracle oracle = new ControllerBDOracle();
 
     public static ControllerGUI getInstance(){
         if (controllerGUI == null){
@@ -62,7 +58,7 @@ public class ControllerGUI {
 
     public void setSubastasActivas() {
         if(baseDatoUsada)
-            this.subastasActivas = controllerAdminPost.mostrarSubastasActivas();
+            this.subastasActivas = controllerBDPostgre.mostrarSubastasActivas();
         //else
             //oracle lista
     }
@@ -82,7 +78,7 @@ public class ControllerGUI {
     public ArrayList<String> cargarTipos(){
         ArrayList<String> tipos = null;
         if(baseDatoUsada)
-            tipos = controllerAdminPost.tipos();
+            tipos = controllerBDPostgre.tipos();
         else {
             //oracle llamado de tipos
         }
@@ -93,7 +89,7 @@ public class ControllerGUI {
     public int agregarTelefono(String alias, String contrasena, int numero, String tipo){
         int codigo = 0;
         if (baseDatoUsada){
-            codigo = controllerAdminPost.agregarTelefono(alias, contrasena, numero, tipo);
+            codigo = controllerBDPostgre.agregarTelefono(alias, contrasena, numero, tipo);
         }
         else{
             //codigo oracle
@@ -105,7 +101,7 @@ public class ControllerGUI {
         int codigo = 0;
 
         if (baseDatoUsada){
-            codigo = controllerAdminPost.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion);
+            codigo = controllerBDPostgre.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion);
         }
         else{
             //llamar al método de oracle
@@ -127,7 +123,7 @@ public class ControllerGUI {
     public int pujar(float monto, String itemN){
         int codigo = 0;
         if(baseDatoUsada){
-            codigo = controllerAdminPost.pujar(alias, contrasena, monto, itemN);
+            codigo = controllerBDPostgre.pujar(alias, contrasena, monto, itemN);
         }
         else {
             //oracle
@@ -138,7 +134,7 @@ public class ControllerGUI {
     public ArrayList<String> nombresSubastas(){
         ArrayList<String> nombres;
         if (baseDatoUsada){
-            nombres = controllerAdminPost.nombreSubastas();
+            nombres = controllerBDPostgre.nombreSubastas();
         }
         else {
             //oracle
@@ -150,7 +146,7 @@ public class ControllerGUI {
     public ArrayList<Puja> pujasXsubasta(String nombreItem){
         ArrayList<Puja> pujas;
         if(baseDatoUsada){
-            pujas = controllerAdminPost.pujasXsubasta(nombreItem);
+            pujas = controllerBDPostgre.pujasXsubasta(nombreItem);
         }
         else{
             //oracle
@@ -162,7 +158,7 @@ public class ControllerGUI {
     public ArrayList<Usuario> usuariosMostrar(){
         ArrayList<Usuario> cedulas;
         if(baseDatoUsada){
-            cedulas = controllerAdminPost.mostrarUsuarios();
+            cedulas = controllerBDPostgre.mostrarUsuarios();
         }
         else{
             cedulas = new ArrayList<>();
@@ -173,7 +169,7 @@ public class ControllerGUI {
     public ArrayList<Subasta> llenarTablaComprasComprador(String indent){
         ArrayList<Subasta> compras;
         if(baseDatoUsada){
-            compras = controllerAdminPost.comprasXcomprador(indent);
+            compras = controllerBDPostgre.comprasXcomprador(indent);
         }
         else{
             compras = new ArrayList<>();
@@ -185,7 +181,7 @@ public class ControllerGUI {
         ArrayList<Usuario> usuarios;
 
         if(baseDatoUsada){
-            usuarios = controllerAdminPost.mostrarUsuariosEditar(esAdmin);
+            usuarios = controllerBDPostgre.mostrarUsuariosEditar(esAdmin);
         }
         else {
             usuarios = new ArrayList<>();
@@ -196,7 +192,7 @@ public class ControllerGUI {
     public Usuario mostrarInfoEd(String ced){
         Usuario usuario;
         if (baseDatoUsada){
-            usuario = controllerAdminPost.mostrarInfo(ced);
+            usuario = controllerBDPostgre.mostrarInfo(ced);
         }
         else{
             usuario = new Usuario();
@@ -207,7 +203,7 @@ public class ControllerGUI {
     public ArrayList<Integer> mostrarTelsUs(String ced){
         ArrayList<Integer> num;
         if(baseDatoUsada){
-            num = controllerAdminPost.mostrarTelsU(ced);
+            num = controllerBDPostgre.mostrarTelsU(ced);
         }
         else {
             num = new ArrayList<>();
@@ -218,7 +214,7 @@ public class ControllerGUI {
     public Integer modificarTel(int telV, int telN, String tipo){
         int cod;
         if(baseDatoUsada){
-            cod = controllerAdminPost.modificarTel(telV, telN, tipo);
+            cod = controllerBDPostgre.modificarTel(telV, telN, tipo);
         }
         else {
             cod = 0;
@@ -229,7 +225,7 @@ public class ControllerGUI {
     public Integer modificarUsuario(String cedulaVieja, String nombre, String aliasNuevo, String contra, String ced, String dir){
         int cod = 0;
         if(baseDatoUsada){
-            cod = controllerAdminPost.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
+            cod = controllerBDPostgre.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
         }
         else {
             cod = 0;
@@ -241,7 +237,7 @@ public class ControllerGUI {
         ArrayList<String> cats;
 
         if (baseDatoUsada) {
-            cats = controllerAdminPost.categorias();
+            cats = controllerBDPostgre.categorias();
         } else {
             cats = new ArrayList<>();
         }
@@ -253,7 +249,7 @@ public class ControllerGUI {
         ArrayList<String> subCats;
 
         if (baseDatoUsada) {
-            subCats = controllerAdminPost.subCategorias(categoria);
+            subCats = controllerBDPostgre.subCategorias(categoria);
         } else {
             subCats = new ArrayList<>();
         }
@@ -265,7 +261,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.mostrarSubastasActivas();
+            subastas = controllerBDPostgre.mostrarSubastasActivas();
         } else {
             subastas = new ArrayList<>();
         }
@@ -277,7 +273,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasCategoria(categoria);
+            subastas = controllerBDPostgre.subastasActivasCategoria(categoria);
         } else {
             subastas = new ArrayList<>();
         }
@@ -289,7 +285,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasFinal(categoria, subCategoria);
+            subastas = controllerBDPostgre.subastasActivasFinal(categoria, subCategoria);
         } else {
             subastas = new ArrayList<>();
         }
@@ -301,7 +297,7 @@ public class ControllerGUI {
         Subasta subasta;
 
         if (baseDatoUsada) {
-            subasta = controllerAdminPost.detallesSubasta(subastaID);
+            subasta = controllerBDPostgre.detallesSubasta(subastaID);
         } else {
             subasta = new Subasta();
         }
@@ -315,7 +311,7 @@ public class ControllerGUI {
         if(baseDatoUsada){
             System.out.println(alias);
             System.out.println(contrasena);
-            cod = controllerAdminPost.iniciarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fechaFin, detalles, alias, contrasena, monMin);
+            cod = controllerBDPostgre.iniciarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fechaFin, detalles, alias, contrasena, monMin);
         }
         else {
             cod = 0;
@@ -327,7 +323,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasXvendedor(docIdent);
+            subastas = controllerBDPostgre.subastasXvendedor(docIdent);
         } else {
             subastas = new ArrayList<>();
         }
@@ -338,7 +334,7 @@ public class ControllerGUI {
     public String nombreVend (String docIdent){
         String nom;
         if (baseDatoUsada){
-            nom = controllerAdminPost.nombreVendedor(docIdent);
+            nom = controllerBDPostgre.nombreVendedor(docIdent);
         }
         else {
             nom = "";
@@ -346,21 +342,10 @@ public class ControllerGUI {
         return nom;
     }
 
-    public String devolverCedulaUser(){
-        String ced;
-        if (baseDatoUsada){
-            ced = controllerAdminPost.cedulaUsuario(alias, contrasena);
-        }
-        else {
-            ced = "";
-        }
-        return ced;
-    }
-
     public ArrayList<Subasta> subastasCompras(){
         ArrayList<Subasta> subastas;
         if(baseDatoUsada){
-            subastas = controllerAdminPost.subastasComprador("Lucy", "gorda45"); //(alias, contrasena);
+            subastas = controllerBDPostgre.subastasComprador(alias, contrasena); //(alias, contrasena);
         }
         else {
             subastas = new ArrayList<>();
@@ -371,7 +356,7 @@ public class ControllerGUI {
     public ArrayList<Subasta> subastasVentas(){
         ArrayList<Subasta> subastas;
         if(baseDatoUsada){
-            subastas = controllerAdminPost.subastasVendedor("Peti", "gatoFeliz12");//(alias, contrasena);
+            subastas = controllerBDPostgre.subastasVendedor(alias, contrasena);//(alias, contrasena);
         }
         else {
             subastas = new ArrayList<>();
@@ -384,7 +369,7 @@ public class ControllerGUI {
         int cod;
 
         if(baseDatoUsada){
-            cod = controllerAdminPost.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
+            cod = controllerBDPostgre.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
         }
         else{
             cod = 0;

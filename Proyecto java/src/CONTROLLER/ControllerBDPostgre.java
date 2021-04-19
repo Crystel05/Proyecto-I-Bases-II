@@ -14,9 +14,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ControllerAdminPost {
+public class ControllerBDPostgre {
 
-    public ControllerAdminPost() {}
+    public ControllerBDPostgre() {}
 
     public int registrarUsusuario(boolean esAdmin, String alias, String contrasena, String cedula, String nombre, String apellidos, String direccion){
         int codigoExito = 0;
@@ -124,6 +124,8 @@ public class ControllerAdminPost {
                 subasta.setID(resultSet.getInt(1));
                 Item item = new Item();
                 item.setNombre(resultSet.getString(2));
+                item.setPathFoto(resultSet.getString(6));
+                item.setDetalles(resultSet.getString(5));
                 subasta.setItem(item);
                 subasta.setNomIt(resultSet.getString(2));
                 subasta.setFachaFinal(resultSet.getTimestamp(3));
@@ -261,11 +263,6 @@ public class ControllerAdminPost {
                 subasta.setVendedor(resultSet.getString(5));
                 Comentario comentario = new Comentario(resultSet.getString(6), resultSet.getInt(7));
                 subasta.setComentario(comentario);
-                Item item = new Item();
-                item.setDetalles(resultSet.getString(8));
-                item.setPathFoto(resultSet.getString(10));
-                subasta.setItem(item);
-                subasta.setEnvio(resultSet.getString(9));
                 compras.add(subasta);
             }
 
@@ -657,7 +654,7 @@ public class ControllerAdminPost {
         Subasta subasta = new Subasta();
 
         try{
-            String llamadaFuncion = "SELECT * FROM mostDetallesSubastaActiva(?)";
+            String llamadaFuncion = "SELECT * FROM mostdetallessubastaactiva(?)";
 
             PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
 
@@ -670,6 +667,7 @@ public class ControllerAdminPost {
                 item.setPathFoto(resultSet.getString(2));
                 subasta.setItem(item);
                 subasta.setComprador(resultSet.getString(3));
+                subasta.setMejorMonto(resultSet.getFloat(4));
             }
         }
         catch (Exception e){
@@ -809,8 +807,15 @@ public class ControllerAdminPost {
     }
 
 
-    public static void main(String[] args) throws ParseException {
-        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
-        System.out.println(controllerAdmin.subastasComprador("Lucy", "gorda45"));
-    }
+//    public static void main(String[] args) throws ParseException {
+//        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
+//        ArrayList<Subasta> subastas = controllerAdmin.subastasVendedor("Kawai" , "peces");
+//        for(Subasta subasta: subastas){
+//            System.out.println(subasta.getItem().getDetalles());
+//            System.out.println("Foto: " + subasta.getItem().getPathFoto());
+//            System.out.println(subasta.getItem().getNombre());
+//            System.out.println(subasta.getEnvio());
+//            System.out.println("****\n");
+//        }
+//    }
 }
