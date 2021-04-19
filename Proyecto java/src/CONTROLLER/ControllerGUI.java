@@ -357,6 +357,28 @@ public class ControllerGUI {
         return ced;
     }
 
+    public ArrayList<Subasta> subastasCompras(){
+        ArrayList<Subasta> subastas;
+        if(baseDatoUsada){
+            subastas = controllerAdminPost.subastasComprador("Lucy", "gorda45"); //(alias, contrasena);
+        }
+        else {
+            subastas = new ArrayList<>();
+        }
+        return subastas;
+    }
+
+    public ArrayList<Subasta> subastasVentas(){
+        ArrayList<Subasta> subastas;
+        if(baseDatoUsada){
+            subastas = controllerAdminPost.subastasVendedor("Peti", "gatoFeliz12");//(alias, contrasena);
+        }
+        else {
+            subastas = new ArrayList<>();
+        }
+        return subastas;
+    }
+
     public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
                                boolean compra, String nomItem){
         int cod;

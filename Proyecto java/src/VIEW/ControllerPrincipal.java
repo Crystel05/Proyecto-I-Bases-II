@@ -1287,10 +1287,10 @@ public class ControllerPrincipal {
         labelComprador.setVisible(false);
         si.setVisible(false);
         no.setVisible(false);
-        susSubastas = GUI.subastasXvendedor("964736"); //GUI.devolverCedulaUser()
+        susSubastas = GUI.subastasVentas(); //GUI.devolverCedulaUser()
         ArrayList<String> nombresItems = new ArrayList<>();
         for(Subasta subasta: susSubastas){
-            nombresItems.add(subasta.getNomIt());
+            nombresItems.add(subasta.getItem().getNombre());
         }
         ObservableList<String> subasItems = FXCollections.observableArrayList(nombresItems);
         subastasCB.setItems(subasItems);
@@ -1304,10 +1304,10 @@ public class ControllerPrincipal {
         si.setVisible(true);
         no.setVisible(true);
 
-        susSubastas = GUI.llenarTablaComprasComprador("314597"); //GUI.devolverCedulaUser()
+        susSubastas = GUI.subastasCompras(); //GUI.devolverCedulaUser()
         ArrayList<String> nombresItems = new ArrayList<>();
         for(Subasta subasta: susSubastas){
-            nombresItems.add(subasta.getNomIt());
+            nombresItems.add(subasta.getItem().getNombre());
         }
         ObservableList<String> subasItems = FXCollections.observableArrayList(nombresItems);
         subastasCB.setItems(subasItems);
@@ -1319,7 +1319,7 @@ public class ControllerPrincipal {
             detallesPa.setDisable(false);
             Subasta subasta = new Subasta();
             for(Subasta s: susSubastas){
-                if(s.getNomIt().equals(subastasCB.getValue()))
+                if(s.getItem().getNombre().equals(subastasCB.getValue()))
                     subasta = s;
             }
             descpSubastas.setText(subasta.getItem().getDetalles());
@@ -1388,9 +1388,5 @@ public class ControllerPrincipal {
         }
         return false;
     }
-
-
-
-
 
 }

@@ -368,7 +368,7 @@
                         <Font name="Bodoni MT Black" size="25.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="subastasCB" layoutX="240.0" layoutY="163.0" onMouseClicked="#agregarDetalles" prefHeight="31.0" prefWidth="172.0">
+                  <ComboBox fx:id="subastasCB" layoutX="209.0" layoutY="163.0" onMouseClicked="#agregarDetalles" prefHeight="31.0" prefWidth="234.0">
                      <effect>
                         <InnerShadow color="#3154bf" />
                      </effect>

@@ -707,6 +707,72 @@ public class ControllerAdminPost {
         return cedula;
     }
 
+    public ArrayList<Subasta> subastasComprador(String alias, String contra){
+        ArrayList<Subasta> subastas = new ArrayList<>();
+        try {
+            String llamadaFuncion = "SELECT * FROM mostrarSubastasCompradorNot(?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, alias);
+            statement.setString(2, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                Subasta subasta = new Subasta();
+                Item item = new Item();
+                item.setNombre(resultSet.getString(1));
+                item.setDetalles(resultSet.getString(2));
+                item.setPathFoto(resultSet.getString(3));
+                subasta.setEnvio(resultSet.getString(4));
+                subasta.setItem(item);
+                subastas.add(subasta);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return subastas;
+    }
+
+    public ArrayList<Subasta> subastasVendedor(String alias, String contra){
+        ArrayList<Subasta> subastas = new ArrayList<>();
+        try {
+            String llamadaFuncion = "SELECT * FROM mostrarSubastasVendedorNot(?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, alias);
+            statement.setString(2, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                Subasta subasta = new Subasta();
+                Item item = new Item();
+                item.setNombre(resultSet.getString(1));
+                item.setDetalles(resultSet.getString(2));
+                item.setPathFoto(resultSet.getString(3));
+                subasta.setEnvio(resultSet.getString(4));
+                subasta.setItem(item);
+                subastas.add(subasta);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return subastas;
+    }
+
     public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
                                boolean compra, String nomItem, String alias, String contra){
 
@@ -743,8 +809,8 @@ public class ControllerAdminPost {
     }
 
 
-//    public static void main(String[] args) throws ParseException {
-//        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
-//        System.out.println(controllerAdmin.subastasXvendedor("123457"));
-//    }
+    public static void main(String[] args) throws ParseException {
+        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
+        System.out.println(controllerAdmin.subastasComprador("Lucy", "gorda45"));
+    }
 }
