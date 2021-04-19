@@ -125,11 +125,11 @@ public class ControllerSubasta {
         return subastas;
     }
 
-    public boolean realizarSubasta(String nombreItem,  String detallesItem, String imagen, String subcat, float montoIni, Date fechaFinal, String detalles, String alias, String contra) {
+    public boolean realizarSubasta(String nombreItem,  String detallesItem, String imagen, String subcat, float montoIni, Date fechaFinal, String detalles, String alias, String contra, float montoMin) {
 
         try {
             long date = fechaFinal.getTime();
-            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL CREARSUBASTA(?,?,?,?,?,?,?,?,?,?)");
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL CREARSUBASTA(?,?,?,?,?,?,?,?,?,?,?)");
             statement.setString(1,nombreItem);
             statement.setString(2,detallesItem);
             statement.setString(3,imagen);
@@ -139,9 +139,10 @@ public class ControllerSubasta {
             statement.setString(7,detalles);
             statement.setString(8,alias);
             statement.setString(9,contra);
-            statement.registerOutParameter(10, OracleTypes.INTEGER);
+            statement.setFloat(10,montoMin);
+            statement.registerOutParameter(11, OracleTypes.INTEGER);
             ResultSet resultado = (statement.executeQuery());
-            int respuesta = statement.getInt(10);
+            int respuesta = statement.getInt(11);
             if (respuesta == 0)
                 return true;
         } catch (Exception ex) {
@@ -456,6 +457,21 @@ public class ControllerSubasta {
             statement.setFloat(3,monto);
             statement.setString(4, itemNombre);
             statement.registerOutParameter(5, OracleTypes.INTEGER);
+            statement.execute();
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            e.printStackTrace();
+            return 0;
+        }
+        return 1;
+    }
+
+    public int probarCalendario(){
+
+        try {
+            CallableStatement statement = OracleConexion.getInstance().connection.prepareCall("CALL REVISARFINSUBASTAS(?)");
+            statement.registerOutParameter(1, OracleTypes.INTEGER);
             statement.execute();
         }
         catch (Exception e){

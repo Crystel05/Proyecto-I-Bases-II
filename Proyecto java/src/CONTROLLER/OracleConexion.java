@@ -44,7 +44,8 @@ public class OracleConexion {
     public static void main(String[] args) {
 
         ControllerSubasta con = new ControllerSubasta();
-        con.pujar("Joker","12345",10000,"Cartas de Capitan America");
-        //con.getSubastas();
+        con.probarCalendario();
+        //con.pujar("Deku","12345",15000, "kit de risas");
+        //con.getSubCategorias("Juguetes y pasatiempos");
     }
 }

@@ -1,0 +1,250 @@
+Iniciando "ADMIN"."EXP_SD_544-11_29_53":  
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_OPTIONS/VIEWS_AS_TABLES/TABLE_DATA
+.  estimado "SYS"."KU$_USER_MAPPING_VIEW"               4.683 KB
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/TABLE_DATA
+.  estimado "AUDSYS"."AUD$UNIFIED":"SYS_P181"           80.67 KB
+.  estimado "AUDSYS"."AUD$UNIFIED":"SYS_P317"           75.58 KB
+.  estimado "SYSTEM"."REDO_DB"                          23.14 KB
+.  estimado "WMSYS"."WM$WORKSPACES_TABLE$"              11.10 KB
+.  estimado "WMSYS"."WM$HINT_TABLE$"                    9.120 KB
+.  estimado "LBACSYS"."OLS$INSTALLATIONS"               6.742 KB
+.  estimado "WMSYS"."WM$WORKSPACE_PRIV_TABLE$"          6.430 KB
+.  estimado "SYS"."DAM_CONFIG_PARAM$"                   6.333 KB
+.  estimado "SYS"."TSDP_SUBPOL$"                        6.195 KB
+.  estimado "WMSYS"."WM$NEXTVER_TABLE$"                 6.193 KB
+.  estimado "LBACSYS"."OLS$PROPS"                       6.116 KB
+.  estimado "WMSYS"."WM$ENV_VARS$"                      5.896 KB
+.  estimado "SYS"."TSDP_PARAMETER$"                     5.844 KB
+.  estimado "SYS"."TSDP_POLICY$"                        5.826 KB
+.  estimado "WMSYS"."WM$VERSION_HIERARCHY_TABLE$"       5.816 KB
+.  estimado "WMSYS"."WM$EVENTS_INFO$"                   5.691 KB
+.  estimado "LBACSYS"."OLS$AUDIT_ACTIONS"               5.675 KB
+.  estimado "LBACSYS"."OLS$DIP_EVENTS"                  5.478 KB
+.  estimado "AUDSYS"."AUD$UNIFIED":"AUD_UNIFIED_P0"     4.683 KB
+.  estimado "LBACSYS"."OLS$AUDIT"                       4.683 KB
+.  estimado "LBACSYS"."OLS$COMPARTMENTS"                4.683 KB
+.  estimado "LBACSYS"."OLS$DIP_DEBUG"                   4.683 KB
+.  estimado "LBACSYS"."OLS$GROUPS"                      4.683 KB
+.  estimado "LBACSYS"."OLS$LAB"                         4.683 KB
+.  estimado "LBACSYS"."OLS$LEVELS"                      4.683 KB
+.  estimado "LBACSYS"."OLS$POL"                         4.683 KB
+.  estimado "LBACSYS"."OLS$POLICY_ADMIN"                4.683 KB
+.  estimado "LBACSYS"."OLS$POLS"                        4.683 KB
+.  estimado "LBACSYS"."OLS$POLT"                        4.683 KB
+.  estimado "LBACSYS"."OLS$PROFILE"                     4.683 KB
+.  estimado "LBACSYS"."OLS$PROFILES"                    4.683 KB
+.  estimado "LBACSYS"."OLS$PROG"                        4.683 KB
+.  estimado "LBACSYS"."OLS$SESSINFO"                    4.683 KB
+.  estimado "LBACSYS"."OLS$USER"                        4.683 KB
+.  estimado "LBACSYS"."OLS$USER_COMPARTMENTS"           4.683 KB
+.  estimado "LBACSYS"."OLS$USER_GROUPS"                 4.683 KB
+.  estimado "LBACSYS"."OLS$USER_LEVELS"                 4.683 KB
+.  estimado "SYS"."AUD$"                                4.683 KB
+.  estimado "SYS"."DAM_CLEANUP_EVENTS$"                 4.683 KB
+.  estimado "SYS"."DAM_CLEANUP_JOBS$"                   4.683 KB
+.  estimado "SYS"."TSDP_ASSOCIATION$"                   4.683 KB
+.  estimado "SYS"."TSDP_CONDITION$"                     4.683 KB
+.  estimado "SYS"."TSDP_FEATURE_POLICY$"                4.683 KB
+.  estimado "SYS"."TSDP_PROTECTION$"                    4.683 KB
+.  estimado "SYS"."TSDP_SENSITIVE_DATA$"                4.683 KB
+.  estimado "SYS"."TSDP_SENSITIVE_TYPE$"                4.683 KB
+.  estimado "SYS"."TSDP_SOURCE$"                        4.683 KB
+.  estimado "SYSTEM"."REDO_LOG"                         4.683 KB
+.  estimado "WMSYS"."WM$BATCH_COMPRESSIBLE_TABLES$"     4.683 KB
+.  estimado "WMSYS"."WM$CONS_COLUMNS$"                  4.683 KB
+.  estimado "WMSYS"."WM$CONSTRAINTS_TABLE$"             4.683 KB
+.  estimado "WMSYS"."WM$LOCKROWS_INFO$"                 4.683 KB
+.  estimado "WMSYS"."WM$MODIFIED_TABLES$"               4.683 KB
+.  estimado "WMSYS"."WM$MP_GRAPH_WORKSPACES_TABLE$"     4.683 KB
+.  estimado "WMSYS"."WM$MP_PARENT_WORKSPACES_TABLE$"    4.683 KB
+.  estimado "WMSYS"."WM$NESTED_COLUMNS_TABLE$"          4.683 KB
+.  estimado "WMSYS"."WM$RESOLVE_WORKSPACES_TABLE$"      4.683 KB
+.  estimado "WMSYS"."WM$RIC_LOCKING_TABLE$"             4.683 KB
+.  estimado "WMSYS"."WM$RIC_TABLE$"                     4.683 KB
+.  estimado "WMSYS"."WM$RIC_TRIGGERS_TABLE$"            4.683 KB
+.  estimado "WMSYS"."WM$UDTRIG_DISPATCH_PROCS$"         4.683 KB
+.  estimado "WMSYS"."WM$UDTRIG_INFO$"                   4.683 KB
+.  estimado "WMSYS"."WM$VERSION_TABLE$"                 4.683 KB
+.  estimado "WMSYS"."WM$VT_ERRORS_TABLE$"               4.683 KB
+.  estimado "WMSYS"."WM$WORKSPACE_SAVEPOINTS_TABLE$"    4.683 KB
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/VIEWS_AS_TABLES/TABLE_DATA
+.  estimado "MDSYS"."RDF_PARAM$"                        4.683 KB
+.  estimado "SYS"."AUDTAB$TBS$FOR_EXPORT"               4.683 KB
+.  estimado "SYS"."DBA_SENSITIVE_DATA"                  4.683 KB
+.  estimado "SYS"."DBA_TSDP_POLICY_PROTECTION"          4.683 KB
+.  estimado "SYS"."FGA_LOG$FOR_EXPORT"                  4.683 KB
+.  estimado "SYS"."NACL$_ACE_EXP"                       4.683 KB
+.  estimado "SYS"."NACL$_HOST_EXP"                      4.683 KB
+.  estimado "SYS"."NACL$_WALLET_EXP"                    4.683 KB
+.  estimado "SYS"."SQL$_DATAPUMP"                       4.683 KB
+.  estimado "SYS"."SQLOBJ$AUXDATA_DATAPUMP"             4.683 KB
+.  estimado "SYS"."SQLOBJ$DATA_DATAPUMP"                4.683 KB
+.  estimado "SYS"."SQLOBJ$_DATAPUMP"                    4.683 KB
+.  estimado "SYS"."SQLOBJ$PLAN_DATAPUMP"                4.683 KB
+.  estimado "SYS"."SQL$TEXT_DATAPUMP"                   4.683 KB
+.  estimado "SYSTEM"."SCHEDULER_JOB_ARGS"               4.683 KB
+.  estimado "SYSTEM"."SCHEDULER_PROGRAM_ARGS"           4.683 KB
+.  estimado "WMSYS"."WM$EXP_MAP"                        4.683 KB
+.  estimado "WMSYS"."WM$METADATA_MAP"                   4.683 KB
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TABLE_DATA
+.  estimado "ADMIN"."SUBCATEGORIA"                      18.46 KB
+.  estimado "ADMIN"."ITEM"                              10.24 KB
+.  estimado "ADMIN"."SUBASTA"                           8.711 KB
+.  estimado "ADMIN"."USUARIO"                           8.076 KB
+.  estimado "ADMIN"."COMENTARIO"                        7.343 KB
+.  estimado "ADMIN"."TABLACOMPONENTES"                  6.781 KB
+.  estimado "ADMIN"."PUJA"                              6.648 KB
+.  estimado "ADMIN"."TELEFONO"                          6.549 KB
+.  estimado "ADMIN"."CATEGORIA"                         6.185 KB
+.  estimado "ADMIN"."TABLAPARTES"                       5.984 KB
+.  estimado "ADMIN"."PARTICIPANTE"                      5.574 KB
+.  estimado "ADMIN"."ADMINISTRADOR"                     5.533 KB
+.  estimado "ADMIN"."COMPRADOR"                         5.474 KB
+.  estimado "ADMIN"."VENDEDOR"                          5.474 KB
+.  estimado "ADMIN"."TIPOTELEFONO"                      5.472 KB
+.  estimado "ADMIN"."HISTORIALCOMPRADOR"                4.683 KB
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/STATISTICS/TABLE_STATISTICS
+Procesando el tipo de objeto DATABASE_EXPORT/STATISTICS/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/PRE_SYSTEM_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/PRE_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/TABLESPACE
+Procesando el tipo de objeto DATABASE_EXPORT/PROFILE
+Procesando el tipo de objeto DATABASE_EXPORT/RADM_FPTM
+Procesando el tipo de objeto DATABASE_EXPORT/GRANT/SYSTEM_GRANT/PROC_SYSTEM_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/ROLE_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/DEFAULT_ROLE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/ON_USER_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLESPACE_QUOTA
+Procesando el tipo de objeto DATABASE_EXPORT/RESOURCE_COST
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/DB_LINK
+Procesando el tipo de objeto DATABASE_EXPORT/TRUSTED_DB_LINK
+Procesando el tipo de objeto DATABASE_EXPORT/DIRECTORY/DIRECTORY
+Procesando el tipo de objeto DATABASE_EXPORT/DIRECTORY/GRANT/OWNER_GRANT/OBJECT_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TYPE/TYPE_SPEC
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/PRE_SYSTEM_ACTIONS/PROCACT_SYSTEM
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/PROCOBJ
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/POST_SYSTEM_ACTIONS/PROCACT_SYSTEM
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/PROCACT_SCHEMA
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_OPTIONS/VIEWS_AS_TABLES/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/VIEWS_AS_TABLES/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/COMMENT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/IDENTITY_COLUMN
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/PROCEDURE/PROCEDURE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/PROCEDURE/ALTER_PROCEDURE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TYPE/TYPE_BODY
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/INDEX
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/CONSTRAINT/CONSTRAINT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/CONSTRAINT/REF_CONSTRAINT
+Procesando el tipo de objeto DATABASE_EXPORT/FINAL_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/AUDIT_UNIFIED/AUDIT_POLICY_ENABLE
+Procesando el tipo de objeto DATABASE_EXPORT/POST_SYSTEM_IMPCALLOUT/MARKER
+. . "SYS"."KU$_USER_MAPPING_VIEW"               5.257 KB      37 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P181"           18.17 KB      97 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P317"           18.60 KB     104 filas exportadas
+. . "SYSTEM"."REDO_DB"                          7.257 KB       1 filas exportadas
+. . "WMSYS"."WM$WORKSPACES_TABLE$"              5.968 KB       1 filas exportadas
+. . "WMSYS"."WM$HINT_TABLE$"                    6.007 KB      97 filas exportadas
+. . "LBACSYS"."OLS$INSTALLATIONS"               5.195 KB       2 filas exportadas
+. . "WMSYS"."WM$WORKSPACE_PRIV_TABLE$"          5.187 KB      11 filas exportadas
+. . "SYS"."DAM_CONFIG_PARAM$"                   5.125 KB      14 filas exportadas
+. . "SYS"."TSDP_SUBPOL$"                        4.984 KB       1 filas exportadas
+. . "WMSYS"."WM$NEXTVER_TABLE$"                 5.007 KB       1 filas exportadas
+. . "LBACSYS"."OLS$PROPS"                       5.148 KB       5 filas exportadas
+. . "WMSYS"."WM$ENV_VARS$"                      4.968 KB       3 filas exportadas
+. . "SYS"."TSDP_PARAMETER$"                     4.921 KB       1 filas exportadas
+. . "SYS"."TSDP_POLICY$"                        4.882 KB       1 filas exportadas
+. . "WMSYS"."WM$VERSION_HIERARCHY_TABLE$"       4.953 KB       1 filas exportadas
+. . "WMSYS"."WM$EVENTS_INFO$"                   4.960 KB      12 filas exportadas
+. . "LBACSYS"."OLS$AUDIT_ACTIONS"               5.015 KB       8 filas exportadas
+. . "LBACSYS"."OLS$DIP_EVENTS"                  4.843 KB       2 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"AUD_UNIFIED_P0"         0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$AUDIT"                           0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$COMPARTMENTS"                    0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$DIP_DEBUG"                       0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$GROUPS"                          0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$LAB"                             0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$LEVELS"                          0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POL"                             0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLICY_ADMIN"                    0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLS"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLT"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROFILE"                         0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROFILES"                        0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROG"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$SESSINFO"                        0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_COMPARTMENTS"               0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_GROUPS"                     0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_LEVELS"                     0 KB       0 filas exportadas
+. . "SYS"."AUD$"                                    0 KB       0 filas exportadas
+. . "SYS"."DAM_CLEANUP_EVENTS$"                     0 KB       0 filas exportadas
+. . "SYS"."DAM_CLEANUP_JOBS$"                       0 KB       0 filas exportadas
+. . "SYS"."TSDP_ASSOCIATION$"                       0 KB       0 filas exportadas
+. . "SYS"."TSDP_CONDITION$"                         0 KB       0 filas exportadas
+. . "SYS"."TSDP_FEATURE_POLICY$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_PROTECTION$"                        0 KB       0 filas exportadas
+. . "SYS"."TSDP_SENSITIVE_DATA$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_SENSITIVE_TYPE$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_SOURCE$"                            0 KB       0 filas exportadas
+. . "SYSTEM"."REDO_LOG"                             0 KB       0 filas exportadas
+. . "WMSYS"."WM$BATCH_COMPRESSIBLE_TABLES$"         0 KB       0 filas exportadas
+. . "WMSYS"."WM$CONS_COLUMNS$"                      0 KB       0 filas exportadas
+. . "WMSYS"."WM$CONSTRAINTS_TABLE$"                 0 KB       0 filas exportadas
+. . "WMSYS"."WM$LOCKROWS_INFO$"                     0 KB       0 filas exportadas
+. . "WMSYS"."WM$MODIFIED_TABLES$"                   0 KB       0 filas exportadas
+. . "WMSYS"."WM$MP_GRAPH_WORKSPACES_TABLE$"         0 KB       0 filas exportadas
+. . "WMSYS"."WM$MP_PARENT_WORKSPACES_TABLE$"        0 KB       0 filas exportadas
+. . "WMSYS"."WM$NESTED_COLUMNS_TABLE$"              0 KB       0 filas exportadas
+. . "WMSYS"."WM$RESOLVE_WORKSPACES_TABLE$"          0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_LOCKING_TABLE$"                 0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_TABLE$"                         0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_TRIGGERS_TABLE$"                0 KB       0 filas exportadas
+. . "WMSYS"."WM$UDTRIG_DISPATCH_PROCS$"             0 KB       0 filas exportadas
+. . "WMSYS"."WM$UDTRIG_INFO$"                       0 KB       0 filas exportadas
+. . "WMSYS"."WM$VERSION_TABLE$"                     0 KB       0 filas exportadas
+. . "WMSYS"."WM$VT_ERRORS_TABLE$"                   0 KB       0 filas exportadas
+. . "WMSYS"."WM$WORKSPACE_SAVEPOINTS_TABLE$"        0 KB       0 filas exportadas
+. . "MDSYS"."RDF_PARAM$"                        5.164 KB       3 filas exportadas
+. . "SYS"."AUDTAB$TBS$FOR_EXPORT"               4.921 KB       2 filas exportadas
+. . "SYS"."DBA_SENSITIVE_DATA"                      0 KB       0 filas exportadas
+. . "SYS"."DBA_TSDP_POLICY_PROTECTION"              0 KB       0 filas exportadas
+. . "SYS"."FGA_LOG$FOR_EXPORT"                      0 KB       0 filas exportadas
+. . "SYS"."NACL$_ACE_EXP"                           0 KB       0 filas exportadas
+. . "SYS"."NACL$_HOST_EXP"                      5.203 KB       2 filas exportadas
+. . "SYS"."NACL$_WALLET_EXP"                        0 KB       0 filas exportadas
+. . "SYS"."SQL$_DATAPUMP"                           0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$AUXDATA_DATAPUMP"                 0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$DATA_DATAPUMP"                    0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$_DATAPUMP"                        0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$PLAN_DATAPUMP"                    0 KB       0 filas exportadas
+. . "SYS"."SQL$TEXT_DATAPUMP"                       0 KB       0 filas exportadas
+. . "SYSTEM"."SCHEDULER_JOB_ARGS"                   0 KB       0 filas exportadas
+. . "SYSTEM"."SCHEDULER_PROGRAM_ARGS"               0 KB       0 filas exportadas
+. . "WMSYS"."WM$EXP_MAP"                        5.281 KB       3 filas exportadas
+. . "WMSYS"."WM$METADATA_MAP"                       0 KB       0 filas exportadas
+. . "ADMIN"."SUBCATEGORIA"                      10.78 KB     447 filas exportadas
+. . "ADMIN"."ITEM"                              6.992 KB      32 filas exportadas
+. . "ADMIN"."SUBASTA"                           5.656 KB       5 filas exportadas
+. . "ADMIN"."USUARIO"                           6.062 KB      17 filas exportadas
+. . "ADMIN"."COMENTARIO"                        5.296 KB       1 filas exportadas
+. . "ADMIN"."TABLACOMPONENTES"                  5.953 KB       3 filas exportadas
+. . "ADMIN"."PUJA"                              5.148 KB       4 filas exportadas
+. . "ADMIN"."TELEFONO"                          5.265 KB      25 filas exportadas
+. . "ADMIN"."CATEGORIA"                         5.390 KB      35 filas exportadas
+. . "ADMIN"."TABLAPARTES"                       6.140 KB       5 filas exportadas
+. . "ADMIN"."PARTICIPANTE"                      4.859 KB      10 filas exportadas
+. . "ADMIN"."ADMINISTRADOR"                     4.882 KB       7 filas exportadas
+. . "ADMIN"."COMPRADOR"                         4.906 KB       8 filas exportadas
+. . "ADMIN"."VENDEDOR"                          4.882 KB       8 filas exportadas
+. . "ADMIN"."TIPOTELEFONO"                      4.859 KB       4 filas exportadas
+. . "ADMIN"."HISTORIALCOMPRADOR"                    0 KB       0 filas exportadas
+La tabla maestra "ADMIN"."EXP_SD_544-11_29_53" se ha cargado/descargado correctamente
+******************************************************************************
+El juego de archivos de volcado para ADMIN.EXP_SD_544-11_29_53 es:
+  E:\ARCHIVOSTEC\QUINTOSEMESTRE\BASES\PROYECTO-I-BASES-II\ORACLEBACKUP\EXPDAT01-11_31_07.DMP
+El trabajo "ADMIN"."EXP_SD_544-11_29_53" ha terminado correctamente en Vie Abr 16 11:32:49 2021 elapsed 0 00:01:44
