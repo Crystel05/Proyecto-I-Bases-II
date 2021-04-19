@@ -1,22 +1,21 @@
 CREATE OR REPLACE FUNCTION public.mostrarsubastasactivas(
 	)
-    RETURNS TABLE(nombreitem character varying, fechafinalD timestamp without time zone, monto numeric, 
-				  fotoi character varying, descr character varying) 
+    RETURNS TABLE(subastaId int, nombreitem character varying, fechafinalD timestamp without time zone, monto numeric) 
     LANGUAGE 'plpgsql'
 
 AS $BODY$
 DECLARE 
 dato RECORD;
 BEGIN
+
 	FOR dato IN 
-	SELECT nombre, fechafinal, "mejorMonto", foto, descripcion, precioinicial
+	SELECT subasta."ID" as IdSubs, nombre, fechafinal, "mejorMonto", precioinicial
 	FROM subasta
 	INNER JOIN item on subasta.itemid = item."ID"
 	WHERE subasta.activa = TRUE LOOP
 		nombreitem := dato.nombre;
 		fechafinalD := dato.fechafinal;
-		fotoi := dato.foto;
-		descr := dato.descripcion;
+		subastaId := dato.IdSubs;
 	
 		IF dato."mejorMonto" = 0
 		THEN
@@ -29,5 +28,3 @@ BEGIN
 
 END;
 $BODY$;
-
-

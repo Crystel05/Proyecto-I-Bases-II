@@ -3,7 +3,9 @@ import java.util.Date;
 
 public class Subasta {
 
+    private int ID;
     private String vendedor;
+    private String comprador;
     private String envio;
     private float precioIni;
     private float mejorMonto;
@@ -25,6 +27,22 @@ public class Subasta {
     }
 
     public Subasta() {
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getNomIt() {
