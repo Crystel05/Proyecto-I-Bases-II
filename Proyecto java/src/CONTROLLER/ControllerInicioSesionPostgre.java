@@ -3,9 +3,9 @@ package CONTROLLER;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ControllerInicioSesion {
+public class ControllerInicioSesionPostgre {
 
-    public ControllerInicioSesion() {}
+    public ControllerInicioSesionPostgre() {}
 
     public int iniciarSesion(boolean esAdmin, String alias, String contrasena){
         int codigoExito = 0;
@@ -41,10 +41,4 @@ public class ControllerInicioSesion {
         return codigoExito;
     }
 
-//    public static void main(String[] args){
-//        ControllerInicioSesion controllerInicioSesion = new ControllerInicioSesion();
-//        int sirve;
-//        sirve = controllerInicioSesion.iniciarSesion(false, "Peter", "gatoFeliz12");
-//        System.out.println(sirve);
-//    }
 }

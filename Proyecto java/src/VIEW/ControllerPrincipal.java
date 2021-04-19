@@ -420,6 +420,8 @@ public class ControllerPrincipal {
         ObservableList<String> nombres = FXCollections.observableArrayList(GUI.nombreSubastas());
         subastasHistPCB.setItems(nombres);
 
+        System.out.println("AQUI: " + GUI.getSubastasActivas());
+
         subastasHistPCB.setValue("No seleccionado");
         ObservableList<Puja> nada = FXCollections.observableArrayList();
         TpujasXsubasta.setItems(nada);
@@ -453,6 +455,7 @@ public class ControllerPrincipal {
     @FXML
      public void subastasPorVendedor(ActionEvent event) {
 
+        estrellas.clear();
         estrellas.add(estrella1); estrellas.add(estrella2); estrellas.add(estrella3); estrellas.add(estrella4); estrellas.add(estrella5);
 
         for(ImageView estrella: estrellas){
@@ -689,6 +692,7 @@ public class ControllerPrincipal {
                 for(Telefono telefono: telefonos){
                     GUI.agregarTelefono(aliasTF.getText(), paswPF.getText(), telefono.getNumero(), telefono.getTipo());
                 }
+                telefonos.clear();
                 aliasTF.clear();
                 paswPF.clear();
                 cedTF.clear();
@@ -844,10 +848,15 @@ public class ControllerPrincipal {
             docIE.setText(usuario.getDocIdent());
             nombreE.setText(usuario.getNombreApellidos());
             dirE.setText(usuario.getDireccion());
+
+            if(!tipoAgregar.getSelectionModel().isEmpty() && !numeroAgregar.getText().isEmpty()){
+                telefonos.add(new Telefono(Integer.parseInt(numeroAgregar.getText()), tipoAgregar.getValue()));
+            }
+
             for(Telefono tel: telefonos){
                 GUI.agregarTelefono(usuario.getAlias(), usuario.getContrasenna(), tel.getNumero(), tel.getTipo());
             }
-
+            telefonos.clear();
             editarExR.setSelected(false);
             agregarR.setSelected(false);
             editarTelEx.setVisible(false);
@@ -948,6 +957,7 @@ public class ControllerPrincipal {
             FileInputStream fileInputStream = new FileInputStream(subasta.getItem().getPathFoto());
             fotoSuAct.setImage(new Image(fileInputStream));
             nombrePSA.setText(subasta.getComprador());
+            montoSA.setText(String.valueOf(subasta.getMejorMonto()));
 
         }
 
@@ -972,6 +982,10 @@ public class ControllerPrincipal {
 
         tablaCXCpanel.setVisible(true);
         comentarioCXCPanel.setVisible(false);
+
+        for(ImageView estrella: estrellas){
+            estrella.setVisible(false);
+        }
     }
 
     @FXML
@@ -1013,6 +1027,9 @@ public class ControllerPrincipal {
 
         tablaSubsVenPanel.setVisible(true);
         comentarioSXVPanel.setVisible(false);
+        for(ImageView estrella: estrellas){
+            estrella.setVisible(false);
+        }
     }
 
     @FXML
@@ -1125,6 +1142,9 @@ public class ControllerPrincipal {
         si.setVisible(false);
         no.setVisible(false);
         detallesPa.setDisable(true);
+
+        estrellas.clear();
+
         estrellas.add(es1);
         estrellas.add(es2);
         estrellas.add(es3);
@@ -1287,10 +1307,11 @@ public class ControllerPrincipal {
         labelComprador.setVisible(false);
         si.setVisible(false);
         no.setVisible(false);
-        susSubastas = GUI.subastasXvendedor("964736"); //GUI.devolverCedulaUser()
+
+        susSubastas = GUI.subastasVentas();
         ArrayList<String> nombresItems = new ArrayList<>();
         for(Subasta subasta: susSubastas){
-            nombresItems.add(subasta.getNomIt());
+            nombresItems.add(subasta.getItem().getNombre());
         }
         ObservableList<String> subasItems = FXCollections.observableArrayList(nombresItems);
         subastasCB.setItems(subasItems);
@@ -1304,10 +1325,10 @@ public class ControllerPrincipal {
         si.setVisible(true);
         no.setVisible(true);
 
-        susSubastas = GUI.llenarTablaComprasComprador("314597"); //GUI.devolverCedulaUser()
+        susSubastas = GUI.subastasCompras();
         ArrayList<String> nombresItems = new ArrayList<>();
         for(Subasta subasta: susSubastas){
-            nombresItems.add(subasta.getNomIt());
+            nombresItems.add(subasta.getItem().getNombre());
         }
         ObservableList<String> subasItems = FXCollections.observableArrayList(nombresItems);
         subastasCB.setItems(subasItems);
@@ -1319,14 +1340,20 @@ public class ControllerPrincipal {
             detallesPa.setDisable(false);
             Subasta subasta = new Subasta();
             for(Subasta s: susSubastas){
-                if(s.getNomIt().equals(subastasCB.getValue()))
+                if(s.getItem().getNombre().equals(subastasCB.getValue()))
                     subasta = s;
             }
+
+            System.out.println(subasta.getEnvio());
+            System.out.println(subasta.getItem().getDetalles());
+            System.out.println(subasta.getItem().getPathFoto());
             descpSubastas.setText(subasta.getItem().getDetalles());
             FileInputStream fileInputStream = new FileInputStream(subasta.getItem().getPathFoto());
             fotoSubastas.setImage(new Image(fileInputStream));
             entregaSubasta.setText(subasta.getEnvio());
 
+           // src/VIEW/FOTOS_POSTGRESQL/poema.jpg
+            // src/VIEW/FOTOS_POSTGRESQL/ropaGato.jpg
         }
     }
 
@@ -1388,9 +1415,5 @@ public class ControllerPrincipal {
         }
         return false;
     }
-
-
-
-
 
 }
