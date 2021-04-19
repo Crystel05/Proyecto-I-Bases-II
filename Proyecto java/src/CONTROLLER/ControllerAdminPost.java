@@ -241,8 +241,8 @@ public class ControllerAdminPost {
         return usuarios;
     }
 
-    public ArrayList<tablaComprasXcomprador> comprasXcomprador(String ident){
-        ArrayList<tablaComprasXcomprador> compras = new ArrayList<>();
+    public ArrayList<Subasta> comprasXcomprador(String ident){
+        ArrayList<Subasta> compras = new ArrayList<>();
 
         try {
             String llamadaFuncion = "SELECT * FROM comprasxcomprador(?)";
@@ -253,9 +253,20 @@ public class ControllerAdminPost {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                tablaComprasXcomprador item = new tablaComprasXcomprador(resultSet.getString(1),
-                        resultSet.getBigDecimal(2), resultSet.getBigDecimal(3), resultSet.getTimestamp(4));
-                compras.add(item);
+                Subasta subasta = new Subasta();
+                subasta.setNomIt(resultSet.getString(1));
+                subasta.setPrecioIni(resultSet.getFloat(2));
+                subasta.setMejorMonto(resultSet.getFloat(3));
+                subasta.setFechaInicio(resultSet.getTimestamp(4));
+                subasta.setVendedor(resultSet.getString(5));
+                Comentario comentario = new Comentario(resultSet.getString(6), resultSet.getInt(7));
+                subasta.setComentario(comentario);
+                Item item = new Item();
+                item.setDetalles(resultSet.getString(8));
+                item.setPathFoto(resultSet.getString(10));
+                subasta.setItem(item);
+                subasta.setEnvio(resultSet.getString(9));
+                compras.add(subasta);
             }
 
         }
@@ -460,6 +471,8 @@ public class ControllerAdminPost {
             statement.setString(1, docIdent);
 
             ResultSet resultSet = statement.executeQuery();
+
+
             while (resultSet.next()) {
                 Subasta subasta = new Subasta();
                 Comentario comentario = new Comentario(resultSet.getString(1), resultSet.getInt(2));
@@ -469,6 +482,11 @@ public class ControllerAdminPost {
                 subasta.setPrecioIni(Float.parseFloat(String.valueOf(resultSet.getBigDecimal(5))));
                 subasta.setMejorMonto(Float.parseFloat(String.valueOf(resultSet.getBigDecimal(6))));
                 subasta.setComprador(resultSet.getString(7));
+                Item item = new Item();
+                item.setDetalles(resultSet.getString(8));
+                item.setPathFoto(resultSet.getString(10));
+                subasta.setItem(item);
+                subasta.setEnvio(resultSet.getString(9));
                 subastas.add(subasta);
             }
 
@@ -481,6 +499,32 @@ public class ControllerAdminPost {
         return subastas;
     }
 
+    public String nombreVendedor(String docIdent){
+
+        String nombre = "";
+
+        try {
+            String llamadaFuncion = "SELECT * FROM nombrevendedor(?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, docIdent);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                nombre = resultSet.getString(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return nombre;
+    }
 
 //    public ArrayList<Subasta> subastasActivasTotal(){
 //        ArrayList<Subasta> subastas = new ArrayList<>();
@@ -635,9 +679,72 @@ public class ControllerAdminPost {
         return subasta;
     }
 
+    public String cedulaUsuario(String alias, String contra){
+
+        String cedula = "";
+
+        try {
+            String llamadaFuncion = "SELECT * FROM devolvercedula(?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, alias);
+            statement.setString(2, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                cedula = resultSet.getString(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return cedula;
+    }
+
+    public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
+                               boolean compra, String nomItem, String alias, String contra){
+
+        int codigo = 0;
+
+        try {
+            String llamadaFuncion = "SELECT * FROM enviarComentario(?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, comentario);
+            statement.setInt(2, puntacion);
+            statement.setBoolean(3, esVendedor);
+            statement.setBoolean(4, compra);
+            statement.setString(5, nomItem);
+            statement.setString(6, alias);
+            statement.setString(7, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                codigo = resultSet.getInt(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+            codigo = 0;
+
+        }
+        return codigo;
+    }
+
 
 //    public static void main(String[] args) throws ParseException {
 //        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
-//        System.out.println(controllerAdmin.detallesSubasta(1));
+//        System.out.println(controllerAdmin.subastasXvendedor("123457"));
 //    }
 }

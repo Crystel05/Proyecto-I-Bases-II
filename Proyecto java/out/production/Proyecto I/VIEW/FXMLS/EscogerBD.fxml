@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="404.0" style="-fx-background-color: LIGHTCYAN;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ControllerVenPrin">
    <children>
-      <Label layoutX="67.0" layoutY="38.0" text="Escoger Base de Datos" textFill="#255bd0">
+      <Label layoutX="44.0" layoutY="45.0" text="ESCOGER BASE DATOS" textFill="#255bd0">
          <font>
             <Font name="Bodoni MT Black" size="25.0" />
          </font>

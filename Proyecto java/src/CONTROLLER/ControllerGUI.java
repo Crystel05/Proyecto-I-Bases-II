@@ -170,8 +170,8 @@ public class ControllerGUI {
         return cedulas;
     }
 
-    public ArrayList<tablaComprasXcomprador> llenarTablaComprasComprador(String indent){
-        ArrayList<tablaComprasXcomprador> compras;
+    public ArrayList<Subasta> llenarTablaComprasComprador(String indent){
+        ArrayList<Subasta> compras;
         if(baseDatoUsada){
             compras = controllerAdminPost.comprasXcomprador(indent);
         }
@@ -333,5 +333,41 @@ public class ControllerGUI {
         }
 
         return subastas;
+    }
+
+    public String nombreVend (String docIdent){
+        String nom;
+        if (baseDatoUsada){
+            nom = controllerAdminPost.nombreVendedor(docIdent);
+        }
+        else {
+            nom = "";
+        }
+        return nom;
+    }
+
+    public String devolverCedulaUser(){
+        String ced;
+        if (baseDatoUsada){
+            ced = controllerAdminPost.cedulaUsuario(alias, contrasena);
+        }
+        else {
+            ced = "";
+        }
+        return ced;
+    }
+
+    public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
+                               boolean compra, String nomItem){
+        int cod;
+
+        if(baseDatoUsada){
+            cod = controllerAdminPost.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
+        }
+        else{
+            cod = 0;
+        }
+
+        return cod;
     }
 }
