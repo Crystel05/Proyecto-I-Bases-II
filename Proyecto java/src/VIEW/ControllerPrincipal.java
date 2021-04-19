@@ -16,28 +16,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.Guard;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ControllerPrincipal {
 
     public ControllerPrincipal() {}
-//    private static ControllerPrincipal controllerPrincipal;
-//
-//
-//    public static ControllerPrincipal getInstance(){
-//        if(controllerPrincipal == null){
-//            controllerPrincipal = new ControllerPrincipal();
-//        }
-//        return controllerPrincipal;
-//    }
 
     //Atributos FX
 
@@ -91,6 +83,7 @@ public class ControllerPrincipal {
     @FXML private RadioButton adminModR;
     @FXML private RadioButton partModR;
     @FXML private ComboBox<String> usuariosCB;
+    @FXML private Label nombreEditar;
     @FXML private Pane editarDatosP;
     @FXML private TextField aliasEd;
     @FXML private TextField contE;
@@ -101,8 +94,8 @@ public class ControllerPrincipal {
     @FXML private RadioButton agregarR;
     @FXML private RadioButton editarExR;
     @FXML private Pane editarTelEx;
-    @FXML private ComboBox<String> numeros;
-    @FXML private ComboBox<Tipo> tipoEd;
+    @FXML private ComboBox<Integer> numeros;
+    @FXML private ComboBox<String> tipoEd;
     @FXML private TextField numeroETF;
     @FXML private Pane agregarNTel;
     @FXML private ComboBox<String> tipoAgregar;
@@ -112,6 +105,10 @@ public class ControllerPrincipal {
 
     @FXML private ComboBox<String> categoriasCB;
     @FXML private ComboBox<String> subCategoriasCB;
+    @FXML private TableView<Subasta> tablaSubastasAc;
+    @FXML private TableColumn<Subasta, String> itemSA;
+    @FXML private TableColumn<Subasta, Float> mejorPujaSA;
+    @FXML private TableColumn<Subasta,Date> fechaFinSa;
 
     //->>> Historial pujas x subasta
     @FXML private ComboBox<String> subastasHistPCB;
@@ -128,6 +125,9 @@ public class ControllerPrincipal {
     @FXML private TableColumn<tablaComprasXcomprador,Date> CfechaCo;
     @FXML private Label nombreUsuarioCom;
 
+    //->>> Historial subastas x vendedor
+    @FXML private ComboBox<String> vendedores;
+
     //->>Atributos Participante
 
     @FXML private Label titPart;
@@ -143,6 +143,17 @@ public class ControllerPrincipal {
     @FXML private TextArea detallesIP;
     @FXML private TextField montoPujar;
 
+    //->>> Iniciar subasta
+    @FXML private TextField nombreItemIS;
+    @FXML private TextArea descrIS;
+    @FXML private ComboBox<String> categoriaIS;
+    @FXML private ComboBox<String> subCateIS;
+    @FXML private TextField precioInicialIS;
+    @FXML private DatePicker fechaFinIS;
+    @FXML private TextField horaFinIS;
+    @FXML private TextArea entregaIS;
+    @FXML private TextField montoMinimo;
+
     //->>>Pujar por ítem
 
     @FXML private ComboBox<String> subastasPujarCB;
@@ -153,7 +164,12 @@ public class ControllerPrincipal {
     private ArrayList<Telefono> telefonos = new ArrayList<>();
     private ControllerGUI GUI = ControllerGUI.getInstance();
     private boolean esAdmin;
-    ArrayList<String> ceds = new ArrayList<>();
+    private ArrayList<String> ceds = new ArrayList<>();
+    private String cedulaEditar;
+    private ArrayList<String> cedsE = new ArrayList<>();
+    private ArrayList<Usuario> usuariosE;
+    private String path;
+
 
     //Métodos FX
 
@@ -276,6 +292,22 @@ public class ControllerPrincipal {
     @FXML
     public void subastasActivas(ActionEvent event){
 
+        categoriasCB.setValue("No seleccionado");
+
+        ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
+        ObservableList<Subasta> subastasA = FXCollections.observableArrayList(GUI.subastasTablaSin());
+        System.out.println(subastasA.size());
+
+        categoriasCB.setItems(categorias);
+        subCategoriasCB.setValue("No seleccionado");
+
+        itemSA.setCellValueFactory(new PropertyValueFactory<>("nomIt"));
+        fechaFinSa.setCellValueFactory(new PropertyValueFactory<>("fachaFinal"));
+        mejorPujaSA.setCellValueFactory(new PropertyValueFactory<>("mejorMonto"));
+        tablaSubastasAc.setItems(subastasA);
+
+        tablaSubastasAc.setItems(subastasA);
+
         registrarUP.setVisible(false);
         flecha1.setVisible(false);
 
@@ -335,6 +367,13 @@ public class ControllerPrincipal {
 
     @FXML
     public void subastasPorVendedor(ActionEvent event){
+
+        ArrayList<String> ceds = new ArrayList<>();
+        for(Usuario u: GUI.usuariosMostrar()){
+            ceds.add(u.getDocIdent());
+        }
+        ObservableList<String> vend = FXCollections.observableArrayList(ceds);
+        vendedores.setItems(vend);
 
         registrarUP.setVisible(false);
         flecha1.setVisible(false);
@@ -437,19 +476,19 @@ public class ControllerPrincipal {
         editarDatosP.setVisible(false);
         adminModR.setSelected(false);
         partModR.setSelected(false);
+        usuariosCB.setValue("No seleccionado");
 
         aliasEd.clear();
         contE.clear();
         docIE.clear();
         nombreE.clear();
-        apellidosE.clear();
         dirE.clear();
         agregarNTel.setVisible(false);
         editarTelEx.setVisible(false);
         editarExR.setSelected(false);
         agregarR.setSelected(false);
-        numeros.setValue("");
-        tipoEd.setValue(Tipo.Ninguno);
+        numeros.setValue(0);
+        tipoEd.setValue("Ninguno");
         numeroETF.clear();
         tipoAgregar.setValue("Ninguno");
         numeroAgregar.clear();
@@ -563,32 +602,56 @@ public class ControllerPrincipal {
 
     @FXML
     public void escoUnoAm(ActionEvent event){
+        usuariosE = GUI.mostrarUsuariosEditar(true);
+        for(Usuario u: usuariosE){
+            cedsE.add(u.getDocIdent());
+        }
+
+        ObservableList<String> cedulas = FXCollections.observableArrayList(cedsE);
+        usuariosCB.setItems(cedulas);
         partModR.setSelected(false);
-        //llenar combobox de usuarios BD
     }
 
     @FXML
     public void escoUnoPm(ActionEvent event){
+        usuariosE = GUI.mostrarUsuariosEditar(false);
+        for(Usuario u: usuariosE){
+            cedsE.add(u.getDocIdent());
+        }
+
+        ObservableList<String> cedulas = FXCollections.observableArrayList(cedsE);
+        usuariosCB.setItems(cedulas);
+
         adminModR.setSelected(false);
         //llenar combobox de usuarios BD
     }
 
     @FXML
     public void editar(ActionEvent event){
-//        if(!usuariosCB.getSelectionModel().isEmpty())
-        editarDatosP.setVisible(true);
-        selecionar1P.setVisible(false);
+        if(!usuariosCB.getSelectionModel().isEmpty()) {
+            editarDatosP.setVisible(true);
+            selecionar1P.setVisible(false);
+
+            Usuario usuario = GUI.mostrarInfoEd(cedulaEditar);
+            aliasEd.setText(usuario.getAlias());
+            contE.setText(usuario.getContrasenna());
+            docIE.setText(usuario.getDocIdent());
+            nombreE.setText(usuario.getNombreApellidos());
+            dirE.setText(usuario.getDireccion());
+        }
 
     }
 
     @FXML
     public void editarExistente(ActionEvent event){
-        ObservableList<Tipo> items = FXCollections.observableArrayList(Tipo.values());
+        ObservableList<String> items = FXCollections.observableArrayList(GUI.cargarTipos());
         tipoEd.setItems(items);
         agregarR.setSelected(false);
-        numeros.setValue("");
-        tipoEd.setValue(Tipo.Ninguno);
+        numeros.setValue(0);
+        tipoEd.setValue("Ninguno");
         numeroETF.clear();
+        ObservableList<Integer> nums = FXCollections.observableArrayList(GUI.mostrarTelsUs(cedulaEditar));
+        numeros.setItems(nums);
         if(editarExR.isSelected() || agregarR.isSelected()) {
             editarTelEx.setVisible(true);
             agregarNTel.setVisible(false);
@@ -617,11 +680,21 @@ public class ControllerPrincipal {
     @FXML
     public void modificar(ActionEvent event) throws IOException {
         String nombreFXML;
-        if(!numeroETF.getText().isEmpty() && !tipoEd.getSelectionModel().isEmpty()) { // && !numeros.getSelectionModel().isEmpty()
-            nombreFXML = "FXMLS/Aviso3.fxml";
-            tipoEd.setValue(Tipo.Ninguno);
-            numeros.setValue("Ninguno");
-            numeroETF.clear();
+        if(!numeroETF.getText().isEmpty() && !tipoEd.getSelectionModel().isEmpty() && !numeros.getSelectionModel().isEmpty()) { //
+
+            int cod = GUI.modificarTel(numeros.getValue(), Integer.parseInt(numeroETF.getText()), tipoEd.getValue());
+
+            if(cod != 1){
+                nombreFXML = "FXMLS/Error8.fxml";
+            }
+
+            else{
+                nombreFXML = "FXMLS/Aviso3.fxml";
+                tipoEd.setValue("Ninguno");
+                numeros.setValue(0);
+                numeroETF.clear();
+            }
+
         }
         else{
             nombreFXML = "FXMLS/Error3.fxml";
@@ -636,28 +709,43 @@ public class ControllerPrincipal {
 
     @FXML
     public void guardarCambios(ActionEvent event) throws IOException {
-        aliasEd.clear();
-        contE.clear();
-        docIE.clear();
-        nombreE.clear();
-        apellidosE.clear();
-        dirE.clear();
-        editarExR.setSelected(false);
-        agregarR.setSelected(false);
-        editarTelEx.setVisible(false);
-        agregarNTel.setVisible(false);
+        String fxml;
+        String ced;
+        ced = docIE.getText();
+        int cod = GUI.modificarUsuario(cedulaEditar, nombreE.getText(), aliasEd.getText(), contE.getText(), docIE.getText(), dirE.getText());
+        if (cod == 1) {
+            Usuario usuario = GUI.mostrarInfoEd(ced);
+            aliasEd.setText(usuario.getAlias());
+            contE.setText(usuario.getContrasenna());
+            docIE.setText(usuario.getDocIdent());
+            nombreE.setText(usuario.getNombreApellidos());
+            dirE.setText(usuario.getDireccion());
+            for(Telefono tel: telefonos){
+                GUI.agregarTelefono(usuario.getAlias(), usuario.getContrasenna(), tel.getNumero(), tel.getTipo());
+            }
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLS/Aviso4.fxml"));
+            editarExR.setSelected(false);
+            agregarR.setSelected(false);
+            editarTelEx.setVisible(false);
+            agregarNTel.setVisible(false);
+            fxml = "FXMLS/Aviso4.fxml";
+        }
+        else{
+            fxml = "FXMLS/Error9.fxml";
+        }
+
+        Parent root = FXMLLoader.load(getClass().getResource(fxml));
         Stage ventana = new Stage();
         ventana.initStyle(StageStyle.TRANSPARENT);
         ventana.setScene(new Scene(root));
         ventana.setResizable(false);
         ventana.show();
     }
+
     @FXML
     public void agregarNuevoT(ActionEvent event) throws IOException {
         String nombreFxml;
-        if(!numeroAgregar.getText().isEmpty()) { //!tipoAgregar.getSelectionModel().isEmpty() &&
+        if(!numeroAgregar.getText().isEmpty() && !tipoAgregar.getSelectionModel().isEmpty()) { //
             int tel = Integer.parseInt(numeroAgregar.getText());
             String tipo = tipoAgregar.getSelectionModel().getSelectedItem();
             telefonos.add(new Telefono(tel, tipo));
@@ -676,13 +764,37 @@ public class ControllerPrincipal {
         ventana.show();
     }
 
-    //Subastas activas
     @FXML
-    public void mostrarSubcategorías(MouseEvent event){
-        ObservableList<String> subcategorias = FXCollections.observableArrayList("oro", "gatos", "hola");
-        String categoria = categoriasCB.getValue();
-        //cosas de bd
-        subCategoriasCB.setItems(subcategorias);
+    public void ponerNombre(MouseEvent event){
+        if(!usuariosCB.getSelectionModel().isEmpty()){
+            String ced = usuariosCB.getValue();
+            Usuario usuario = usuariosE.get(cedsE.indexOf(ced));
+            nombreEditar.setText(usuario.getNombreApellidos());
+            cedulaEditar = ced;
+
+        }
+    }
+
+    //Subastas activas
+
+    @FXML
+    public void mostrarSubCategorias(MouseEvent event){
+        if(!categoriasCB.getSelectionModel().isEmpty()){
+
+            ObservableList<String> subCats = FXCollections.observableArrayList(GUI.subCategorias(categoriasCB.getValue()));
+            subCategoriasCB.setItems(subCats);
+
+            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasCategoria(categoriasCB.getValue()));
+            tablaSubastasAc.setItems(subastas);
+        }
+    }
+
+    @FXML
+    public void llenarTablaSubastasActivas(MouseEvent event){
+        if(!subCategoriasCB.getSelectionModel().isEmpty()) {
+            ObservableList<Subasta> subastas = FXCollections.observableArrayList(GUI.subastasFinal(subCategoriasCB.getValue()));
+            tablaSubastasAc.setItems(subastas);
+        }
     }
 
     //Métodos participante
@@ -722,6 +834,19 @@ public class ControllerPrincipal {
 
     @FXML
     public void iniciarSubasta(ActionEvent event){
+
+        nombreItemIS.clear();
+        descrIS.clear();
+        categoriaIS.setValue("No seleccionado");
+        subCateIS.setValue("No seleccionado");
+        precioInicialIS.clear();
+        horaFinIS.clear();
+        entregaIS.clear();
+        montoMinimo.setText("0");
+
+        ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
+        categoriaIS.setItems(categorias);
+
         iniciarSubastaPanel.setVisible(true);
         flecha1.setVisible(true);
 
@@ -743,6 +868,68 @@ public class ControllerPrincipal {
         comprasCompP.setVisible(false);
         flecha7.setVisible(false);
     }
+
+    //Métodos iniciar subasta
+
+    @FXML
+    public void buscarImagen(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Buscar Imagen");
+
+        Node source = (Node) event.getSource();
+        Stage stageActual = (Stage) source.getScene().getWindow();
+
+        File imgFile = fileChooser.showOpenDialog(stageActual);
+        String[] pathAbsoluto = imgFile.getPath().split("java");
+        path = pathAbsoluto[1];
+    }
+
+    @FXML
+    public void crearSubasta(ActionEvent event) throws IOException {
+        String nombreFxml;
+
+        if(!descrIS.getText().isEmpty() && !subCateIS.getSelectionModel().isEmpty() && !categoriaIS.getSelectionModel().isEmpty()
+                && !fechaFinIS.getValue().equals("") && !horaFinIS.getText().isEmpty() && !entregaIS.getText().isEmpty()) {
+
+            String fecha = fechaFinIS.getValue() + " " + horaFinIS.getText();
+
+
+            int codigo = GUI.iniciarSubasta(nombreItemIS.getText(), descrIS.getText(), path, subCateIS.getValue(), Float.valueOf(precioInicialIS.getText()),
+                    fecha, entregaIS.getText(), Float.parseFloat(montoMinimo.getText()));
+
+            if (codigo == 1) {
+                nombreFxml = "FXMLS/Aviso6.fxml";
+            }
+            else{
+                nombreFxml = "FXMLS/Error10.fxml";
+            }
+
+
+        }
+        else{
+            nombreFxml = "FXMLS/Error3.fxml";
+        }
+
+        Parent root = FXMLLoader.load(getClass().getResource(nombreFxml));
+        Stage ventana = new Stage();
+        ventana.initStyle(StageStyle.TRANSPARENT);
+        ventana.setScene(new Scene(root));
+        ventana.setResizable(false);
+        ventana.show();
+    }
+
+    @FXML
+    public void cargarCategorias(MouseEvent event){
+        ObservableList<String> categorias = FXCollections.observableArrayList(GUI.categorias());
+        categoriaIS.setItems(categorias);
+        if(!categoriaIS.getSelectionModel().isEmpty()){
+            ObservableList<String> subs = FXCollections.observableArrayList(GUI.subCategorias(categoriaIS.getValue()));
+            System.out.println(subs);
+            subCateIS.setItems(subs);
+        }
+
+    }
+
 
     //Métodos pujar
 

@@ -10,6 +10,7 @@ public class Subasta {
     private Date fechaInicio;
     private Date fachaFinal;
     private Item item;
+    private String nomIt;
     private Comentario comentario;
 
     public Subasta(String vendedor, String envio, float precioIni, float mejorMonto, Date fechaInicio, Date fachaFinal, Item item, Comentario comentario) {
@@ -24,6 +25,14 @@ public class Subasta {
     }
 
     public Subasta() {
+    }
+
+    public String getNomIt() {
+        return nomIt;
+    }
+
+    public void setNomIt(String nomIt) {
+        this.nomIt = nomIt;
     }
 
     public String getVendedor() {

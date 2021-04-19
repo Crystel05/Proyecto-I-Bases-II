@@ -11,15 +11,15 @@ public class Usuario {
     private String direccion;
     private ArrayList<Telefono> telefonos;
 
-    public Usuario(String alias, String contrasenna, String docIdent, String nombre, String apellidos, String direccion, ArrayList<Telefono> telefonos) {
+    public Usuario(){};
+
+    public Usuario(String alias, String contrasenna, String docIdent, String nombre, String direccion) {
         this.alias = alias;
         this.contrasenna = contrasenna;
         this.docIdent = docIdent;
         this.nombreApellidos = nombre;
         this.direccion = direccion;
-        this.telefonos = telefonos;
     }
-    public Usuario(){};
 
     public Usuario(String docIdent, String nombreApellidos) {
         this.docIdent = docIdent;

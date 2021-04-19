@@ -5,14 +5,18 @@ import MODEL.Subasta;
 import MODEL.Usuario;
 import MODEL.tablaComprasXcomprador;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ControllerGUI {
 
     public ControllerGUI() {}
     private static ControllerGUI controllerGUI;
 
-    private ControllerAdmin controllerAdmin = new ControllerAdmin();
+    private ControllerAdminPost controllerAdminPost = new ControllerAdminPost();
     private ControllerInicioSesion inicioSesion = new ControllerInicioSesion();
 
     public static ControllerGUI getInstance(){
@@ -58,7 +62,7 @@ public class ControllerGUI {
 
     public void setSubastasActivas() {
         if(baseDatoUsada)
-            this.subastasActivas = controllerAdmin.mostrarSubastasActivas();
+            this.subastasActivas = controllerAdminPost.mostrarSubastasActivas();
         //else
             //oracle lista
     }
@@ -78,7 +82,7 @@ public class ControllerGUI {
     public ArrayList<String> cargarTipos(){
         ArrayList<String> tipos = null;
         if(baseDatoUsada)
-            tipos = controllerAdmin.tipos();
+            tipos = controllerAdminPost.tipos();
         else {
             //oracle llamado de tipos
         }
@@ -89,7 +93,7 @@ public class ControllerGUI {
     public int agregarTelefono(String alias, String contrasena, int numero, String tipo){
         int codigo = 0;
         if (baseDatoUsada){
-            codigo = controllerAdmin.agregarTelefono(alias, contrasena, numero, tipo);
+            codigo = controllerAdminPost.agregarTelefono(alias, contrasena, numero, tipo);
         }
         else{
             //codigo oracle
@@ -101,7 +105,7 @@ public class ControllerGUI {
         int codigo = 0;
 
         if (baseDatoUsada){
-            codigo = controllerAdmin.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion);
+            codigo = controllerAdminPost.registrarUsusuario(esAdmin, alias, contrasena, cedula, nombre, apellidos, direccion);
         }
         else{
             //llamar al método de oracle
@@ -123,7 +127,7 @@ public class ControllerGUI {
     public int pujar(float monto, String itemN){
         int codigo = 0;
         if(baseDatoUsada){
-            codigo = controllerAdmin.pujar(alias, contrasena, monto, itemN);
+            codigo = controllerAdminPost.pujar(alias, contrasena, monto, itemN);
         }
         else {
             //oracle
@@ -134,7 +138,7 @@ public class ControllerGUI {
     public ArrayList<String> nombresSubastas(){
         ArrayList<String> nombres;
         if (baseDatoUsada){
-            nombres = controllerAdmin.nombreSubastas();
+            nombres = controllerAdminPost.nombreSubastas();
         }
         else {
             //oracle
@@ -146,7 +150,7 @@ public class ControllerGUI {
     public ArrayList<Puja> pujasXsubasta(String nombreItem){
         ArrayList<Puja> pujas;
         if(baseDatoUsada){
-            pujas = controllerAdmin.pujasXsubasta(nombreItem);
+            pujas = controllerAdminPost.pujasXsubasta(nombreItem);
         }
         else{
             //oracle
@@ -158,7 +162,7 @@ public class ControllerGUI {
     public ArrayList<Usuario> usuariosMostrar(){
         ArrayList<Usuario> cedulas;
         if(baseDatoUsada){
-            cedulas = controllerAdmin.mostrarUsuarios();
+            cedulas = controllerAdminPost.mostrarUsuarios();
         }
         else{
             cedulas = new ArrayList<>();
@@ -169,11 +173,143 @@ public class ControllerGUI {
     public ArrayList<tablaComprasXcomprador> llenarTablaComprasComprador(String indent){
         ArrayList<tablaComprasXcomprador> compras;
         if(baseDatoUsada){
-            compras = controllerAdmin.comprasXcomprador(indent);
+            compras = controllerAdminPost.comprasXcomprador(indent);
         }
         else{
             compras = new ArrayList<>();
         }
         return compras;
     }
+
+    public ArrayList<Usuario> mostrarUsuariosEditar(boolean esAdmin){
+        ArrayList<Usuario> usuarios;
+
+        if(baseDatoUsada){
+            usuarios = controllerAdminPost.mostrarUsuariosEditar(esAdmin);
+        }
+        else {
+            usuarios = new ArrayList<>();
+        }
+        return usuarios;
+    }
+
+    public Usuario mostrarInfoEd(String ced){
+        Usuario usuario;
+        if (baseDatoUsada){
+            usuario = controllerAdminPost.mostrarInfo(ced);
+        }
+        else{
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public ArrayList<Integer> mostrarTelsUs(String ced){
+        ArrayList<Integer> num;
+        if(baseDatoUsada){
+            num = controllerAdminPost.mostrarTelsU(ced);
+        }
+        else {
+            num = new ArrayList<>();
+        }
+        return num;
+    }
+
+    public Integer modificarTel(int telV, int telN, String tipo){
+        int cod;
+        if(baseDatoUsada){
+            cod = controllerAdminPost.modificarTel(telV, telN, tipo);
+        }
+        else {
+            cod = 0;
+        }
+        return cod;
+    }
+
+    public Integer modificarUsuario(String cedulaVieja, String nombre, String aliasNuevo, String contra, String ced, String dir){
+        int cod = 0;
+        if(baseDatoUsada){
+            cod = controllerAdminPost.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
+        }
+        else {
+            cod = 0;
+        }
+        return cod;
+    }
+
+    public ArrayList<String> categorias () {
+        ArrayList<String> cats;
+
+        if (baseDatoUsada) {
+            cats = controllerAdminPost.categorias();
+        } else {
+            cats = new ArrayList<>();
+        }
+
+        return cats;
+    }
+
+    public ArrayList<String> subCategorias (String categoria) {
+        ArrayList<String> subCats;
+
+        if (baseDatoUsada) {
+            subCats = controllerAdminPost.subCategorias(categoria);
+        } else {
+            subCats = new ArrayList<>();
+        }
+
+        return subCats;
+    }
+
+    public ArrayList<Subasta> subastasTablaSin () {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerAdminPost.subastasActivasTotal();
+        } else {
+            subastas = new ArrayList<>();
+        }
+
+        return subastas;
+    }
+
+    public ArrayList<Subasta> subastasCategoria (String categoria) {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerAdminPost.subastasActivasCategoria(categoria);
+        } else {
+            subastas = new ArrayList<>();
+        }
+
+        return subastas;
+    }
+
+    public ArrayList<Subasta> subastasFinal (String subCategoria) {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerAdminPost.subastasActivasFinal(subCategoria);
+        } else {
+            subastas = new ArrayList<>();
+        }
+
+        return subastas;
+    }
+
+    public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
+                                  String detalles, float monMin){
+        int cod;
+        if(baseDatoUsada){
+            System.out.println(alias);
+            System.out.println(contrasena);
+            cod = controllerAdminPost.iniciarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fechaFin, detalles, alias, contrasena, monMin);
+        }
+        else {
+            cod = 0;
+        }
+        return cod;
+    }
+
+
 }
