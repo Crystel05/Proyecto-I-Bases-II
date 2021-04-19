@@ -16,8 +16,8 @@
     <schema id="5" parent="1" name="CRYSTEL">
       <ObjectId>106</ObjectId>
       <CreatedTimestamp>2021-04-12.09:59:39</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-19.10:25:41</ModifiedTimestamp>
-      <IntrospectionTimestamp>2021-04-19.10:29:18</IntrospectionTimestamp>
+      <ModifiedTimestamp>2021-04-19.11:27:00</ModifiedTimestamp>
+      <IntrospectionTimestamp>2021-04-19.11:27:01</IntrospectionTimestamp>
       <CommentsHash>379602581</CommentsHash>
       <Current>1</Current>
     </schema>
@@ -393,12 +393,10 @@
     </routine>
     <routine id="77" parent="5" name="DEVOLVERCEDULA">
       <ObjectId>75519</ObjectId>
+      <DependsOnIds>7152,75043</DependsOnIds>
       <CreatedTimestamp>2021-04-19.10:21:52</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-19.10:21:52</ModifiedTimestamp>
-      <SourceTextLength>196</SourceTextLength>
-      <Invalid>1</Invalid>
-      <Errors>8:3:PLS-00103: Se ha encontrado el símbolo &quot;end-of-file&quot; cuando se esperaba uno de los siguientes:\n\n   ; &lt;an identifier&gt; &lt;a double-quoted delimited-identifier&gt;\n   current delete exists prior &lt;a single-quoted SQL string&gt;\nEl símbolo &quot;;&quot; ha sido sustituido por &quot;end-of-file&quot; para continuar.\n
-</Errors>
+      <ModifiedTimestamp>2021-04-19.11:27:00</ModifiedTimestamp>
+      <SourceTextLength>197</SourceTextLength>
       <RoutineKind>procedure</RoutineKind>
     </routine>
     <routine id="78" parent="5" name="MODIFICARTELEFONO">
@@ -51467,220 +51465,233 @@ PARTITION_NAME</ColNames>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7438" parent="78" name="ALIASS">
+    <argument id="7438" parent="77" name="ALIS">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7439" parent="78" name="NUMEROANTIGUO">
+    <argument id="7439" parent="77" name="CONTRA">
+      <Position>2</Position>
+      <DataType>VARCHAR2|0s</DataType>
+    </argument>
+    <argument id="7440" parent="77" name="CURSOR">
+      <Position>3</Position>
+      <ArgumentDirection>O</ArgumentDirection>
+      <DataType>REF CURSOR|0s</DataType>
+    </argument>
+    <argument id="7441" parent="78" name="ALIASS">
+      <Position>1</Position>
+      <DataType>VARCHAR2|0s</DataType>
+    </argument>
+    <argument id="7442" parent="78" name="NUMEROANTIGUO">
       <Position>2</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7440" parent="78" name="NUMRO">
+    <argument id="7443" parent="78" name="NUMRO">
       <Position>3</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7441" parent="78" name="TIPOTEL">
+    <argument id="7444" parent="78" name="TIPOTEL">
       <Position>4</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7442" parent="78" name="RETORNO">
+    <argument id="7445" parent="78" name="RETORNO">
       <Position>5</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7443" parent="79" name="ALIASS">
+    <argument id="7446" parent="79" name="ALIASS">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7444" parent="79" name="NOM">
+    <argument id="7447" parent="79" name="NOM">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7445" parent="79" name="CONTRA">
+    <argument id="7448" parent="79" name="CONTRA">
       <Position>3</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7446" parent="79" name="DOCIDEN">
+    <argument id="7449" parent="79" name="DOCIDEN">
       <Position>4</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7447" parent="79" name="DOCIDENVIEJO">
+    <argument id="7450" parent="79" name="DOCIDENVIEJO">
       <Position>5</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7448" parent="79" name="DIRECC">
+    <argument id="7451" parent="79" name="DIRECC">
       <Position>6</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7449" parent="79" name="RESULTADO">
+    <argument id="7452" parent="79" name="RESULTADO">
       <Position>7</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7450" parent="80" name="CURSOR">
+    <argument id="7453" parent="80" name="CURSOR">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7451" parent="81" name="DOCIDEN">
+    <argument id="7454" parent="81" name="DOCIDEN">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7452" parent="81" name="CURSOR">
+    <argument id="7455" parent="81" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7453" parent="82" name="DOCIDENT">
+    <argument id="7456" parent="82" name="DOCIDENT">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7454" parent="82" name="CURSOR">
+    <argument id="7457" parent="82" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7455" parent="83" name="CURSOR">
+    <argument id="7458" parent="83" name="CURSOR">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7456" parent="84" name="CURSOR">
+    <argument id="7459" parent="84" name="CURSOR">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7457" parent="85" name="CURSOR">
+    <argument id="7460" parent="85" name="CURSOR">
       <Position>1</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7458" parent="86" name="CATEGORIA">
+    <argument id="7461" parent="86" name="CATEGORIA">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7459" parent="86" name="CURSOR">
+    <argument id="7462" parent="86" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7460" parent="87" name="CATEGORIA">
+    <argument id="7463" parent="87" name="CATEGORIA">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7461" parent="87" name="CURSOR">
+    <argument id="7464" parent="87" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7462" parent="88" name="CEDULA">
+    <argument id="7465" parent="88" name="CEDULA">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7463" parent="88" name="CURSOR">
+    <argument id="7466" parent="88" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7464" parent="89" name="ALIASP">
+    <argument id="7467" parent="89" name="ALIASP">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7465" parent="89" name="PASW">
+    <argument id="7468" parent="89" name="PASW">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7466" parent="89" name="MONTO">
+    <argument id="7469" parent="89" name="MONTO">
       <Position>3</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7467" parent="89" name="ITEMNOM">
+    <argument id="7470" parent="89" name="ITEMNOM">
       <Position>4</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7468" parent="89" name="RETORNO">
+    <argument id="7471" parent="89" name="RETORNO">
       <Position>5</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7469" parent="90" name="NOMBREITEM">
+    <argument id="7472" parent="90" name="NOMBREITEM">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7470" parent="90" name="CURSOR">
+    <argument id="7473" parent="90" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7471" parent="91" name="ESADMIN">
+    <argument id="7474" parent="91" name="ESADMIN">
       <Position>1</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7472" parent="91" name="ALIAS">
+    <argument id="7475" parent="91" name="ALIAS">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7473" parent="91" name="CONTRA">
+    <argument id="7476" parent="91" name="CONTRA">
       <Position>3</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7474" parent="91" name="CEDULA">
+    <argument id="7477" parent="91" name="CEDULA">
       <Position>4</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7475" parent="91" name="NOMBRE">
+    <argument id="7478" parent="91" name="NOMBRE">
       <Position>5</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7476" parent="91" name="APELLIDO">
+    <argument id="7479" parent="91" name="APELLIDO">
       <Position>6</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7477" parent="91" name="DIRECCION">
+    <argument id="7480" parent="91" name="DIRECCION">
       <Position>7</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7478" parent="91" name="RETORNO">
+    <argument id="7481" parent="91" name="RETORNO">
       <Position>8</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7479" parent="93" name="DOCIDENT">
+    <argument id="7482" parent="93" name="DOCIDENT">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7480" parent="93" name="CURSOR">
+    <argument id="7483" parent="93" name="CURSOR">
       <Position>2</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7481" parent="94" name="ESADMIN">
+    <argument id="7484" parent="94" name="ESADMIN">
       <Position>1</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7482" parent="94" name="ALIASS">
+    <argument id="7485" parent="94" name="ALIASS">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="7483" parent="94" name="CURSOR">
+    <argument id="7486" parent="94" name="CURSOR">
       <Position>3</Position>
       <ArgumentDirection>O</ArgumentDirection>
       <DataType>REF CURSOR|0s</DataType>
     </argument>
-    <argument id="7484" parent="7417">
+    <argument id="7487" parent="7417">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7485" parent="7417" name="SELF">
+    <argument id="7488" parent="7417" name="SELF">
       <Position>1</Position>
       <ArgumentDirection>S</ArgumentDirection>
       <DataType>COMPONENTE|0cs</DataType>
     </argument>
-    <argument id="7486" parent="7418">
+    <argument id="7489" parent="7418">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="7487" parent="7418" name="SELF">
+    <argument id="7490" parent="7418" name="SELF">
       <Position>1</Position>
       <ArgumentDirection>S</ArgumentDirection>
       <DataType>COMPONENTE|0cs</DataType>
