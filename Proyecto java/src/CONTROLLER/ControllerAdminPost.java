@@ -121,13 +121,13 @@ public class ControllerAdminPost {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Subasta subasta = new Subasta();
+                subasta.setID(resultSet.getInt(1));
                 Item item = new Item();
-                item.setNombre(resultSet.getString(1));
-                item.setPathFoto(resultSet.getString(4));
-                item.setDetalles(resultSet.getString(5));
+                item.setNombre(resultSet.getString(2));
                 subasta.setItem(item);
-                subasta.setFachaFinal(resultSet.getTimestamp(2));
-                subasta.setMejorMonto(resultSet.getFloat(3));
+                subasta.setNomIt(resultSet.getString(2));
+                subasta.setFachaFinal(resultSet.getTimestamp(3));
+                subasta.setMejorMonto(resultSet.getFloat(4));
                 subastasActivas.add(subasta);
             }
 
@@ -241,8 +241,8 @@ public class ControllerAdminPost {
         return usuarios;
     }
 
-    public ArrayList<tablaComprasXcomprador> comprasXcomprador(String ident){
-        ArrayList<tablaComprasXcomprador> compras = new ArrayList<>();
+    public ArrayList<Subasta> comprasXcomprador(String ident){
+        ArrayList<Subasta> compras = new ArrayList<>();
 
         try {
             String llamadaFuncion = "SELECT * FROM comprasxcomprador(?)";
@@ -253,9 +253,20 @@ public class ControllerAdminPost {
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                tablaComprasXcomprador item = new tablaComprasXcomprador(resultSet.getString(1),
-                        resultSet.getBigDecimal(2), resultSet.getBigDecimal(3), resultSet.getTimestamp(4));
-                compras.add(item);
+                Subasta subasta = new Subasta();
+                subasta.setNomIt(resultSet.getString(1));
+                subasta.setPrecioIni(resultSet.getFloat(2));
+                subasta.setMejorMonto(resultSet.getFloat(3));
+                subasta.setFechaInicio(resultSet.getTimestamp(4));
+                subasta.setVendedor(resultSet.getString(5));
+                Comentario comentario = new Comentario(resultSet.getString(6), resultSet.getInt(7));
+                subasta.setComentario(comentario);
+                Item item = new Item();
+                item.setDetalles(resultSet.getString(8));
+                item.setPathFoto(resultSet.getString(10));
+                subasta.setItem(item);
+                subasta.setEnvio(resultSet.getString(9));
+                compras.add(subasta);
             }
 
         }
@@ -404,7 +415,6 @@ public class ControllerAdminPost {
         return codigo;
     }
 
-
     public ArrayList<String> categorias(){
         ArrayList<String> categorias = new ArrayList<>();
 
@@ -450,33 +460,99 @@ public class ControllerAdminPost {
         return subCategoria;
     }
 
-    public ArrayList<Subasta> subastasActivasTotal(){
+    public ArrayList<Subasta> subastasXvendedor(String docIdent){
         ArrayList<Subasta> subastas = new ArrayList<>();
 
-        try{
-            String llamadaFuncion = "SELECT * FROM subastasactivastablasinescoger()";
+        try {
+            String llamadaFuncion = "SELECT * FROM subastasporvendedor(?)";
 
             PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
 
+            statement.setString(1, docIdent);
 
             ResultSet resultSet = statement.executeQuery();
+
+
             while (resultSet.next()) {
-
                 Subasta subasta = new Subasta();
-                subasta.setNomIt(resultSet.getString(1));
-                subasta.setFachaFinal(resultSet.getTimestamp(2));
-                subasta.setMejorMonto(resultSet.getFloat(3));
-
+                Comentario comentario = new Comentario(resultSet.getString(1), resultSet.getInt(2));
+                subasta.setComentario(comentario);
+                subasta.setNomIt(resultSet.getString(3));
+                subasta.setFachaFinal(resultSet.getTimestamp(4));
+                subasta.setPrecioIni(Float.parseFloat(String.valueOf(resultSet.getBigDecimal(5))));
+                subasta.setMejorMonto(Float.parseFloat(String.valueOf(resultSet.getBigDecimal(6))));
+                subasta.setComprador(resultSet.getString(7));
+                Item item = new Item();
+                item.setDetalles(resultSet.getString(8));
+                item.setPathFoto(resultSet.getString(10));
+                subasta.setItem(item);
+                subasta.setEnvio(resultSet.getString(9));
                 subastas.add(subasta);
             }
+
         }
         catch (Exception e){
-            System.out.println("No se pudo conectar con la base de datos");
-            e.printStackTrace();
-        }
+            System.out.println("Error de conexión");
+            System.out.println(e);
 
+        }
         return subastas;
     }
+
+    public String nombreVendedor(String docIdent){
+
+        String nombre = "";
+
+        try {
+            String llamadaFuncion = "SELECT * FROM nombrevendedor(?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, docIdent);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                nombre = resultSet.getString(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return nombre;
+    }
+
+//    public ArrayList<Subasta> subastasActivasTotal(){
+//        ArrayList<Subasta> subastas = new ArrayList<>();
+//
+//        try{
+//            String llamadaFuncion = "SELECT * FROM subastasactivastablasinescoger()";
+//
+//            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+//
+//
+//            ResultSet resultSet = statement.executeQuery();
+//            while (resultSet.next()) {
+//
+//                Subasta subasta = new Subasta();
+//                subasta.setNomIt(resultSet.getString(1));
+//                subasta.setFachaFinal(resultSet.getTimestamp(2));
+//                subasta.setMejorMonto(resultSet.getFloat(3));
+//
+//                subastas.add(subasta);
+//            }
+//        }
+//        catch (Exception e){
+//            System.out.println("No se pudo conectar con la base de datos");
+//            e.printStackTrace();
+//        }
+//
+//        return subastas;
+//    }
 
     public ArrayList<Subasta> subastasActivasCategoria(String categoria){
         ArrayList<Subasta> subastas = new ArrayList<>();
@@ -492,9 +568,10 @@ public class ControllerAdminPost {
             while (resultSet.next()) {
 
                 Subasta subasta = new Subasta();
-                subasta.setNomIt(resultSet.getString(1));
-                subasta.setFachaFinal(resultSet.getTimestamp(2));
-                subasta.setMejorMonto(resultSet.getFloat(3));
+                subasta.setID(resultSet.getInt(1));
+                subasta.setNomIt(resultSet.getString(2));
+                subasta.setFachaFinal(resultSet.getTimestamp(3));
+                subasta.setMejorMonto(resultSet.getFloat(4));
 
                 subastas.add(subasta);
             }
@@ -503,27 +580,31 @@ public class ControllerAdminPost {
             System.out.println("No se pudo conectar con la base de datos");
             e.printStackTrace();
         }
-
+        for(Subasta subasta: subastas){
+            System.out.println(subasta);
+        }
         return subastas;
     }
 
-    public ArrayList<Subasta> subastasActivasFinal(String subCategoria){
+    public ArrayList<Subasta> subastasActivasFinal(String categoria, String subCategoria){
         ArrayList<Subasta> subastas = new ArrayList<>();
 
         try{
-            String llamadaFuncion = "SELECT * FROM mostsubporsubcat(?)";
+            String llamadaFuncion = "SELECT * FROM mostsubporsubcat(?, ?)";
 
             PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
 
-            statement.setString(1, subCategoria);
+            statement.setString(1, categoria);
+            statement.setString(2, subCategoria);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
 
                 Subasta subasta = new Subasta();
-                subasta.setNomIt(resultSet.getString(1));
-                subasta.setFachaFinal(resultSet.getTimestamp(2));
-                subasta.setMejorMonto(resultSet.getFloat(3));
+                subasta.setID(resultSet.getInt(1));
+                subasta.setNomIt(resultSet.getString(2));
+                subasta.setFachaFinal(resultSet.getTimestamp(3));
+                subasta.setMejorMonto(resultSet.getFloat(4));
 
                 subastas.add(subasta);
             }
@@ -572,11 +653,98 @@ public class ControllerAdminPost {
         return codigo;
     }
 
+    public Subasta detallesSubasta(int subastaId){
+        Subasta subasta = new Subasta();
+
+        try{
+            String llamadaFuncion = "SELECT * FROM mostDetallesSubastaActiva(?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setInt(1, subastaId);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Item item = new Item();
+                item.setDetalles(resultSet.getString(1));
+                item.setPathFoto(resultSet.getString(2));
+                subasta.setItem(item);
+                subasta.setComprador(resultSet.getString(3));
+            }
+        }
+        catch (Exception e){
+            System.out.println("No se pudo conectar con la base de datos");
+            e.printStackTrace();
+        }
+        return subasta;
+    }
+
+    public String cedulaUsuario(String alias, String contra){
+
+        String cedula = "";
+
+        try {
+            String llamadaFuncion = "SELECT * FROM devolvercedula(?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, alias);
+            statement.setString(2, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                cedula = resultSet.getString(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+
+        }
+        return cedula;
+    }
+
+    public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
+                               boolean compra, String nomItem, String alias, String contra){
+
+        int codigo = 0;
+
+        try {
+            String llamadaFuncion = "SELECT * FROM enviarComentario(?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
+
+            statement.setString(1, comentario);
+            statement.setInt(2, puntacion);
+            statement.setBoolean(3, esVendedor);
+            statement.setBoolean(4, compra);
+            statement.setString(5, nomItem);
+            statement.setString(6, alias);
+            statement.setString(7, contra);
+
+            ResultSet resultSet = statement.executeQuery();
+
+
+            while (resultSet.next()) {
+                codigo = resultSet.getInt(1);
+            }
+
+        }
+        catch (Exception e){
+            System.out.println("Error de conexión");
+            System.out.println(e);
+            codigo = 0;
+
+        }
+        return codigo;
+    }
+
 
 //    public static void main(String[] args) throws ParseException {
 //        ControllerAdminPost controllerAdmin = new ControllerAdminPost();
-//        String fec = "2021-04-12 7:00:00";
-//        int cod = controllerAdmin.iniciarSubasta("Audifonos gato", "Audífonos personalizados con orejas de gato, color azul","src/VIEW/FOTOS_POSTGRESQL/audifonos.jpg", "Artefactos y otros sistemas electronicos", 10000, fec, "Se entrega por correo", "Manchas 2", "cortiJuguete45");
-//        System.out.println(cod);
+//        System.out.println(controllerAdmin.subastasXvendedor("123457"));
 //    }
 }

@@ -170,8 +170,8 @@ public class ControllerGUI {
         return cedulas;
     }
 
-    public ArrayList<tablaComprasXcomprador> llenarTablaComprasComprador(String indent){
-        ArrayList<tablaComprasXcomprador> compras;
+    public ArrayList<Subasta> llenarTablaComprasComprador(String indent){
+        ArrayList<Subasta> compras;
         if(baseDatoUsada){
             compras = controllerAdminPost.comprasXcomprador(indent);
         }
@@ -265,7 +265,7 @@ public class ControllerGUI {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasTotal();
+            subastas = controllerAdminPost.mostrarSubastasActivas();
         } else {
             subastas = new ArrayList<>();
         }
@@ -285,16 +285,28 @@ public class ControllerGUI {
         return subastas;
     }
 
-    public ArrayList<Subasta> subastasFinal (String subCategoria) {
+    public ArrayList<Subasta> subastasFinal (String categoria, String subCategoria) {
         ArrayList<Subasta> subastas;
 
         if (baseDatoUsada) {
-            subastas = controllerAdminPost.subastasActivasFinal(subCategoria);
+            subastas = controllerAdminPost.subastasActivasFinal(categoria, subCategoria);
         } else {
             subastas = new ArrayList<>();
         }
 
         return subastas;
+    }
+
+    public Subasta detallesSubas (int subastaID) {
+        Subasta subasta;
+
+        if (baseDatoUsada) {
+            subasta = controllerAdminPost.detallesSubasta(subastaID);
+        } else {
+            subasta = new Subasta();
+        }
+
+        return subasta;
     }
 
     public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
@@ -311,5 +323,51 @@ public class ControllerGUI {
         return cod;
     }
 
+    public ArrayList<Subasta> subastasXvendedor (String docIdent) {
+        ArrayList<Subasta> subastas;
 
+        if (baseDatoUsada) {
+            subastas = controllerAdminPost.subastasXvendedor(docIdent);
+        } else {
+            subastas = new ArrayList<>();
+        }
+
+        return subastas;
+    }
+
+    public String nombreVend (String docIdent){
+        String nom;
+        if (baseDatoUsada){
+            nom = controllerAdminPost.nombreVendedor(docIdent);
+        }
+        else {
+            nom = "";
+        }
+        return nom;
+    }
+
+    public String devolverCedulaUser(){
+        String ced;
+        if (baseDatoUsada){
+            ced = controllerAdminPost.cedulaUsuario(alias, contrasena);
+        }
+        else {
+            ced = "";
+        }
+        return ced;
+    }
+
+    public Integer comentarios(String comentario, int puntacion, boolean esVendedor,
+                               boolean compra, String nomItem){
+        int cod;
+
+        if(baseDatoUsada){
+            cod = controllerAdminPost.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
+        }
+        else{
+            cod = 0;
+        }
+
+        return cod;
+    }
 }

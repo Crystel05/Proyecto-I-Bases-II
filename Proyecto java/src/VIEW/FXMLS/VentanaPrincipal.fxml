@@ -16,860 +16,11 @@
    <children>
       <Pane fx:id="panelTareas" prefHeight="805.0" prefWidth="985.0">
          <children>
-            <Pane fx:id="registrarUP" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="78.53" radius="45.3725" width="104.96" />
-               </effect>
-               <children>
-                  <Label layoutX="85.0" layoutY="129.0" text="Alias" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="188.0" text="Contraseña" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="85.0" layoutY="246.0" text="Documento de identidad" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="301.0" text="Nombre" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="85.0" layoutY="354.0" text="Apellidos" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="84.0" layoutY="417.0" text="Dirección" textFill="#2615bb">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="274.0" layoutY="508.0" text="Teléfono" textFill="#161bb8">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="aliasTF" layoutX="321.0" layoutY="133.0" prefHeight="31.0" prefWidth="258.0">
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </TextField>
-                  <PasswordField fx:id="paswPF" layoutX="321.0" layoutY="192.0" prefHeight="38.0" prefWidth="258.0">
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </PasswordField>
-                  <TextField fx:id="cedTF" layoutX="321.0" layoutY="250.0" prefHeight="38.0" prefWidth="258.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="nombreTF" layoutX="321.0" layoutY="303.0" prefHeight="38.0" prefWidth="258.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="apellTF" layoutX="321.0" layoutY="356.0" prefHeight="38.0" prefWidth="258.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <TextArea fx:id="direcTF" layoutX="252.0" layoutY="403.0" prefHeight="93.0" prefWidth="327.0">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextArea>
-                  <Label layoutX="128.0" layoutY="557.0" text="Tipo" textFill="#161bb8">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="tipoTelC" layoutX="75.0" layoutY="578.0" onMouseClicked="#setItemsTipos" prefHeight="36.0" prefWidth="138.0">
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ComboBox>
-                  <Label layoutX="321.0" layoutY="556.0" text="Número" textFill="#161bb8">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="NumTelTF" layoutX="283.0" layoutY="577.0" prefHeight="31.0" prefWidth="138.0">
-                     <effect>
-                        <InnerShadow color="#1827d0" />
-                     </effect>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </TextField>
-                  <Button layoutX="473.0" layoutY="579.0" mnemonicParsing="false" onAction="#agregarTelefono" text="Agregar otro">
-                     <effect>
-                        <SepiaTone level="0.34">
-                           <input>
-                              <Lighting diffuseConstant="1.66">
-                                 <bumpInput>
-                                    <Shadow />
-                                 </bumpInput>
-                                 <light>
-                                    <Light.Distant color="#2abddd" />
-                                 </light>
-                              </Lighting>
-                           </input>
-                        </SepiaTone>
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="283.0" layoutY="640.0" mnemonicParsing="false" onAction="#agregarUsuario" text="Agregar">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <SepiaTone level="0.34">
-                           <input>
-                              <Lighting diffuseConstant="1.66">
-                                 <bumpInput>
-                                    <Shadow />
-                                 </bumpInput>
-                                 <light>
-                                    <Light.Distant color="#1db5d3" />
-                                 </light>
-                              </Lighting>
-                           </input>
-                        </SepiaTone>
-                     </effect>
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Button>
-                  <RadioButton fx:id="BparticipanteR" layoutX="116.0" layoutY="78.0" mnemonicParsing="false" onAction="#escogerUnoP" text="Participante" textFill="#161bb8">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <DropShadow color="#2a7ad0" />
-                     </effect>
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton fx:id="BAdmR" layoutX="344.0" layoutY="78.0" mnemonicParsing="false" onAction="#escogerUnoA" text="Administrador" textFill="#161bb8">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <effect>
-                        <DropShadow color="#2a7ad0" radius="12.3325" width="30.33" />
-                     </effect>
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </RadioButton>
-                  <Label layoutX="122.0" layoutY="14.0" text="REGISTRAR USUARIO NUEVO" textFill="#1a2a9e">
-                     <font>
-                        <Font name="Bodoni MT Black" size="25.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
-                     </effect>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="modificarUP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
-               </effect>
-               <children>
-                  <Pane fx:id="editarDatosP" prefHeight="698.0" prefWidth="652.0">
-                     <children>
-                        <Button layoutX="282.0" layoutY="650.0" mnemonicParsing="false" onAction="#guardarCambios" text="Guardar">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <SepiaTone level="0.34">
-                                 <input>
-                                    <Lighting diffuseConstant="1.66">
-                                       <bumpInput>
-                                          <Shadow />
-                                       </bumpInput>
-                                       <light>
-                                          <Light.Distant color="#32b1bf" />
-                                       </light>
-                                    </Lighting>
-                                 </input>
-                              </SepiaTone>
-                           </effect>
-                        </Button>
-                        <TextArea fx:id="dirE" layoutX="190.0" layoutY="328.0" prefHeight="93.0" prefWidth="367.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#120fab" />
-                           </effect>
-                        </TextArea>
-                        <TextField fx:id="aliasEd" layoutX="280.0" layoutY="95.0" prefHeight="38.0" prefWidth="279.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#120fab" />
-                           </effect>
-                        </TextField>
-                        <TextField fx:id="nombreE" layoutX="280.0" layoutY="267.0" prefHeight="38.0" prefWidth="279.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#120fab" />
-                           </effect>
-                        </TextField>
-                        <TextField fx:id="docIE" layoutX="280.0" layoutY="213.0" prefHeight="38.0" prefWidth="279.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#120fab" />
-                           </effect>
-                        </TextField>
-                        <PasswordField fx:id="contE" layoutX="280.0" layoutY="156.0" prefHeight="38.0" prefWidth="279.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#120fab" />
-                           </effect>
-                        </PasswordField>
-                        <Label layoutX="59.0" layoutY="364.0" text="Dirección" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="58.0" layoutY="275.0" text="Nombre" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="59.0" layoutY="221.0" text="Documento de identidad" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="63.0" layoutY="164.0" text="Contraseña" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="70.0" layoutY="114.0" text="Alias" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="294.0" layoutY="437.0" text="Teléfono" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <RadioButton fx:id="agregarR" layoutX="412.0" layoutY="459.0" mnemonicParsing="false" onAction="#agregarNuevo" text="Agregar nuevo" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <DropShadow color="#120fab" height="17.89" radius="6.890000000000001" width="11.67" />
-                           </effect>
-                        </RadioButton>
-                        <RadioButton fx:id="editarExR" layoutX="63.0" layoutY="459.0" mnemonicParsing="false" onAction="#editarExistente" text="Editar existente" textFill="#120fab">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <DropShadow color="#120fab" height="13.225" radius="5.72375" width="11.67" />
-                           </effect>
-                        </RadioButton>
-                        <Pane fx:id="agregarNTel" layoutX="124.0" layoutY="488.0" prefHeight="124.0" prefWidth="405.0" visible="false">
-                           <children>
-                              <Label layoutX="14.0" layoutY="14.0" text="Tipo" textFill="#120fab">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="16.0" layoutY="66.0" text="Número" textFill="#120fab">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="tipoAgregar" layoutX="80.0" layoutY="9.0" prefHeight="31.0" prefWidth="138.0">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <InnerShadow color="#120fab" />
-                                 </effect>
-                              </ComboBox>
-                              <TextField fx:id="numeroAgregar" layoutX="80.0" layoutY="61.0" prefHeight="34.0" prefWidth="138.0">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                                 <effect>
-                                    <InnerShadow color="#120fab" />
-                                 </effect>
-                                 <cursor>
-                                    <Cursor fx:constant="TEXT" />
-                                 </cursor>
-                              </TextField>
-                              <Button fx:id="agregarOtro" layoutX="272.0" layoutY="36.0" mnemonicParsing="false" onAction="#agregarNuevoT" text="Agregar otro">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                                 <effect>
-                                    <SepiaTone level="0.34">
-                                       <input>
-                                          <Lighting diffuseConstant="1.66">
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant color="#45b7c6" />
-                                             </light>
-                                          </Lighting>
-                                       </input>
-                                    </SepiaTone>
-                                 </effect>
-                              </Button>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="editarTelEx" layoutX="124.0" layoutY="488.0" prefHeight="124.0" prefWidth="405.0">
-                           <children>
-                              <Label layoutX="58.0" layoutY="14.0" text="Seleccione" textFill="#120fab">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="numeros" layoutX="159.0" layoutY="10.0" prefHeight="31.0" prefWidth="121.0">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <InnerShadow color="#120fab" />
-                                 </effect>
-                              </ComboBox>
-                              <Label layoutX="7.0" layoutY="51.0" text="Tipo" textFill="#120fab">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="203.0" layoutY="50.0" text="Número" textFill="#120fab">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="tipoEd" layoutX="49.0" layoutY="45.0" prefHeight="31.0" prefWidth="121.0">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <InnerShadow color="#120fab" />
-                                 </effect>
-                              </ComboBox>
-                              <TextField fx:id="numeroETF" layoutX="270.0" layoutY="45.0" prefHeight="23.0" prefWidth="121.0">
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <InnerShadow color="#120fab" />
-                                 </effect>
-                              </TextField>
-                              <Button layoutX="151.0" layoutY="90.0" mnemonicParsing="false" onAction="#modificar" prefHeight="34.0" prefWidth="105.0" text="Modificar">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <SepiaTone level="0.34">
-                                       <input>
-                                          <Lighting diffuseConstant="1.66">
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant color="#1da6b9" />
-                                             </light>
-                                          </Lighting>
-                                       </input>
-                                    </SepiaTone>
-                                 </effect>
-                                 <font>
-                                    <Font name="Book Antiqua" size="17.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="selecionar1P" layoutX="84.0" layoutY="166.0" prefHeight="367.0" prefWidth="486.0" visible="false">
-                     <children>
-                        <Label layoutX="117.0" layoutY="14.0" text="Seleccione el tipo de usuario" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="20.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="usuariosCB" layoutX="148.0" layoutY="147.0" onMouseClicked="#ponerNombre" prefHeight="31.0" prefWidth="188.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#1827d0" />
-                           </effect>
-                        </ComboBox>
-                        <RadioButton fx:id="adminModR" layoutX="56.0" layoutY="69.0" mnemonicParsing="false" onAction="#escoUnoAm" text="Administrador" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <DropShadow color="#1b399d" />
-                           </effect>
-                        </RadioButton>
-                        <RadioButton fx:id="partModR" layoutX="317.0" layoutY="69.0" mnemonicParsing="false" onAction="#escoUnoPm" text="Participante" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#1b399d" />
-                           </effect>
-                        </RadioButton>
-                        <Label layoutX="164.0" layoutY="115.0" text="Seleccione el usuario" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font></Label>
-                        <Button layoutX="207.0" layoutY="232.0" mnemonicParsing="false" onAction="#editar" text="Editar">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <SepiaTone level="0.34">
-                                 <input>
-                                    <Lighting diffuseConstant="1.66">
-                                       <light>
-                                          <Light.Distant color="#06eaee" />
-                                       </light>
-                                       <bumpInput>
-                                          <Shadow height="30.33" radius="10.7775" width="14.78" />
-                                       </bumpInput>
-                                    </Lighting>
-                                 </input>
-                              </SepiaTone>
-                           </effect>
-                        </Button>
-                        <Label fx:id="nombreEditar" alignment="CENTER" layoutX="143.0" layoutY="200.0" prefHeight="22.0" prefWidth="200.0" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Label layoutX="124.0" layoutY="14.0" text="MODIFICAR DATOS USUARIO" textFill="#1a2a9e">
-                     <font>
-                        <Font name="Bodoni MT Black" size="25.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#299487" />
-                     </effect>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="pujasSubastaP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
-               </effect>
-               <children>
-                  <Label layoutX="179.0" layoutY="14.0" text="PUJAS POR SUBASTA" textFill="#1a2a9e">
-                     <font>
-                        <Font name="Bodoni MT Black" size="25.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#299487" />
-                     </effect>
-                  </Label>
-                  <Label layoutX="248.0" layoutY="77.0" text="Seleccione la subasta" textFill="#1616b9">
-                     <font>
-                        <Font name="Book Antiqua" size="17.0" />
-                     </font>
-                  </Label>
-                  <ComboBox fx:id="subastasHistPCB" layoutX="211.0" layoutY="114.0" onMouseClicked="#verSubastas" prefHeight="31.0" prefWidth="234.0">
-                     <effect>
-                        <InnerShadow color="#2317ab" />
-                     </effect>
-                  </ComboBox>
-                  <TableView fx:id="TpujasXsubasta" layoutX="12.0" layoutY="207.0" prefHeight="430.0" prefWidth="631.0">
-                    <columns>
-                      <TableColumn fx:id="CcantPuja" prefWidth="328.0" sortable="false" text="CANTIDAD PUJA" />
-                        <TableColumn fx:id="Cfecha" prefWidth="302.0" sortType="DESCENDING" text="FECHA Y HORA" />
-                    </columns>
-                     <effect>
-                        <InnerShadow choke="0.12" color="#231c9e" height="48.99" radius="27.8825" width="64.54" />
-                     </effect>
-                  </TableView>
-               </children>
-            </Pane>
-            <Pane fx:id="subastasActivasP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
-               </effect>
-               <children>
-                  <Pane prefHeight="698.0" prefWidth="652.0">
-                     <children>
-                        <TableView fx:id="tablaSubastasAc" layoutX="11.0" layoutY="243.0" prefHeight="441.0" prefWidth="631.0" style="-fx-background-color: AZURE;">
-                          <columns>
-                            <TableColumn fx:id="itemSA" editable="false" prefWidth="204.0" text="ÍTEM" />
-                            <TableColumn fx:id="mejorPujaSA" prefWidth="231.0" text="MEJOR PUJA" />
-                              <TableColumn fx:id="fechaFinSa" prefWidth="195.0" sortType="DESCENDING" text="FECHA FIN" />
-                          </columns>
-                           <effect>
-                              <InnerShadow choke="0.24" color="#1d6aa1" height="42.77" radius="24.7725" width="58.32" />
-                           </effect>
-                        </TableView>
-                        <Label layoutX="123.0" layoutY="14.0" text="LISTA DE SUBASTAS ACTIVAS" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Bodoni MT Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#299487" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="128.0" layoutY="106.0" text="Categoría" textFill="#1917b1">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="445.0" layoutY="106.0" text="Subcategoría" textFill="#1917b1">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="categoriasCB" layoutX="53.0" layoutY="137.0" onMouseClicked="#mostrarSubCategorias" prefHeight="31.0" prefWidth="224.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#1917b1" />
-                           </effect>
-                        </ComboBox>
-                        <ComboBox fx:id="subCategoriasCB" layoutX="382.0" layoutY="137.0" onMouseClicked="#llenarTablaSubastasActivas" prefHeight="31.0" prefWidth="224.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#1917b1" />
-                           </effect>
-                        </ComboBox>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Pane fx:id="subasvendedorP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
-               </effect>
-               <children>
-                  <Pane prefHeight="698.0" prefWidth="652.0" visible="false">
-                     <children>
-                        <Label layoutX="202.0" layoutY="14.0" text="COMENTARIOS" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Bodoni MT Black" size="30.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#299487" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="34.0" layoutY="105.0" text="Ganador" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="NombreGanador" layoutX="126.0" layoutY="105.0" prefHeight="30.0" prefWidth="367.0" textFill="#1db288">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <TableView layoutX="11.0" layoutY="256.0" prefHeight="403.0" prefWidth="631.0">
-                          <columns>
-                            <TableColumn prefWidth="157.0" text="COMPRADOR" />
-                            <TableColumn prefWidth="473.0" text="COMENTARIO" />
-                          </columns>
-                           <effect>
-                              <InnerShadow choke="0.23" color="#1a2a9e" height="83.2" radius="34.1025" width="55.21" />
-                           </effect>
-                        </TableView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="698.0" prefWidth="652.0">
-                     <children>
-                        <Label layoutX="140.0" layoutY="14.0" text="SUBASTAS POR VENDEDOR" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Bodoni MT Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#299487" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="231.0" layoutY="57.0" text="Seleccione el vendedor" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="20.0" />
-                           </font>
-                        </Label>
-                        <TableView layoutX="11.0" layoutY="199.0" prefHeight="465.0" prefWidth="631.0">
-                          <columns>
-                            <TableColumn prefWidth="154.0" text="ÍTEM" />
-                            <TableColumn prefWidth="160.0" text="FECHA" />
-                              <TableColumn prefWidth="167.0" text="PRECIO INICIO" />
-                              <TableColumn prefWidth="149.0" text="PRECIO FINAL" />
-                          </columns>
-                           <effect>
-                              <InnerShadow choke="0.13" color="#1a2a9e" height="58.32" radius="30.215000000000003" width="64.54" />
-                           </effect>
-                        </TableView>
-                        <ComboBox fx:id="vendedores" layoutX="223.0" layoutY="101.0" prefHeight="31.0" prefWidth="218.0">
-                           <effect>
-                              <InnerShadow color="#1a2a9e" />
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ComboBox>
-                        <Label fx:id="nombreVendedor" alignment="CENTER" layoutX="222.0" layoutY="147.0" prefHeight="26.0" prefWidth="218.0" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <Pane fx:id="comprasCompP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
-               </effect>
-               <children>
-                  <Pane prefHeight="698.0" prefWidth="652.0">
-                     <children>
-                        <TableView fx:id="TcomprasXcomprador" layoutX="14.0" layoutY="207.0" prefHeight="465.0" prefWidth="631.0">
-                          <columns>
-                            <TableColumn fx:id="CitemComprador" prefWidth="170.0" text="ÍTEM" />
-                            <TableColumn fx:id="CprecioBC" prefWidth="150.0" text="PRECIO BASE" />
-                              <TableColumn fx:id="CprecioFinalC" prefWidth="140.0" text="PRECIO FINAL" />
-                              <TableColumn fx:id="CfechaCo" prefWidth="170.0" text="FECHA" />
-                          </columns>
-                           <effect>
-                              <InnerShadow choke="0.09" color="#1a2a9e" height="61.43" radius="27.105" width="48.99" />
-                           </effect>
-                        </TableView>
-                        <ComboBox fx:id="usuariosCompra" layoutX="214.0" layoutY="94.0" onMouseClicked="#llenarTablaYnombre" prefHeight="31.0" prefWidth="232.0">
-                           <effect>
-                              <InnerShadow color="#1a2a9e" />
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ComboBox>
-                        <Label layoutX="157.0" layoutY="14.0" text="COMPRAS POR USUARIO" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Bodoni MT Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#299487" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="251.0" layoutY="64.0" text="Seleccione el usuario" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="nombreUsuarioCom" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="151.0" prefHeight="22.0" prefWidth="232.0" textFill="#1a2a9e" underline="true">
-                           <font>
-                              <Font name="Book Antiqua" size="25.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="698.0" prefWidth="652.0" visible="false">
-                     <children>
-                        <Label layoutX="225.0" layoutY="30.0" text="COMENTARIOS" textFill="#1a2a9e">
-                           <font>
-                              <Font name="Bodoni MT Black" size="25.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#299487" />
-                           </effect>
-                        </Label>
-                        <TableView layoutX="14.0" layoutY="206.0" prefHeight="465.0" prefWidth="631.0">
-                          <columns>
-                            <TableColumn prefWidth="116.0" text="VENDEDOR" />
-                            <TableColumn prefWidth="360.0" text="COMENTARIO" />
-                          </columns>
-                           <effect>
-                              <InnerShadow choke="0.11" color="#1a2a9e" height="58.32" radius="30.9925" width="67.65" />
-                           </effect>
-                        </TableView>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
             <Pane fx:id="iniciarSubastaPanel" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
                <effect>
                   <InnerShadow choke="0.13" color="#10a2c6" height="78.53" radius="45.3725" width="104.96" />
                </effect>
                <children>
-                  <Pane prefHeight="698.0" prefWidth="652.0" visible="false">
-                     <children>
-                        <Label layoutX="253.0" layoutY="14.0" prefHeight="31.0" prefWidth="153.0" text="DETALLES" textFill="#1a2a9e">
-                           <effect>
-                              <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
-                           </effect>
-                           <font>
-                              <Font name="Bodoni MT Black" size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="94.0" text="Ítem" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="167.0" text="Descripción" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="284.0" text="Foto" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="392.0" text="Mejor puja actual" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="128.0" layoutY="454.0" text="Comprador" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="128.0" layoutY="511.0" text="Cantidad" textFill="#0e0bc3">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="237.0" layoutY="94.0" prefHeight="21.0" prefWidth="232.0" text="prueba" textFill="#117556">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <TextArea layoutX="230.0" layoutY="131.0" prefHeight="93.0" prefWidth="200.0">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </TextArea>
-                        <ImageView fitHeight="93.0" fitWidth="200.0" layoutX="230.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label layoutX="272.0" layoutY="455.0" prefHeight="21.0" prefWidth="200.0" text="Juan" textFill="#19a169">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="269.0" layoutY="511.0" prefHeight="21.0" prefWidth="200.0" text="1000000" textFill="#19a169">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                   <Label layoutX="63.0" layoutY="58.0" text="Nombre" textFill="#1241b9">
                      <font>
                         <Font name="Book Antiqua" size="20.0" />
@@ -960,12 +111,17 @@
                         <Font name="Book Antiqua" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="65.0" layoutY="498.0" text="Fecha Final" textFill="#1241b9">
+                  <Label layoutX="68.0" layoutY="435.0" text="Monto mínimo" textFill="#1241b9">
                      <font>
                         <Font name="Book Antiqua" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="65.0" layoutY="576.0" text="Detalles entrega" textFill="#1241b9">
+                  <Label layoutX="71.0" layoutY="496.0" text="Fecha Final" textFill="#1241b9">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="563.0" text="Detalles entrega" textFill="#1241b9">
                      <font>
                         <Font name="Book Antiqua" size="20.0" />
                      </font>
@@ -981,7 +137,7 @@
                         <InnerShadow color="#4b60d3" />
                      </effect>
                   </TextField>
-                  <DatePicker fx:id="fechaFinIS" layoutX="183.0" layoutY="496.0" prefHeight="31.0" prefWidth="145.0">
+                  <DatePicker fx:id="fechaFinIS" layoutX="188.0" layoutY="494.0" prefHeight="31.0" prefWidth="145.0">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -1000,12 +156,12 @@
                         <InnerShadow color="#435ccd" />
                      </effect>
                   </TextArea>
-                  <Label layoutX="358.0" layoutY="501.0" text="Hora Fin" textFill="#1241b9">
+                  <Label layoutX="356.0" layoutY="501.0" text="Hora Fin" textFill="#1241b9">
                      <font>
                         <Font name="Book Antiqua" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="horaFinIS" layoutX="455.0" layoutY="495.0" prefHeight="31.0" prefWidth="145.0">
+                  <TextField fx:id="horaFinIS" layoutX="459.0" layoutY="495.0" prefHeight="31.0" prefWidth="145.0">
                      <font>
                         <Font name="Book Antiqua" size="17.0" />
                      </font>
@@ -1056,7 +212,7 @@
                         <InnerShadow color="#3e3cd3" />
                      </effect>
                   </ComboBox>
-                  <ComboBox fx:id="subCateIS" layoutX="227.0" layoutY="217.0" prefHeight="31.0" prefWidth="232.0">
+                  <ComboBox fx:id="subCateIS" layoutX="227.0" layoutY="217.0" onMouseClicked="#cargarSubCategorias" prefHeight="31.0" prefWidth="232.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -1064,12 +220,7 @@
                         <InnerShadow color="#3e3cd3" />
                      </effect>
                   </ComboBox>
-                  <Label layoutX="70.0" layoutY="445.0" text="Monto mínimo " textFill="#1241b9">
-                     <font>
-                        <Font name="Book Antiqua" size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="montoMinimo" layoutX="295.0" layoutY="441.0" prefHeight="34.0" prefWidth="232.0">
+                  <TextField fx:id="montoMinimo" layoutX="295.0" layoutY="431.0" prefHeight="34.0" prefWidth="234.0">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -1080,137 +231,14 @@
                         <Font name="Book Antiqua" size="17.0" />
                      </font>
                   </TextField>
-               </children>
-            </Pane>
-            <Pane fx:id="susSubastasPanel" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
-               <effect>
-                  <InnerShadow choke="0.13" color="#10a2c6" height="78.53" radius="45.3725" width="104.96" />
-               </effect>
-               <children>
-                  <Label layoutX="183.0" layoutY="14.0" text="SUBASTAS GANADAS" textFill="#1a2a9e">
+                  <ImageView fx:id="check" fitHeight="47.0" fitWidth="48.0" layoutX="479.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../Imagenes/check.png" />
+                     </image>
                      <effect>
-                        <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
+                        <DropShadow color="#2b99ae" />
                      </effect>
-                     <font>
-                        <Font name="Bodoni MT Black" size="25.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="240.0" layoutY="127.0" prefHeight="31.0" prefWidth="172.0">
-                     <effect>
-                        <InnerShadow color="#3154bf" />
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ComboBox>
-                  <Label layoutX="234.0" layoutY="91.0" text="Seleccione la subasta" textFill="#1933a4">
-                     <font>
-                        <Font name="Book Antiqua" size="20.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="17.0" layoutY="176.0" prefHeight="508.0" prefWidth="618.0">
-                     <children>
-                        <Label layoutX="37.0" layoutY="233.0" text="Detalles de entrega" textFill="#1933a4">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <TextArea editable="false" layoutX="206.0" layoutY="210.0" prefHeight="67.0" prefWidth="356.0">
-                           <effect>
-                              <InnerShadow color="#3f75d3" />
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextArea>
-                        <Label layoutX="37.0" layoutY="330.0" text="Comentario" textFill="#1933a4">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <TextArea layoutX="206.0" layoutY="301.0" prefHeight="79.0" prefWidth="273.0">
-                           <effect>
-                              <InnerShadow color="#3f75d3" />
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextArea>
-                        <Label layoutX="37.0" layoutY="30.0" text="Descripción" textFill="#1933a4">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="37.0" layoutY="129.0" text="Foto" textFill="#1933a4">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <TextArea editable="false" layoutX="200.0" layoutY="2.0" prefHeight="57.0" prefWidth="367.0">
-                           <effect>
-                              <InnerShadow color="#283bb5" />
-                           </effect>
-                        </TextArea>
-                        <ImageView fitHeight="113.0" fitWidth="165.0" layoutX="251.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label layoutX="37.0" layoutY="404.0" text="Puntuación para su vendedor" textFill="#1933a4">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                        </Label>
-                        <Slider layoutX="314.0" layoutY="406.0" max="5.0" showTickLabels="true">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <InnerShadow color="#3b4fd7" />
-                           </effect>
-                        </Slider>
-                        <Button layoutX="251.0" layoutY="460.0" mnemonicParsing="false" text="Notificación">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <effect>
-                              <SepiaTone level="0.34">
-                                 <input>
-                                    <Lighting diffuseConstant="1.66">
-                                       <bumpInput>
-                                          <Shadow />
-                                       </bumpInput>
-                                       <light>
-                                          <Light.Distant color="#3eb1a8" />
-                                       </light>
-                                    </Lighting>
-                                 </input>
-                              </SepiaTone>
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button layoutX="505.0" layoutY="398.0" mnemonicParsing="false" text="Enviar">
-                           <font>
-                              <Font name="Book Antiqua" size="17.0" />
-                           </font>
-                           <effect>
-                              <SepiaTone level="0.34">
-                                 <input>
-                                    <Lighting diffuseConstant="1.66">
-                                       <bumpInput>
-                                          <Shadow />
-                                       </bumpInput>
-                                       <light>
-                                          <Light.Distant color="#3eb1a8" />
-                                       </light>
-                                    </Lighting>
-                                 </input>
-                              </SepiaTone>
-                           </effect>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </Pane>
+                  </ImageView>
                </children>
             </Pane>
             <Pane fx:id="pujarPanel" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
@@ -1325,6 +353,1271 @@
                         </SepiaTone>
                      </effect>
                   </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="susSubastasPanel" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="78.53" radius="45.3725" width="104.96" />
+               </effect>
+               <children>
+                  <Label layoutX="254.0" layoutY="27.0" text="SUBASTAS" textFill="#1a2a9e">
+                     <effect>
+                        <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
+                     </effect>
+                     <font>
+                        <Font name="Bodoni MT Black" size="25.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="subastasCB" layoutX="240.0" layoutY="163.0" onMouseClicked="#agregarDetalles" prefHeight="31.0" prefWidth="172.0">
+                     <effect>
+                        <InnerShadow color="#3154bf" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <Label layoutX="233.0" layoutY="128.0" text="Seleccione la subasta" textFill="#1933a4">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="detallesPa" layoutX="16.0" layoutY="194.0" prefHeight="495.0" prefWidth="618.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="182.0" text="Detalles de entrega" textFill="#1933a4">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="entregaSubasta" editable="false" layoutX="207.0" layoutY="169.0" prefHeight="48.0" prefWidth="356.0">
+                           <effect>
+                              <InnerShadow color="#3f75d3" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextArea>
+                        <Label layoutX="37.0" layoutY="274.0" text="Comentario" textFill="#1933a4">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="comentarioSubasta" layoutX="207.0" layoutY="257.0" prefHeight="57.0" prefWidth="273.0">
+                           <effect>
+                              <InnerShadow color="#3f75d3" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextArea>
+                        <Label layoutX="38.0" layoutY="31.0" text="Descripción" textFill="#1933a4">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="100.0" text="Foto" textFill="#1933a4">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="descpSubastas" editable="false" layoutX="202.0" layoutY="14.0" prefHeight="40.0" prefWidth="367.0">
+                           <effect>
+                              <InnerShadow color="#283bb5" />
+                           </effect>
+                        </TextArea>
+                        <ImageView fx:id="fotoSubastas" fitHeight="67.0" fitWidth="101.0" layoutX="293.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="39.0" layoutY="348.0" text="Puntuación" textFill="#1933a4">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="calificacionSubasta" layoutX="202.0" layoutY="350.0" max="5.0" onMouseClicked="#verCalf" showTickLabels="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#3b4fd7" />
+                           </effect>
+                        </Slider>
+                        <Button layoutX="278.0" layoutY="447.0" mnemonicParsing="false" onAction="#enviarComentario" text="ENVIAR">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <effect>
+                              <SepiaTone level="0.34">
+                                 <input>
+                                    <Lighting diffuseConstant="1.66">
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant color="#3eb1a8" />
+                                       </light>
+                                    </Lighting>
+                                 </input>
+                              </SepiaTone>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="labelComprador" layoutX="37.0" layoutY="401.0" text="¿Compró el producto después de ganar la subasta?" textFill="#1933a4" visible="false">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="si" layoutX="436.0" layoutY="401.0" mnemonicParsing="false" onAction="#botonGanadas" prefHeight="23.0" prefWidth="40.0" text="SÍ" textFill="#1933a4" visible="false">
+                           <effect>
+                              <DropShadow color="#1d8980" height="42.77" radius="20.1075" width="39.66" />
+                           </effect>
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="no" layoutX="523.0" layoutY="401.0" mnemonicParsing="false" onAction="#botonGanadas" text="NO" textFill="#1933a4" visible="false">
+                           <effect>
+                              <DropShadow color="#1d8980" height="42.77" radius="20.1075" width="39.66" />
+                           </effect>
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </RadioButton>
+                        <Line endX="300.0" layoutX="223.0" layoutY="238.0" startX="-100.0" stroke="#2840a8" strokeWidth="3.0">
+                           <effect>
+                              <DropShadow color="#238390" spread="0.18" />
+                           </effect>
+                        </Line>
+                        <ImageView fx:id="es1" fitHeight="32.0" fitWidth="40.0" layoutX="352.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#939e32">
+                                 <input>
+                                    <DropShadow color="#a8a54e" />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fx:id="es5" fitHeight="32.0" fitWidth="40.0" layoutX="564.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#939e32">
+                                 <input>
+                                    <DropShadow color="#a8a54e" />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="es2" fitHeight="32.0" fitWidth="40.0" layoutX="409.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#939e32">
+                                 <input>
+                                    <DropShadow color="#a8a54e" />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="es3" fitHeight="32.0" fitWidth="40.0" layoutX="458.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#939e32">
+                                 <input>
+                                    <DropShadow color="#a8a54e" />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="es4" fitHeight="32.0" fitWidth="40.0" layoutX="510.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#939e32">
+                                 <input>
+                                    <DropShadow color="#a8a54e" />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <RadioButton fx:id="ganadasRB" layoutX="126.0" layoutY="83.0" mnemonicParsing="false" onAction="#botonGanadas" text="Ganadas" textFill="#1933a4">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#1d8980" height="42.77" radius="20.1075" width="39.66" />
+                     </effect>
+                  </RadioButton>
+                  <RadioButton fx:id="hechasRB" layoutX="412.0" layoutY="83.0" mnemonicParsing="false" onAction="#botonHechas" text="Hechas" textFill="#1933a4">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#1d8980" height="30.33" radius="15.442499999999999" width="33.44" />
+                     </effect>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane fx:id="registrarUP" layoutX="334.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="78.53" radius="45.3725" width="104.96" />
+               </effect>
+               <children>
+                  <Label layoutX="85.0" layoutY="129.0" text="Alias" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="84.0" layoutY="188.0" text="Contraseña" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="85.0" layoutY="246.0" text="Documento de identidad" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="84.0" layoutY="301.0" text="Nombre" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="85.0" layoutY="354.0" text="Apellidos" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="84.0" layoutY="417.0" text="Dirección" textFill="#2615bb">
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="282.0" layoutY="509.0" text="Teléfono" textFill="#161bb8">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="aliasTF" layoutX="321.0" layoutY="133.0" prefHeight="31.0" prefWidth="258.0">
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <PasswordField fx:id="paswPF" layoutX="321.0" layoutY="192.0" prefHeight="38.0" prefWidth="258.0">
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <TextField fx:id="cedTF" layoutX="321.0" layoutY="250.0" prefHeight="38.0" prefWidth="258.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="nombreTF" layoutX="321.0" layoutY="303.0" prefHeight="38.0" prefWidth="258.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="apellTF" layoutX="321.0" layoutY="356.0" prefHeight="38.0" prefWidth="258.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextArea fx:id="direcTF" layoutX="252.0" layoutY="403.0" prefHeight="93.0" prefWidth="327.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="128.0" layoutY="557.0" text="Tipo" textFill="#161bb8">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="tipoTelC" layoutX="75.0" layoutY="578.0" onMouseClicked="#setItemsTipos" prefHeight="36.0" prefWidth="138.0">
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <Label layoutX="321.0" layoutY="556.0" text="Número" textFill="#161bb8">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="NumTelTF" layoutX="283.0" layoutY="577.0" prefHeight="31.0" prefWidth="138.0">
+                     <effect>
+                        <InnerShadow color="#1827d0" />
+                     </effect>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="473.0" layoutY="579.0" mnemonicParsing="false" onAction="#agregarTelefono" text="AGREGAR OTRO">
+                     <effect>
+                        <SepiaTone level="0.34">
+                           <input>
+                              <Lighting diffuseConstant="1.66">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#2abddd" />
+                                 </light>
+                              </Lighting>
+                           </input>
+                        </SepiaTone>
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="256.0" layoutY="643.0" mnemonicParsing="false" onAction="#agregarUsuario" text="AGREGAR USUARIO">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <SepiaTone level="0.34">
+                           <input>
+                              <Lighting diffuseConstant="1.66">
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant color="#1db5d3" />
+                                 </light>
+                              </Lighting>
+                           </input>
+                        </SepiaTone>
+                     </effect>
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </Button>
+                  <RadioButton fx:id="BparticipanteR" layoutX="113.0" layoutY="78.0" mnemonicParsing="false" onAction="#escogerUnoP" text="Participante" textFill="#161bb8">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow color="#2a7ad0" />
+                     </effect>
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="BAdmR" layoutX="405.0" layoutY="78.0" mnemonicParsing="false" onAction="#escogerUnoA" text="Administrador" textFill="#161bb8">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <effect>
+                        <DropShadow color="#2a7ad0" radius="12.3325" width="30.33" />
+                     </effect>
+                     <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="122.0" layoutY="14.0" text="REGISTRAR USUARIO NUEVO" textFill="#1a2a9e">
+                     <font>
+                        <Font name="Bodoni MT Black" size="25.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
+                     </effect>
+                  </Label>
+                  <Line endX="300.0" layoutX="223.0" layoutY="535.0" startX="-100.0" stroke="#1685b5">
+                     <effect>
+                        <DropShadow color="#232dbc" height="39.66" radius="20.884999999999998" spread="0.15" width="45.88" />
+                     </effect>
+                  </Line>
+               </children>
+            </Pane>
+            <Pane fx:id="modificarUP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
+               </effect>
+               <children>
+                  <Pane fx:id="editarDatosP" prefHeight="698.0" prefWidth="652.0" visible="false">
+                     <children>
+                        <Button layoutX="288.0" layoutY="641.0" mnemonicParsing="false" onAction="#guardarCambios" text="Guardar">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <SepiaTone level="0.34">
+                                 <input>
+                                    <Lighting diffuseConstant="1.66">
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant color="#32b1bf" />
+                                       </light>
+                                    </Lighting>
+                                 </input>
+                              </SepiaTone>
+                           </effect>
+                        </Button>
+                        <TextArea fx:id="dirE" layoutX="190.0" layoutY="328.0" prefHeight="93.0" prefWidth="367.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#120fab" />
+                           </effect>
+                        </TextArea>
+                        <TextField fx:id="aliasEd" layoutX="280.0" layoutY="106.0" prefHeight="38.0" prefWidth="279.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#120fab" />
+                           </effect>
+                        </TextField>
+                        <TextField fx:id="nombreE" layoutX="280.0" layoutY="267.0" prefHeight="38.0" prefWidth="279.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#120fab" />
+                           </effect>
+                        </TextField>
+                        <TextField fx:id="docIE" layoutX="280.0" layoutY="213.0" prefHeight="38.0" prefWidth="279.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#120fab" />
+                           </effect>
+                        </TextField>
+                        <PasswordField fx:id="contE" layoutX="280.0" layoutY="156.0" prefHeight="38.0" prefWidth="279.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#120fab" />
+                           </effect>
+                        </PasswordField>
+                        <Label layoutX="59.0" layoutY="364.0" text="Dirección" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="275.0" text="Nombre" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="221.0" text="Documento de identidad" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="59.0" layoutY="164.0" text="Contraseña" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="114.0" text="Alias" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="294.0" layoutY="437.0" text="Teléfono" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="agregarR" layoutX="412.0" layoutY="459.0" mnemonicParsing="false" onAction="#agregarNuevo" text="Agregar nuevo" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#120fab" height="17.89" radius="6.890000000000001" width="11.67" />
+                           </effect>
+                        </RadioButton>
+                        <RadioButton fx:id="editarExR" layoutX="63.0" layoutY="459.0" mnemonicParsing="false" onAction="#editarExistente" text="Editar existente" textFill="#120fab">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#120fab" height="13.225" radius="5.72375" width="11.67" />
+                           </effect>
+                        </RadioButton>
+                        <Pane fx:id="agregarNTel" layoutX="124.0" layoutY="488.0" prefHeight="124.0" prefWidth="405.0" visible="false">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Tipo" textFill="#120fab">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="66.0" text="Número" textFill="#120fab">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="tipoAgregar" layoutX="80.0" layoutY="9.0" prefHeight="31.0" prefWidth="138.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow color="#120fab" />
+                                 </effect>
+                              </ComboBox>
+                              <TextField fx:id="numeroAgregar" layoutX="80.0" layoutY="61.0" prefHeight="34.0" prefWidth="138.0">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <InnerShadow color="#120fab" />
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </TextField>
+                              <Button fx:id="agregarOtro" layoutX="272.0" layoutY="36.0" mnemonicParsing="false" onAction="#agregarNuevoT" text="Agregar otro">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                                 <effect>
+                                    <SepiaTone level="0.34">
+                                       <input>
+                                          <Lighting diffuseConstant="1.66">
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant color="#45b7c6" />
+                                             </light>
+                                          </Lighting>
+                                       </input>
+                                    </SepiaTone>
+                                 </effect>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="editarTelEx" layoutX="124.0" layoutY="488.0" prefHeight="124.0" prefWidth="405.0" visible="false">
+                           <children>
+                              <Label layoutX="58.0" layoutY="14.0" text="Seleccione" textFill="#120fab">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="numeros" layoutX="142.0" layoutY="9.0" prefHeight="31.0" prefWidth="121.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow color="#120fab" />
+                                 </effect>
+                              </ComboBox>
+                              <Label layoutX="7.0" layoutY="51.0" text="Tipo" textFill="#120fab">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="203.0" layoutY="50.0" text="Número" textFill="#120fab">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="tipoEd" layoutX="49.0" layoutY="45.0" prefHeight="31.0" prefWidth="121.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow color="#120fab" />
+                                 </effect>
+                              </ComboBox>
+                              <TextField fx:id="numeroETF" layoutX="270.0" layoutY="45.0" prefHeight="23.0" prefWidth="121.0">
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow color="#120fab" />
+                                 </effect>
+                              </TextField>
+                              <Button layoutX="151.0" layoutY="90.0" mnemonicParsing="false" onAction="#modificar" prefHeight="34.0" prefWidth="105.0" text="Modificar">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <SepiaTone level="0.34">
+                                       <input>
+                                          <Lighting diffuseConstant="1.66">
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant color="#1da6b9" />
+                                             </light>
+                                          </Lighting>
+                                       </input>
+                                    </SepiaTone>
+                                 </effect>
+                                 <font>
+                                    <Font name="Book Antiqua" size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="selecionar1P" layoutX="83.0" layoutY="127.0" prefHeight="367.0" prefWidth="486.0">
+                     <children>
+                        <Label layoutX="118.0" layoutY="45.0" text="Seleccione el tipo de usuario" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="usuariosCB" layoutX="145.0" layoutY="168.0" onMouseClicked="#ponerNombre" prefHeight="31.0" prefWidth="188.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow color="#1827d0" />
+                           </effect>
+                        </ComboBox>
+                        <RadioButton fx:id="adminModR" layoutX="52.0" layoutY="90.0" mnemonicParsing="false" onAction="#escoUnoAm" text="Administrador" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#1b399d" />
+                           </effect>
+                        </RadioButton>
+                        <RadioButton fx:id="partModR" layoutX="313.0" layoutY="90.0" mnemonicParsing="false" onAction="#escoUnoPm" text="Participante" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#1b399d" />
+                           </effect>
+                        </RadioButton>
+                        <Label layoutX="150.0" layoutY="132.0" text="Seleccione el usuario" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font></Label>
+                        <Button layoutX="204.0" layoutY="263.0" mnemonicParsing="false" onAction="#editar" text="Editar">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <SepiaTone level="0.34">
+                                 <input>
+                                    <Lighting diffuseConstant="1.66">
+                                       <light>
+                                          <Light.Distant color="#2abddd" />
+                                       </light>
+                                       <bumpInput>
+                                          <Shadow height="35.0" radius="12.7225" width="17.89" />
+                                       </bumpInput>
+                                    </Lighting>
+                                 </input>
+                              </SepiaTone>
+                           </effect>
+                        </Button>
+                        <Label fx:id="nombreEditar" alignment="CENTER" layoutX="138.0" layoutY="215.0" prefHeight="26.0" prefWidth="202.0" textFill="#269aa1" underline="true">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="124.0" layoutY="14.0" text="MODIFICAR DATOS USUARIO" textFill="#1a2a9e">
+                     <font>
+                        <Font name="Bodoni MT Black" size="25.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#299487" />
+                     </effect>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="subastasActivasP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
+               </effect>
+               <children>
+                  <Pane fx:id="tablasSusActsPanel" prefHeight="698.0" prefWidth="652.0">
+                     <children>
+                        <TableView fx:id="tablaSubastasAc" layoutX="11.0" layoutY="243.0" onMouseClicked="#verDetallesSubastaActiva" prefHeight="430.0" prefWidth="631.0" style="-fx-background-color: AZURE;">
+                          <columns>
+                            <TableColumn fx:id="itemSA" editable="false" prefWidth="204.0" text="ÍTEM" />
+                            <TableColumn fx:id="mejorPujaSA" prefWidth="231.0" text="MEJOR PUJA" />
+                              <TableColumn fx:id="fechaFinSa" prefWidth="195.0" sortType="DESCENDING" text="FECHA FIN" />
+                          </columns>
+                           <effect>
+                              <InnerShadow choke="0.24" color="#1d6aa1" height="42.77" radius="24.7725" width="58.32" />
+                           </effect>
+                        </TableView>
+                        <Label layoutX="123.0" layoutY="14.0" text="LISTA DE SUBASTAS ACTIVAS" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Bodoni MT Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#299487" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="136.0" layoutY="70.0" text="Categoría" textFill="#1917b1">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="425.0" layoutY="70.0" text="Subcategoría" textFill="#1917b1">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="categoriasCB" layoutX="72.0" layoutY="101.0" onMouseClicked="#mostrarSubCategorias" prefHeight="31.0" prefWidth="214.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow choke="0.18" color="#2b2ba8" radius="13.11" width="33.44" />
+                           </effect>
+                        </ComboBox>
+                        <ComboBox fx:id="subCategoriasCB" layoutX="375.0" layoutY="101.0" onMouseClicked="#mostrarSubCategorias" prefHeight="31.0" prefWidth="214.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow choke="0.18" color="#1e1eab" radius="13.11" width="33.44" />
+                           </effect>
+                        </ComboBox>
+                        <Button layoutX="277.0" layoutY="160.0" mnemonicParsing="false" onAction="#llenarTablaSubastasActivas" prefHeight="38.0" prefWidth="105.0" text="BUSCAR">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <SepiaTone level="0.34">
+                                 <input>
+                                    <Lighting diffuseConstant="1.66">
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant color="#20a4d3" />
+                                       </light>
+                                    </Lighting>
+                                 </input>
+                              </SepiaTone>
+                           </effect>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="detallesSusAcPanel" prefHeight="698.0" prefWidth="652.0" visible="false">
+                     <children>
+                        <Label layoutX="250.0" layoutY="26.0" prefHeight="31.0" prefWidth="153.0" text="DETALLES" textFill="#1a2a9e">
+                           <effect>
+                              <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
+                           </effect>
+                           <font>
+                              <Font name="Bodoni MT Black" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="76.0" layoutY="112.0" text="Ítem" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="76.0" layoutY="185.0" text="Descripción" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="76.0" layoutY="349.0" text="Foto" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="76.0" layoutY="485.0" text="Mejor puja actual" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="121.0" layoutY="547.0" text="Comprador" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="121.0" layoutY="604.0" text="Cantidad" textFill="#0e0bc3">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nombreSuAc" alignment="CENTER" layoutX="199.0" layoutY="112.0" prefHeight="26.0" prefWidth="327.0" text="prueba" textFill="#117556">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="descSuA" editable="false" layoutX="223.0" layoutY="149.0" prefHeight="93.0" prefWidth="252.0">
+                           <font>
+                              <Font name="Book Antiqua" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow choke="0.27" color="#0f2083" height="38.11" radius="22.052500000000002" width="52.1" />
+                           </effect>
+                        </TextArea>
+                        <ImageView fx:id="fotoSuAct" fitHeight="189.0" fitWidth="241.0" layoutX="213.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow choke="0.11" color="#3621bc" height="52.1" radius="31.770000000000003" width="76.98" />
+                           </effect></ImageView>
+                        <Label fx:id="nombrePSA" alignment="CENTER" layoutX="265.0" layoutY="548.0" prefHeight="26.0" prefWidth="296.0" text="Juan" textFill="#19a169">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="montoSA" alignment="CENTER" layoutX="313.0" layoutY="604.0" prefHeight="21.0" prefWidth="200.0" text="1000000" textFill="#19a169">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="42.0" fitWidth="61.0" layoutX="588.0" layoutY="630.0" onMouseClicked="#atrasSusActD" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/atras2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pujasSubastaP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
+               </effect>
+               <children>
+                  <Label layoutX="178.0" layoutY="24.0" text="PUJAS POR SUBASTA" textFill="#1a2a9e">
+                     <font>
+                        <Font name="Bodoni MT Black" size="25.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#299487" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="234.0" layoutY="121.0" text="Seleccione la subasta" textFill="#1a2a9e">
+                     <font>
+                        <Font name="Book Antiqua" size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="subastasHistPCB" layoutX="211.0" layoutY="158.0" onMouseClicked="#verSubastas" prefHeight="31.0" prefWidth="234.0">
+                     <effect>
+                        <InnerShadow color="#1a2a9e" />
+                     </effect>
+                  </ComboBox>
+                  <TableView fx:id="TpujasXsubasta" layoutX="11.0" layoutY="278.0" prefHeight="300.0" prefWidth="631.0">
+                    <columns>
+                      <TableColumn fx:id="CcantPuja" prefWidth="328.0" sortable="false" text="CANTIDAD PUJA" />
+                        <TableColumn fx:id="Cfecha" prefWidth="302.0" sortType="DESCENDING" text="FECHA Y HORA" />
+                    </columns>
+                     <effect>
+                        <InnerShadow choke="0.12" color="#1a2a9e" height="56.77" radius="29.8275" width="64.54" />
+                     </effect>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="subasvendedorP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
+               </effect>
+               <children>
+                  <Pane fx:id="tablaSubsVenPanel" prefHeight="698.0" prefWidth="652.0">
+                     <children>
+                        <Label layoutX="140.0" layoutY="14.0" text="SUBASTAS POR VENDEDOR" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Bodoni MT Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#299487" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="227.0" layoutY="93.0" text="Seleccione el vendedor" textFill="#1444b5">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tablaSubsXven" layoutX="10.0" layoutY="268.0" onMouseClicked="#verComentario" prefHeight="367.0" prefWidth="631.0">
+                          <columns>
+                            <TableColumn fx:id="colItemSXV" prefWidth="154.0" text="ÍTEM" />
+                            <TableColumn fx:id="colfechaSXV" prefWidth="160.0" text="FECHA" />
+                              <TableColumn fx:id="colprecioISXV" prefWidth="167.0" text="PRECIO INICIO" />
+                              <TableColumn fx:id="colprecioFSXV" prefWidth="149.0" text="PRECIO FINAL" />
+                          </columns>
+                           <effect>
+                              <InnerShadow choke="0.13" color="#3261cf" height="58.32" radius="30.215000000000003" width="64.54" />
+                           </effect>
+                        </TableView>
+                        <ComboBox fx:id="vendedores" layoutX="223.0" layoutY="133.0" onMouseClicked="#tablaSusVend" prefHeight="31.0" prefWidth="202.0">
+                           <effect>
+                              <InnerShadow color="#1444b5" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label fx:id="nombreVendedor" alignment="CENTER" layoutX="214.0" layoutY="183.0" prefHeight="26.0" prefWidth="223.0" textFill="#24907e" underline="true">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="comentarioSXVPanel" prefHeight="698.0" prefWidth="652.0" visible="false">
+                     <children>
+                        <Label layoutX="202.0" layoutY="60.0" text="RESEÑA SUBASTA" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Bodoni MT Black" size="30.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#299487" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="66.0" layoutY="162.0" text="Ganador" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="NombreGanadorSXV" alignment="CENTER" layoutX="202.0" layoutY="160.0" prefHeight="30.0" prefWidth="367.0" text="Juan perez" textFill="#1db288">
+                           <font>
+                              <Font name="Book Antiqua" size="26.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="comenSXV" editable="false" layoutX="219.0" layoutY="300.0" prefHeight="124.0" prefWidth="367.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow choke="0.09" color="#1f53ae" height="27.22" radius="14.665" width="33.44" />
+                           </effect>
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </TextArea>
+                        <Label layoutX="64.0" layoutY="336.0" text="Comentario" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="66.0" layoutY="506.0" text="Puntuación" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="estrella2" fitHeight="57.0" fitWidth="78.0" layoutX="282.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fx:id="estrella1" fitHeight="57.0" fitWidth="78.0" layoutX="185.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fx:id="estrella3" fitHeight="57.0" fitWidth="78.0" layoutX="372.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fx:id="estrella4" fitHeight="57.0" fitWidth="78.0" layoutX="455.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fx:id="estrella5" fitHeight="57.0" fitWidth="78.0" layoutX="538.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="61.0" layoutX="581.0" layoutY="626.0" onMouseClicked="#atrasResennaSubasta" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/atras2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="comprasCompP" layoutX="334.0" layoutY="54.0" prefHeight="698.0" prefWidth="652.0" style="-fx-background-color: LIGHTCYAN;" visible="false">
+               <effect>
+                  <InnerShadow choke="0.13" color="#10a2c6" height="52.1" radius="38.765" width="104.96" />
+               </effect>
+               <children>
+                  <Pane fx:id="tablaCXCpanel" prefHeight="698.0" prefWidth="652.0">
+                     <children>
+                        <TableView fx:id="TcomprasXcomprador" layoutX="11.0" layoutY="271.0" onMouseClicked="#verComentarioComp" prefHeight="331.0" prefWidth="631.0">
+                          <columns>
+                            <TableColumn fx:id="CitemComprador" prefWidth="170.0" text="ÍTEM" />
+                            <TableColumn fx:id="CprecioBC" prefWidth="150.0" text="PRECIO BASE" />
+                              <TableColumn fx:id="CprecioFinalC" prefWidth="140.0" text="PRECIO FINAL" />
+                              <TableColumn fx:id="CfechaCo" prefWidth="170.0" text="FECHA" />
+                          </columns>
+                           <effect>
+                              <InnerShadow choke="0.09" color="#1a2a9e" height="61.43" radius="27.105" width="48.99" />
+                           </effect>
+                        </TableView>
+                        <ComboBox fx:id="usuariosCompra" layoutX="210.0" layoutY="128.0" onMouseClicked="#llenarTablaYnombre" prefHeight="31.0" prefWidth="232.0">
+                           <effect>
+                              <InnerShadow color="#1a2a9e" />
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                        <Label layoutX="157.0" layoutY="14.0" text="COMPRAS POR USUARIO" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Bodoni MT Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#299487" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="237.0" layoutY="91.0" text="Seleccione el usuario" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nombreUsuarioCom" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="178.0" prefHeight="22.0" prefWidth="232.0" textFill="#24907e" underline="true">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="comentarioCXCPanel" prefHeight="698.0" prefWidth="652.0" visible="false">
+                     <children>
+                        <Label layoutX="203.0" layoutY="54.0" text="RESEÑA COMPRA" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Bodoni MT Black" size="25.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#299487" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="46.0" layoutY="124.0" text="Vendedor" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="46.0" layoutY="309.0" text="Comentario" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="491.0" text="Puntuación" textFill="#1a2a9e">
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="vendedorCXC" alignment="CENTER" layoutX="194.0" layoutY="120.0" prefHeight="30.0" prefWidth="367.0" text="Juan perez" textFill="#1db288">
+                           <font>
+                              <Font name="Book Antiqua" size="26.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="comenCXC" editable="false" layoutX="206.0" layoutY="260.0" prefHeight="124.0" prefWidth="367.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <InnerShadow choke="0.09" color="#1f53ae" height="27.22" radius="14.665" width="33.44" />
+                           </effect>
+                           <font>
+                              <Font name="Book Antiqua" size="20.0" />
+                           </font>
+                        </TextArea>
+                        <ImageView fx:id="estrella5C" fitHeight="57.0" fitWidth="78.0" layoutX="548.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="estrella4C" fitHeight="57.0" fitWidth="78.0" layoutX="465.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="estrella3C" fitHeight="57.0" fitWidth="78.0" layoutX="382.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="estrella1C" fitHeight="57.0" fitWidth="78.0" layoutX="195.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="estrella2C" fitHeight="57.0" fitWidth="78.0" layoutX="292.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+                           <effect>
+                              <InnerShadow color="#98b219">
+                                 <input>
+                                    <DropShadow />
+                                 </input>
+                              </InnerShadow>
+                           </effect>
+                           <image>
+                              <Image url="@../Imagenes/estrellas.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="61.0" layoutX="591.0" layoutY="626.0" onMouseClicked="#atrasResennaCompra" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/atras2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
             <Pane layoutY="54.0" prefHeight="698.0" prefWidth="273.0" style="-fx-background-color: LIGHTCYAN;">
@@ -1543,7 +1836,7 @@
                         <Font name="Bodoni MT Black" size="19.0" />
                      </font>
                   </Button>
-                  <Button fx:id="susSubastasB" layoutX="21.0" layoutY="205.0" mnemonicParsing="false" onAction="#comprasPorComprador" prefHeight="67.0" prefWidth="232.0" style="-fx-background-color: ALICEBLUE;" text="SUS SUBASTAS">
+                  <Button fx:id="susSubastasB" layoutX="21.0" layoutY="205.0" mnemonicParsing="false" onAction="#susSubastas" prefHeight="67.0" prefWidth="232.0" style="-fx-background-color: ALICEBLUE;" text="SUS SUBASTAS">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -1561,7 +1854,7 @@
                         <Font name="Bodoni MT Black" size="23.0" />
                      </font>
                   </Button>
-                  <Button fx:id="blanco" layoutX="20.0" layoutY="205.0" mnemonicParsing="false" onAction="#modificarUsuario" prefHeight="67.0" prefWidth="232.0" style="-fx-background-color: ALICEBLUE;" visible="false">
+                  <Button fx:id="blanco" layoutX="20.0" layoutY="205.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="232.0" style="-fx-background-color: ALICEBLUE;" visible="false">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -1624,7 +1917,7 @@
                   <Image url="@../Imagenes/atras.png" />
                </image>
             </ImageView>
-            <Label fx:id="titAdm" layoutX="535.0" layoutY="11.0" text="ADMINISTRADOR" textFill="#1a2a9e">
+            <Label fx:id="titAdm" layoutX="535.0" layoutY="11.0" text="ADMINISTRADOR" textFill="#1a2a9e" visible="false">
                <effect>
                   <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
                </effect>
@@ -1632,7 +1925,7 @@
                   <Font name="Bodoni MT Black" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="titPart" layoutX="551.0" layoutY="11.0" text="PARTICIPANTE" textFill="#1a2a9e" visible="false">
+            <Label fx:id="titPart" layoutX="551.0" layoutY="11.0" text="PARTICIPANTE" textFill="#1a2a9e">
                <effect>
                   <DropShadow color="#299487" height="30.33" radius="13.11" width="24.11" />
                </effect>
@@ -1651,7 +1944,7 @@
          <children>
             <AnchorPane layoutX="193.0" layoutY="241.0" prefHeight="324.0" prefWidth="600.0" style="-fx-background-color: LIGHTCYAN;">
                <children>
-                  <Label layoutX="213.0" layoutY="17.0" text="Iniciar sesión" textFill="#2059b5">
+                  <Label layoutX="187.0" layoutY="17.0" text="INICIAR SESIÓN" textFill="#2059b5">
                      <effect>
                         <DropShadow color="#259db5" />
                      </effect>
@@ -1713,7 +2006,7 @@
                         <Font name="Book Antiqua" size="17.0" />
                      </font>
                   </PasswordField>
-                  <Button layoutX="238.0" layoutY="273.0" mnemonicParsing="false" onAction="#InicioSesion" text="Iniciar Sesión">
+                  <Button layoutX="222.0" layoutY="273.0" mnemonicParsing="false" onAction="#InicioSesion" text="INICIAR SESIÓN">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -1743,6 +2036,24 @@
                   <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="541.0" layoutY="270.0" onMouseClicked="#atrasInicioS" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Imagenes/atras.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="contranNoVerSigno" fitHeight="32.0" fitWidth="33.0" layoutX="445.0" layoutY="223.0" onMouseClicked="#verContrasena" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/noVerCon.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="contraVer" layoutX="255.0" layoutY="218.0" prefHeight="32.0" prefWidth="223.0" visible="false">
+                     <effect>
+                        <InnerShadow color="#234e94" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fx:id="contraVersigno" fitHeight="22.0" fitWidth="26.0" layoutX="448.0" layoutY="224.0" onMouseClicked="#ocultarContrasena" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../Imagenes/verContraseña.png" />
                      </image>
                   </ImageView>
                </children>
