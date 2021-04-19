@@ -12,6 +12,7 @@ AS $BODY$
 DECLARE
 	cedulaIgual int;
 	idUsuario int;
+	participanteId int;
 BEGIN
 	cedulaIgual := (SELECT "ID" FROM usuario WHERE usuario.docIdent = cedula);
 	
@@ -29,9 +30,18 @@ BEGIN
 		ELSE
 			INSERT INTO public.participante("usuarioId")
 			VALUES(idUsuario);
+			participanteId := (SELECT "ID" FROM participante WHERE "usuarioId" = idUsuario);
+			
+			INSERT INTO vendedor("participanteId")
+			VALUES(participanteId);
+			
+			INSERT INTO comprador("participanteId")
+			VALUES(participanteId);
 		END IF;
 		RETURN 1;
 		
 	END IF;
 END;
 $BODY$;
+
+	
