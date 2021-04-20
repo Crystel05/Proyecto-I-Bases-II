@@ -810,7 +810,7 @@ public class ControllerPrincipal {
         String nombreFXML;
         if(!numeroETF.getText().isEmpty() && !tipoEd.getSelectionModel().isEmpty() && !numeros.getSelectionModel().isEmpty()) { //
 
-            int cod = GUI.modificarTel(numeros.getValue(), Integer.parseInt(numeroETF.getText()), tipoEd.getValue());
+            int cod = GUI.modificarTel(aliasEd.getText(), numeros.getValue(), Integer.parseInt(numeroETF.getText()), tipoEd.getValue());
 
             if(cod != 1){
                 nombreFXML = "FXMLS/Error8.fxml";

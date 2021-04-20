@@ -69,6 +69,7 @@ public class ControllerGUI {
     }
 
     //-----------------------------------------------------------------
+
     //Inicio de sesión
 
     public int verificarInicioSesion(boolean esAdmin, String alias, String contra){
@@ -135,10 +136,10 @@ public class ControllerGUI {
             usuarios = controllerBDPostgre.mostrarUsuariosEditar(esAdmin);
         }
         else {
-            usuarios = oracle.;
+            usuarios = oracle.obtenerIdentificacion(esAdmin);
         }
         return usuarios;
-    }
+    } //listo
 
     public Usuario mostrarInfoEd(String ced){
         Usuario usuario;
@@ -149,7 +150,7 @@ public class ControllerGUI {
             usuario = oracle.mostrarInfoUsuario(ced);
         }
         return usuario;
-    }
+    } //listo
 
     public ArrayList<Integer> mostrarTelsUs(String ced){
         ArrayList<Integer> num;
@@ -157,21 +158,22 @@ public class ControllerGUI {
             num = controllerBDPostgre.mostrarTelsU(ced);
         }
         else {
-            num = new ArrayList<>();
+            num = oracle.obtenerTelefonosUsu(ced);
         }
         return num;
-    }
+    } //listo
 
-    public Integer modificarTel(int telV, int telN, String tipo){
+    public Integer modificarTel(String alias, int telV, int telN, String tipo){
         int cod;
         if(baseDatoUsada){
             cod = controllerBDPostgre.modificarTel(telV, telN, tipo);
         }
         else {
-            cod = 0;
+            oracle.modificarTelefono(alias, tipo, telN, telV);
+            cod = 1;
         }
         return cod;
-    }
+    } //listo
 
     public Integer modificarUsuario(String cedulaVieja, String nombre, String aliasNuevo, String contra, String ced, String dir){
         int cod = 0;
@@ -179,11 +181,92 @@ public class ControllerGUI {
             cod = controllerBDPostgre.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir);
         }
         else {
-            cod = 0;
+            if(oracle.modificarUsuario(cedulaVieja, nombre, aliasNuevo, contra, ced, dir))
+                cod = 1;
+            else
+                cod = 0;
         }
         return cod;
+    } //listo
+
+    //Subastas activas
+
+    public ArrayList<String> categorias () {
+        ArrayList<String> cats;
+
+        if (baseDatoUsada) {
+            cats = controllerBDPostgre.categorias();
+        } else {
+            cats = oracle.getCategorias();
+        }
+
+        return cats;
+    } //listo
+
+    public ArrayList<String> subCategorias (String categoria) {
+        ArrayList<String> subCats;
+
+        if (baseDatoUsada) {
+            subCats = controllerBDPostgre.subCategorias(categoria);
+        } else {
+            subCats = oracle.getSubCategorias(categoria);
+        }
+
+        return subCats;
+    } //listo
+
+    public ArrayList<Subasta> subastasTablaSin () {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerBDPostgre.mostrarSubastasActivas();
+        } else {
+            subastas = oracle.getSubastas();
+        }
+
+        return subastas;
+    } //listo
+
+    public ArrayList<Subasta> subastasCategoria (String categoria) {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerBDPostgre.subastasActivasCategoria(categoria);
+        } else {
+            subastas = oracle.getSubastasCat(categoria);
+        }
+
+        return subastas;
+    } // listo
+
+    public ArrayList<Subasta> subastasFinal (String categoria, String subCategoria) {
+        ArrayList<Subasta> subastas;
+
+        if (baseDatoUsada) {
+            subastas = controllerBDPostgre.subastasActivasFinal(categoria, subCategoria);
+        } else {
+            subastas = oracle.getSubastasSubCat(subCategoria);
+        }
+
+        return subastas;
     }
+
+    public Subasta detallesSubas (int subastaID) {
+        Subasta subasta;
+
+        if (baseDatoUsada) {
+            subasta = controllerBDPostgre.detallesSubasta(subastaID);
+        } else {
+            subasta = new Subasta();
+        }
+
+        return subasta;
+    }
+
 //----------------
+
+
+
 
     public ArrayList<String> nombreSubastas(){
         setSubastasActivas();
@@ -207,17 +290,17 @@ public class ControllerGUI {
         return codigo;
     }
 
-    public ArrayList<String> nombresSubastas(){
-        ArrayList<String> nombres;
-        if (baseDatoUsada){
-            nombres = controllerBDPostgre.nombreSubastas();
-        }
-        else {
-            //oracle
-            nombres = new ArrayList<>();
-        }
-        return nombres;
-    }
+//    public ArrayList<String> nombresSubastas(){
+//        ArrayList<String> nombres;
+//        if (baseDatoUsada){
+//            nombres = controllerBDPostgre.nombreSubastas();
+//        }
+//        else {
+//            //oracle
+//            nombres = new ArrayList<>();
+//        }
+//        return nombres;
+//    }
 
     public ArrayList<Puja> pujasXsubasta(String nombreItem){
         ArrayList<Puja> pujas;
@@ -254,77 +337,9 @@ public class ControllerGUI {
     }
 
 
-    public ArrayList<String> categorias () {
-        ArrayList<String> cats;
 
-        if (baseDatoUsada) {
-            cats = controllerBDPostgre.categorias();
-        } else {
-            cats = new ArrayList<>();
-        }
 
-        return cats;
-    }
 
-    public ArrayList<String> subCategorias (String categoria) {
-        ArrayList<String> subCats;
-
-        if (baseDatoUsada) {
-            subCats = controllerBDPostgre.subCategorias(categoria);
-        } else {
-            subCats = new ArrayList<>();
-        }
-
-        return subCats;
-    }
-
-    public ArrayList<Subasta> subastasTablaSin () {
-        ArrayList<Subasta> subastas;
-
-        if (baseDatoUsada) {
-            subastas = controllerBDPostgre.mostrarSubastasActivas();
-        } else {
-            subastas = new ArrayList<>();
-        }
-
-        return subastas;
-    }
-
-    public ArrayList<Subasta> subastasCategoria (String categoria) {
-        ArrayList<Subasta> subastas;
-
-        if (baseDatoUsada) {
-            subastas = controllerBDPostgre.subastasActivasCategoria(categoria);
-        } else {
-            subastas = new ArrayList<>();
-        }
-
-        return subastas;
-    }
-
-    public ArrayList<Subasta> subastasFinal (String categoria, String subCategoria) {
-        ArrayList<Subasta> subastas;
-
-        if (baseDatoUsada) {
-            subastas = controllerBDPostgre.subastasActivasFinal(categoria, subCategoria);
-        } else {
-            subastas = new ArrayList<>();
-        }
-
-        return subastas;
-    }
-
-    public Subasta detallesSubas (int subastaID) {
-        Subasta subasta;
-
-        if (baseDatoUsada) {
-            subasta = controllerBDPostgre.detallesSubasta(subastaID);
-        } else {
-            subasta = new Subasta();
-        }
-
-        return subasta;
-    }
 
     public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
                                   String detalles, float monMin){
