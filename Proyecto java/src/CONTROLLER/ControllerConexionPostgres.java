@@ -21,7 +21,7 @@ public class ControllerConexionPostgres {
     public void crearConexion(){
 
         try{
-            this.connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/proyectoI", "postgres", "gatoscools");
+            this.connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/BDProyecto", "postgres", "Admin");
             System.out.println("Conexión a POSTGRESQL DATA BASE exitosa");
         }
         catch (Exception e){

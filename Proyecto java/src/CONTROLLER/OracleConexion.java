@@ -27,7 +27,7 @@ public class OracleConexion {
 
             try {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
-                this.connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "Crystel", "gatoscools05");
+                this.connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "ADMIN", "ADMIN");
                 System.out.println("conexion exitosa");
 
             } catch (SQLException throwables) {

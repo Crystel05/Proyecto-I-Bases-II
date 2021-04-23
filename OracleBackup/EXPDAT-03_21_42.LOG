@@ -1,9 +1,9 @@
-Iniciando "ADMIN"."EXP_SD_544-11_29_53":  
+Iniciando "ADMIN"."EXP_SD_808-03_20_33":  
 Procesando el tipo de objeto DATABASE_EXPORT/EARLY_OPTIONS/VIEWS_AS_TABLES/TABLE_DATA
 .  estimado "SYS"."KU$_USER_MAPPING_VIEW"               4.683 KB
 Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/TABLE_DATA
+.  estimado "AUDSYS"."AUD$UNIFIED":"SYS_P317"           88.92 KB
 .  estimado "AUDSYS"."AUD$UNIFIED":"SYS_P181"           80.67 KB
-.  estimado "AUDSYS"."AUD$UNIFIED":"SYS_P317"           75.58 KB
 .  estimado "SYSTEM"."REDO_DB"                          23.14 KB
 .  estimado "WMSYS"."WM$WORKSPACES_TABLE$"              11.10 KB
 .  estimado "WMSYS"."WM$HINT_TABLE$"                    9.120 KB
@@ -88,21 +88,21 @@ Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/VIEWS_AS_TABLES/TABL
 .  estimado "WMSYS"."WM$METADATA_MAP"                   4.683 KB
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TABLE_DATA
 .  estimado "ADMIN"."SUBCATEGORIA"                      18.46 KB
-.  estimado "ADMIN"."ITEM"                              10.24 KB
-.  estimado "ADMIN"."SUBASTA"                           8.711 KB
-.  estimado "ADMIN"."USUARIO"                           8.076 KB
-.  estimado "ADMIN"."COMENTARIO"                        7.343 KB
+.  estimado "ADMIN"."ITEM"                              10.32 KB
+.  estimado "ADMIN"."SUBASTA"                           8.767 KB
+.  estimado "ADMIN"."USUARIO"                           8.195 KB
+.  estimado "ADMIN"."COMENTARIO"                        7.376 KB
 .  estimado "ADMIN"."TABLACOMPONENTES"                  6.781 KB
-.  estimado "ADMIN"."PUJA"                              6.648 KB
+.  estimado "ADMIN"."PUJA"                              6.670 KB
 .  estimado "ADMIN"."TELEFONO"                          6.549 KB
+.  estimado "ADMIN"."HISTORIALCOMPRADOR"                6.195 KB
 .  estimado "ADMIN"."CATEGORIA"                         6.185 KB
 .  estimado "ADMIN"."TABLAPARTES"                       5.984 KB
-.  estimado "ADMIN"."PARTICIPANTE"                      5.574 KB
-.  estimado "ADMIN"."ADMINISTRADOR"                     5.533 KB
-.  estimado "ADMIN"."COMPRADOR"                         5.474 KB
-.  estimado "ADMIN"."VENDEDOR"                          5.474 KB
+.  estimado "ADMIN"."PARTICIPANTE"                      5.492 KB
+.  estimado "ADMIN"."COMPRADOR"                         5.480 KB
+.  estimado "ADMIN"."VENDEDOR"                          5.480 KB
+.  estimado "ADMIN"."ADMINISTRADOR"                     5.474 KB
 .  estimado "ADMIN"."TIPOTELEFONO"                      5.472 KB
-.  estimado "ADMIN"."HISTORIALCOMPRADOR"                4.683 KB
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/STATISTICS/TABLE_STATISTICS
 Procesando el tipo de objeto DATABASE_EXPORT/STATISTICS/MARKER
@@ -140,12 +140,14 @@ Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TYPE/TYPE_BODY
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/INDEX
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/CONSTRAINT/CONSTRAINT
 Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/CONSTRAINT/REF_CONSTRAINT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TRIGGER
 Procesando el tipo de objeto DATABASE_EXPORT/FINAL_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/POST_SCHEMA/PROCOBJ
 Procesando el tipo de objeto DATABASE_EXPORT/AUDIT_UNIFIED/AUDIT_POLICY_ENABLE
 Procesando el tipo de objeto DATABASE_EXPORT/POST_SYSTEM_IMPCALLOUT/MARKER
 . . "SYS"."KU$_USER_MAPPING_VIEW"               5.257 KB      37 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P317"           19.75 KB     121 filas exportadas
 . . "AUDSYS"."AUD$UNIFIED":"SYS_P181"           18.17 KB      97 filas exportadas
-. . "AUDSYS"."AUD$UNIFIED":"SYS_P317"           18.60 KB     104 filas exportadas
 . . "SYSTEM"."REDO_DB"                          7.257 KB       1 filas exportadas
 . . "WMSYS"."WM$WORKSPACES_TABLE$"              5.968 KB       1 filas exportadas
 . . "WMSYS"."WM$HINT_TABLE$"                    6.007 KB      97 filas exportadas
@@ -228,23 +230,23 @@ Procesando el tipo de objeto DATABASE_EXPORT/POST_SYSTEM_IMPCALLOUT/MARKER
 . . "WMSYS"."WM$EXP_MAP"                        5.281 KB       3 filas exportadas
 . . "WMSYS"."WM$METADATA_MAP"                       0 KB       0 filas exportadas
 . . "ADMIN"."SUBCATEGORIA"                      10.78 KB     447 filas exportadas
-. . "ADMIN"."ITEM"                              6.992 KB      32 filas exportadas
-. . "ADMIN"."SUBASTA"                           5.656 KB       5 filas exportadas
-. . "ADMIN"."USUARIO"                           6.062 KB      17 filas exportadas
-. . "ADMIN"."COMENTARIO"                        5.296 KB       1 filas exportadas
+. . "ADMIN"."ITEM"                              7.117 KB      36 filas exportadas
+. . "ADMIN"."SUBASTA"                           5.812 KB       9 filas exportadas
+. . "ADMIN"."USUARIO"                           6.375 KB      26 filas exportadas
+. . "ADMIN"."COMENTARIO"                        5.414 KB       4 filas exportadas
 . . "ADMIN"."TABLACOMPONENTES"                  5.953 KB       3 filas exportadas
-. . "ADMIN"."PUJA"                              5.148 KB       4 filas exportadas
-. . "ADMIN"."TELEFONO"                          5.265 KB      25 filas exportadas
+. . "ADMIN"."PUJA"                              5.210 KB       8 filas exportadas
+. . "ADMIN"."TELEFONO"                          5.375 KB      36 filas exportadas
+. . "ADMIN"."HISTORIALCOMPRADOR"                5.023 KB       2 filas exportadas
 . . "ADMIN"."CATEGORIA"                         5.390 KB      35 filas exportadas
 . . "ADMIN"."TABLAPARTES"                       6.140 KB       5 filas exportadas
-. . "ADMIN"."PARTICIPANTE"                      4.859 KB      10 filas exportadas
-. . "ADMIN"."ADMINISTRADOR"                     4.882 KB       7 filas exportadas
-. . "ADMIN"."COMPRADOR"                         4.906 KB       8 filas exportadas
-. . "ADMIN"."VENDEDOR"                          4.882 KB       8 filas exportadas
+. . "ADMIN"."PARTICIPANTE"                      4.882 KB      16 filas exportadas
+. . "ADMIN"."COMPRADOR"                         4.929 KB      14 filas exportadas
+. . "ADMIN"."VENDEDOR"                          4.906 KB      14 filas exportadas
+. . "ADMIN"."ADMINISTRADOR"                     4.906 KB      10 filas exportadas
 . . "ADMIN"."TIPOTELEFONO"                      4.859 KB       4 filas exportadas
-. . "ADMIN"."HISTORIALCOMPRADOR"                    0 KB       0 filas exportadas
-La tabla maestra "ADMIN"."EXP_SD_544-11_29_53" se ha cargado/descargado correctamente
+La tabla maestra "ADMIN"."EXP_SD_808-03_20_33" se ha cargado/descargado correctamente
 ******************************************************************************
-El juego de archivos de volcado para ADMIN.EXP_SD_544-11_29_53 es:
-  E:\ARCHIVOSTEC\QUINTOSEMESTRE\BASES\PROYECTO-I-BASES-II\ORACLEBACKUP\EXPDAT01-11_31_07.DMP
-El trabajo "ADMIN"."EXP_SD_544-11_29_53" ha terminado correctamente en Vie Abr 16 11:32:49 2021 elapsed 0 00:01:44
+El juego de archivos de volcado para ADMIN.EXP_SD_808-03_20_33 es:
+  E:\ARCHIVOSTEC\QUINTOSEMESTRE\BASES\PROYECTO-I-BASES-II\ORACLEBACKUP\EXPDAT01-03_21_42.DMP
+El trabajo "ADMIN"."EXP_SD_808-03_20_33" ha terminado correctamente en Vie Abr 23 03:23:36 2021 elapsed 0 00:01:55

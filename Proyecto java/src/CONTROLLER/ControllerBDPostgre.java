@@ -129,6 +129,7 @@ import java.util.ArrayList;
             catch (Exception e){
                 System.out.println("Error de conexión");
                 System.out.println(e);
+                e.printStackTrace();
 
             }
             return subastasActivas;
