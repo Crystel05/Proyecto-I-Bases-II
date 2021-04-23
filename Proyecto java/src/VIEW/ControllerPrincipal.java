@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -1202,7 +1203,7 @@ public class ControllerPrincipal {
     }
 
     @FXML
-    public void crearSubasta(ActionEvent event) throws IOException {
+    public void crearSubasta(ActionEvent event) throws IOException, ParseException {
         String nombreFxml;
 
         if(!descrIS.getText().isEmpty() && !subCateIS.getSelectionModel().isEmpty() && !categoriaIS.getSelectionModel().isEmpty()

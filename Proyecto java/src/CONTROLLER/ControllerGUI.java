@@ -3,12 +3,11 @@ package CONTROLLER;
 import MODEL.Puja;
 import MODEL.Subasta;
 import MODEL.Usuario;
-import oracle.jdbc.OracleCallableStatement;
-import oracle.jdbc.OracleTypes;
 
-import java.sql.CallableStatement;
-import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ControllerGUI {
 
@@ -31,7 +30,6 @@ public class ControllerGUI {
     private String alias;
     private String contrasena;
     private ArrayList<Subasta> subastasActivas;
-
 
     public boolean isBaseDatoUsada() {
         return baseDatoUsada;
@@ -64,8 +62,9 @@ public class ControllerGUI {
     public void setSubastasActivas() {
         if(baseDatoUsada)
             this.subastasActivas = controllerBDPostgre.mostrarSubastasActivas();
-        //else
-        //oracle lista
+        else{
+            this.subastasActivas = oracle.getSubastas();
+        }
     }
 
     //-----------------------------------------------------------------
@@ -249,7 +248,7 @@ public class ControllerGUI {
         }
 
         return subastas;
-    }
+    } //listo
 
     public Subasta detallesSubas (int subastaID) {
         Subasta subasta;
@@ -257,16 +256,12 @@ public class ControllerGUI {
         if (baseDatoUsada) {
             subasta = controllerBDPostgre.detallesSubasta(subastaID);
         } else {
-            subasta = new Subasta();
+            subasta = oracle.getDetallesSubastas(subastaID);
         }
-
         return subasta;
-    }
+    } //probar
 
-//----------------
-
-
-
+    //Pujas por subasta
 
     public ArrayList<String> nombreSubastas(){
         setSubastasActivas();
@@ -277,30 +272,7 @@ public class ControllerGUI {
         }
 
         return nombres;
-    }
-
-    public int pujar(float monto, String itemN){
-        int codigo = 0;
-        if(baseDatoUsada){
-            codigo = controllerBDPostgre.pujar(alias, contrasena, monto, itemN);
-        }
-        else {
-            //oracle
-        }
-        return codigo;
-    }
-
-//    public ArrayList<String> nombresSubastas(){
-//        ArrayList<String> nombres;
-//        if (baseDatoUsada){
-//            nombres = controllerBDPostgre.nombreSubastas();
-//        }
-//        else {
-//            //oracle
-//            nombres = new ArrayList<>();
-//        }
-//        return nombres;
-//    }
+    } //listo
 
     public ArrayList<Puja> pujasXsubasta(String nombreItem){
         ArrayList<Puja> pujas;
@@ -308,11 +280,12 @@ public class ControllerGUI {
             pujas = controllerBDPostgre.pujasXsubasta(nombreItem);
         }
         else{
-            //oracle
-            pujas = new ArrayList<>();
+            pujas = oracle.pujasXsubasta(nombreItem);
         }
         return pujas;
-    }
+    } //listo
+
+    //Ventas por vendedor
 
     public ArrayList<Usuario> usuariosMostrar(){
         ArrayList<Usuario> cedulas;
@@ -320,40 +293,10 @@ public class ControllerGUI {
             cedulas = controllerBDPostgre.mostrarUsuarios();
         }
         else{
-            cedulas = new ArrayList<>();
+            cedulas = oracle.mostrarUsuarios();
         }
         return cedulas;
-    }
-
-    public ArrayList<Subasta> llenarTablaComprasComprador(String indent){
-        ArrayList<Subasta> compras;
-        if(baseDatoUsada){
-            compras = controllerBDPostgre.comprasXcomprador(indent);
-        }
-        else{
-            compras = new ArrayList<>();
-        }
-        return compras;
-    }
-
-
-
-
-
-
-    public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
-                                  String detalles, float monMin){
-        int cod;
-        if(baseDatoUsada){
-            System.out.println(alias);
-            System.out.println(contrasena);
-            cod = controllerBDPostgre.iniciarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fechaFin, detalles, alias, contrasena, monMin);
-        }
-        else {
-            cod = 0;
-        }
-        return cod;
-    }
+    } //listo
 
     public ArrayList<Subasta> subastasXvendedor (String docIdent) {
         ArrayList<Subasta> subastas;
@@ -361,11 +304,11 @@ public class ControllerGUI {
         if (baseDatoUsada) {
             subastas = controllerBDPostgre.subastasXvendedor(docIdent);
         } else {
-            subastas = new ArrayList<>();
+            subastas = oracle.getSubastasPorUsu(docIdent);
         }
 
         return subastas;
-    }
+    } //listo
 
     public String nombreVend (String docIdent){
         String nom;
@@ -373,10 +316,67 @@ public class ControllerGUI {
             nom = controllerBDPostgre.nombreVendedor(docIdent);
         }
         else {
-            nom = "";
+            nom = oracle.nombreVendedor(docIdent);
         }
         return nom;
+    } //listo
+
+    //Compras por comprador
+
+    public ArrayList<Subasta> llenarTablaComprasComprador(String indent){
+        System.out.println("haol");
+        ArrayList<Subasta> compras = new ArrayList<>();
+        if(baseDatoUsada){
+            compras = controllerBDPostgre.comprasXcomprador(indent);
+        }
+        else{
+            ArrayList<Subasta> subastas = oracle.comprasXcomprador(indent);
+            for(Subasta s: subastas){
+                s.setVendedor(oracle.nombreVendedorCxC(s.getNomIt()));
+                compras.add(s);
+            }
+        }
+        for(Subasta s: compras){
+            System.out.println(1);
+            s.getVendedor();
+        }
+        return compras;
     }
+
+    //Iniciar subasta
+
+    public Integer iniciarSubasta(String nombre, String detallesItem, String pathFoto, String subcat, float montoIni, String fechaFin,
+                                  String detalles, float monMin) throws ParseException {
+        int cod;
+        if(baseDatoUsada){
+            cod = controllerBDPostgre.iniciarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fechaFin, detalles, alias, contrasena, monMin);
+        }
+        else {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-d hh:mm:ss");
+            Date fecha = format.parse(fechaFin);
+
+            if(oracle.realizarSubasta(nombre, detallesItem, pathFoto, subcat, montoIni, fecha, detalles, alias, contrasena, monMin))
+                cod = 1;
+            else
+                cod = 0;
+        }
+        return cod;
+    } //listo
+
+    //Pujar por ítem
+
+    public int pujar(float monto, String itemN){
+        int codigo = 0;
+        if(baseDatoUsada){
+            codigo = controllerBDPostgre.pujar(alias, contrasena, monto, itemN);
+        }
+        else {
+            codigo = oracle.pujar(alias, contrasena, monto, itemN);
+        }
+        return codigo;
+    }
+
+    //Comentarios
 
     public ArrayList<Subasta> subastasCompras(){
         ArrayList<Subasta> subastas;
@@ -384,7 +384,7 @@ public class ControllerGUI {
             subastas = controllerBDPostgre.subastasComprador(alias, contrasena); //(alias, contrasena);
         }
         else {
-            subastas = new ArrayList<>();
+            subastas = oracle.comprasCompradorComentarios(alias, contrasena);
         }
         return subastas;
     }
@@ -395,7 +395,7 @@ public class ControllerGUI {
             subastas = controllerBDPostgre.subastasVendedor(alias, contrasena);//(alias, contrasena);
         }
         else {
-            subastas = new ArrayList<>();
+            subastas = oracle.ventasVendedorComentarios(alias, contrasena);
         }
         return subastas;
     }
@@ -408,7 +408,7 @@ public class ControllerGUI {
             cod = controllerBDPostgre.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
         }
         else{
-            cod = 0;
+            cod = oracle.comentarios(comentario, puntacion, esVendedor, compra, nomItem, alias, contrasena);
         }
 
         return cod;

@@ -1104,6 +1104,7 @@ sequence|table|24676|24671|1
     </routine>
     <routine id="58" parent="17" name="comprasxcomprador">
       <ObjectId>24795</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <SourceTextLength>1492</SourceTextLength>
       <StateNumber>1390</StateNumber>

@@ -31,10 +31,6 @@ BEGIN
 			VALUES(monto, subastaId, compId, (SELECT now()::timestamp))
 			RETURNING puja."ID" INTO pujaMejor;
 			
-			UPDATE subasta
-			SET "mejorMonto" = (SELECT oferta FROM puja WHERE "ID" = pujaMejor)
-			WHERE "ID" = subastaId;
-			
 			RETURN 1;
 			
 			

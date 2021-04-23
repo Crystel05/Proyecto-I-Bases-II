@@ -164,28 +164,6 @@ import java.util.ArrayList;
 
     }
 
-//    public ArrayList<String> nombreSubastas(){
-//        ArrayList<String> nombres = new ArrayList<>();
-//
-//        try {
-//            String llamadaFuncion = "SELECT * FROM mostrartodassubastas()";
-//
-//            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
-//
-//            ResultSet resultSet = statement.executeQuery();
-//            while (resultSet.next()) {
-//                nombres.add(resultSet.getString(1));
-//            }
-//
-//        }
-//        catch (Exception e){
-//            System.out.println("Error de conexión");
-//            System.out.println(e);
-//
-//        }
-//        return nombres;
-//    }
-
     public ArrayList<Puja> pujasXsubasta(String nombreItem){
         ArrayList<Puja> pujas = new ArrayList<>();
 
@@ -515,34 +493,6 @@ import java.util.ArrayList;
         return nombre;
     }
 
-//    public ArrayList<Subasta> subastasActivasTotal(){
-//        ArrayList<Subasta> subastas = new ArrayList<>();
-//
-//        try{
-//            String llamadaFuncion = "SELECT * FROM subastasactivastablasinescoger()";
-//
-//            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
-//
-//
-//            ResultSet resultSet = statement.executeQuery();
-//            while (resultSet.next()) {
-//
-//                Subasta subasta = new Subasta();
-//                subasta.setNomIt(resultSet.getString(1));
-//                subasta.setFachaFinal(resultSet.getTimestamp(2));
-//                subasta.setMejorMonto(resultSet.getFloat(3));
-//
-//                subastas.add(subasta);
-//            }
-//        }
-//        catch (Exception e){
-//            System.out.println("No se pudo conectar con la base de datos");
-//            e.printStackTrace();
-//        }
-//
-//        return subastas;
-//    }
-
     public ArrayList<Subasta> subastasActivasCategoria(String categoria){
         ArrayList<Subasta> subastas = new ArrayList<>();
 
@@ -669,34 +619,6 @@ import java.util.ArrayList;
         return subasta;
     }
 
-//    public String cedulaUsuario(String alias, String contra){
-//
-//        String cedula = "";
-//
-//        try {
-//            String llamadaFuncion = "SELECT * FROM devolvercedula(?, ?)";
-//
-//            PreparedStatement statement = ControllerConexionPostgres.getInstance().connection.prepareStatement(llamadaFuncion);
-//
-//            statement.setString(1, alias);
-//            statement.setString(2, contra);
-//
-//            ResultSet resultSet = statement.executeQuery();
-//
-//
-//            while (resultSet.next()) {
-//                cedula = resultSet.getString(1);
-//            }
-//
-//        }
-//        catch (Exception e){
-//            System.out.println("Error de conexión");
-//            System.out.println(e);
-//
-//        }
-//        return cedula;
-//    }
-
     public ArrayList<Subasta> subastasComprador(String alias, String contra){
         ArrayList<Subasta> subastas = new ArrayList<>();
         try {
@@ -797,6 +719,7 @@ import java.util.ArrayList;
         }
         return codigo;
     }
+
 
 
 //    public static void main(String[] args) throws ParseException {
